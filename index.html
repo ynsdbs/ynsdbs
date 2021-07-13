@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html style="width: 100%;height: 100%">
+<html style="height: 100%">
 <head>
     <meta charset="utf-8">
     <title>ECharts</title>
@@ -34,14 +35,9 @@
     legend: {
         x: 'center',
         show: false,
-        data: ['夫妻', '兄弟', '儿子','雇用关系','邻居'],
+        //data: ['第一支', '第二支', '儿子','雇用关系','邻居'],
     },
-	       grid: {
-                                    left: '10%',     //设置canvas图距左的距离
-                                    top: '20%',
-                                    right: '10%',
-                                    bottom: '10%'
-                                },       
+  
     series: [
         {
             type: 'graph',
@@ -51,15 +47,7 @@
             roam: true,
             categories: [
                 {
-                    name: '夫妻',
-                    itemStyle: {
-                        normal: {
-                            color: '#009800',
-                        },
-                    },
-                },
-                {
-                    name: '兄弟',
+                    name: '0',
                     itemStyle: {
                         normal: {
                             color: '#4592FF',
@@ -67,13 +55,74 @@
                     },
                 },
                 {
-                    name: '儿子',
+                    name: '1',
+                    itemStyle: {
+                        normal: {
+                            color: '#4592FF',
+                        },
+                    },
+                },
+                {
+                    name: '2',
                     itemStyle: {
                         normal: {
                             color: '#3592F',
                         },
-                    },
+	                  },
                 },
+				{
+                    name: '3',
+                    itemStyle: {
+                        normal: {
+                            color: '#46A3FF',
+                        },
+	                  },
+				},
+				{  name: '4',
+                    itemStyle: {
+                        normal: {
+                            color: '#97CBFF',
+                        },
+	                  },
+                },
+				{  name: '5',
+                    itemStyle: {
+                        normal: {
+                            color: '#AE0000',
+                        },
+	                  },
+                },
+             {  name: '6',
+                    itemStyle: {
+                        normal: {
+                            color: '#FF5151',
+                        },
+	                  },
+                },
+              {  name: '7',
+                    itemStyle: {
+                        normal: {
+                            color: ' #FF9797 ',
+                        },
+	                  },
+                },           
+                 {  name: '8',
+                    itemStyle: {
+                        normal: {
+                            color: ' #FFDC35',
+                        },
+	                  },
+                },                
+                       
+                 {  name: '9',
+                    itemStyle: {
+                        normal: {
+                            color: '#FF2D2D',
+                        },
+	                  },
+                },           
+	                  
+                
             ],
             label: {
                 normal: {
@@ -83,6 +132,7 @@
                     },
                 },
             },
+
             force: {
                 repulsion: 1000,
             },
@@ -96,147 +146,327 @@
                     formatter: '{c}',
                 },
             },
-            data: [
+        data: [
+                {  name: '第一代A', //0
+                    draggable: true,
+                },
+                {name: '1王连生',category: 1,draggable: true, }, //1
+                    
                 {
-                    name: '23荷玛奥', //0
+                    name: '3梁礼贤', //2
+                    category: 4,
                     draggable: true,
                 },
                 {
-                    name: '5昂吞磊', //1
+                    name: '4杜琴丹伍', //3
+                    category: 1,
+                    draggable: true,
+                },
+			    {
+                    name: '10徐博韬',//4
+                    category: 4,
+                    draggable: true,
+                },
+                {
+                    name: '14貌代本伍',//5
                     category: 1,
                     draggable: true,
                 },
                 {
-                    name: '6梦丁', //2
+                    name: '21恒麻推',//6
                     category: 1,
                     draggable: true,
                 },
                 {
-                    name: '2貌丁林索', //3
-                    category: 1,
-                    draggable: true,
-                },
-			
-                {
-                    name: '8吉漂达',//4
-                    category: 1,
+                    name: '23荷玛奥',//7
+                    category: 3,
                     draggable: true,
                 },
                 {
-                    name: '15貌凯明伍',//5
-                    category: 1,
+                    name: '24柳君鹏',//8
+                    category: 4,
                     draggable: true,
                 },
                 {
-                    name: '11吴谬明',//6
-                    category: 1,
+                    name: '25林龙',//9
+                    category: 4,
                     draggable: true,
                 },
                 {
-                    name: '19行腿奥',//7
+                    name: '28玛宁努努耐',//10
                     category: 1,
                     draggable: true,
                 },
-                {
-                    name: '18杜敏敏',//8
+				     {
+                    name: '29玛伦麻薇',//11
                     category: 1,
                     draggable: true,
                 },
-                {
-                    name: '16顶波',//9
+				{
+                    name: '31卖恩静',//12
                     category: 1,
                     draggable: true,
                 },
-                {
-                    name: '17杜莱',//10
+				{
+                    name: '34字蓉',//13
+                    category: 7,
+                    draggable: true,
+                },
+				{
+                    name: '35貌昂谬铁',//14
                     category: 1,
                     draggable: true,
                 },
-                {
-                    name: '20貌索林',//11
+				{
+                    name: '36AwngSanmin',//15
+                    category: 3,
+                    draggable: true,
+                },
+				{
+                    name: '38貌波亚',//16
                     category: 1,
+                    draggable: true,
+                },
+						{
+                    name: '39梁晨',//17
+                    category: 4,
+                    draggable: true,
+                },
+             	{
+                    name: '41占喊',//18
+                    category: 8,
                     draggable: true,
                 },
 					{
-                    name: '7特苗吞',//12
-                    category: 1,
+                    name: '44玛宁贝漂',//19
+                    category: 3,
                     draggable: true,
                 },
-             
+				{
+                    name: '51何光珍',//20
+                    category: 3,
+                    draggable: true,
+                },
+				{
+                   name:'第二代A', //21
+                    category: 2,
+                    draggable: true,
+                },
+				{
+                    name:'第二代B',//22
+                    category: 2,
+                    draggable: true,
+                },
+			{
+                    name:'第三代B',//23
+                    category: 2,
+                    draggable: true,
+                },
+				{ name:'50杜漂特',category: 8,draggable: true,},//24	
+				{ name:'42李自勇',category: 8,draggable: true,},//25
+				{ name:'52楠瑞',category: 8,draggable: true,},//26
+				{
+                    name:'B第一代',//27
+					category: 5,
+                    draggable: true,
+                },
+			{ name:'2貌丁林索',category: 6,draggable: true,},//28
+            { name:'5昂吞磊',category: 7,draggable: true,},//29  
+			{ name:'6梦丁',category: 6,draggable: true,},//30	
+            { name:'7特苗吞',category: 6,draggable: true,},//31	  
+            { name:'8吉漂达',category: 7,draggable: true,},//32	
+			{ name:'9也门',category: 6,draggable: true,},//33	
+			{ name:'11吴谬明',category: 6,draggable: true,},//34	
+			{ name:'12玛卫',category: 7,draggable: true,},//35	
+			{ name:'13吞路',category: 6,draggable: true,},//36	
+			{ name:'15貌凯明伍',category: 7,draggable: true,},//37	
+			{ name:'16顶波',category: 6,draggable: true,},//38	
+			{ name:'17杜莱',category: 6,draggable: true,},//39	
+			{ name:'18杜敏敏',category: 6,draggable: true,},//40	
+			{ name:'19行腿奥',category: 6,draggable: true,},//41
+			{ name:'20貌索林',category: 6,draggable: true,},//42	
+			{ name:'22龙彩华',category: 6,draggable: true,},//43	
+			{ name:'26貌伟漂昂',category: 6,draggable: true,},//44	
+			{ name:'27玛朵朵五',category: 6,draggable: true,},//45	
+			{ name:'30马伍',category: 6,draggable: true,},//46	
+			{ name:'32岩良',category: 6,draggable: true,},//47	
+			{ name:'33梦腊',category: 6,draggable: true,},//48	
+			{ name:'37玛丁萨温',category: 6,draggable: true,},//49	
+			{ name:'40貌缪明',category: 6,draggable: true,},//50	
+			{ name:'43也焕',category: 6,draggable: true,},//51	
+			{ name:'45玛弟达敏',category: 6,draggable: true,},//52	
+			{ name:'46当奈',category: 6,draggable: true,},//53	
+			{ name:'47多亚迪',category: 6,draggable: true,},//54	
+			{ name:'48貌索莫觉',category: 6,draggable: true,},//55	
+			{ name:'49琴美',category: 6,draggable: true,},//56	
+			{ name:'53梅迪达',category: 6,draggable: true,},//57
+			{ name:'B第二代',category: 9,draggable: true,},//58
+			{ name:'C第二代',category: 9,draggable: true,},//59
+			{ name:'D第二代',category: 9,draggable: true,},//60
+			{ name:'E第二代',category: 9,draggable: true,},//61
+
+			{ name:'第二代C',category: 1,draggable: true,},//62
+			{ name:'何利伟',category: 3,draggable: true,},//63
+			{ name:'明希',category: 3,draggable: true,},//64
+
+				
+			
+			
+			{ name:'54玛米南',category: 8,draggable: true,},//57
+			{ name:'55貌索温迈',category: 8,draggable: true,},//57
+			{ name:'56貌丹温',category: 8,draggable: true,},//57
+			{ name:'57管国志',category: 8,draggable: true,},//57
+			{ name:'58貌孟杰昂',category: 8,draggable: true,},//57	
             ],
             links: [
-                {
+             {
                     source: 0,
                     target: 1,
                     category: 0,
                     value: '',
                 },
                 {
-                    source: 1,
+                    source: 63,
                     target: 2,
-                    value: '夫妻',
+                    value: '',
                 },
                 {
-                    source: 1,
+                    source: 0,
                     target: 3,
-                    value: '兄弟',
-                },
-                {
-                    source: 1,
-                    target: 4,
-                    value: '父母',
-                },
-                {
-                    source: 1,
-                    target: 12,
-                    value: '父子',
-                },
-                {
-                    source: 1,
-                    target: 4,
-                    value: '父子',
-                },
-                {
-                    source: 1,
-                    target: 8,
-                    value: '雇用关系',
-                },
-                {
-                    source: 1,
-                    target: 9,
-                    value: '雇用关系',
-                },
-                {
-                    source: 1,
-                    target: 10,
-                    value: '雇用关系',
-                },
-                {
-                    source: 1,
-                    target: 11,
-                    value: '雇用关系',
-                },
-                {
-                    source: 1,
-                    target: 5,
-                    value: '邻居',
-                },
-                {
-                    source: 1,
-                    target: 6,
-                    value: '邻居',
+                    value: '',
                 },
                 {
                     source: 2,
-                    target: 3,
-                    value: '小叔子',
+                    target: 4,
+                    value: '',
                 },
                 {
-                    source: 1,
+                    source: 0,
+                    target: 5,
+                    value: '',
+                },
+                {
+                    source: 0,
+                    target: 6,
+                    value: '',
+                },
+                {
+                    source: 23,
                     target: 7,
-                    value: '邻居',
+                    value: '',
+                },
+                {
+                    source: 63,
+                    target: 8,
+                    value: '',
                 },
               
+                {
+                    source: 0,
+                    target: 10,
+                    value: '',
+                },
+                {
+                    source: 0,
+                    target: 11,
+                    value: '',
+                },
+                {
+                    source: 0,
+                    target: 12,
+                    value: '',
+                },
+               
+                {
+                    source: 0,
+                    target: 14,
+                    value: '',
+                },
+				{
+                    source: 23,
+                    target: 15,
+                    value: '',
+                },
+                {
+                    source: 0,
+                    target: 16,
+                    value: '',
+                },
+                {
+                    source: 2,
+                    target: 17,
+                    value: '',
+                },
+             
+				{
+                    source: 21,
+                    target: 19,
+                    value: '',
+                },
+                
+				{
+                    source: 0,
+                    target: 21,
+                    value: '',
+                },
+				{
+                    source: 0,
+                    target: 22,
+                    value: '',
+                },
+				
+				{
+                    source: 22,
+                    target: 23,
+                    value: '',
+                },
+			
+		    { source: 9,target: 63, value: '', },  
+            { source: 27,target: 28, value: '', },  
+         
+            { source: 27,target: 30, value: '', },     
+            { source: 27,target: 31, value: '', },    
+             
+            { source: 27,target: 33, value: '', },    
+            { source: 27,target: 34, value: '', },  
+			
+			{ source: 27,target: 36, value: '', },  
+			
+			{ source: 27,target: 38, value: '', },  
+			{ source: 27,target: 39, value: '', },  
+			{ source: 27,target: 40, value: '', },  
+			{ source: 27,target: 41, value: '', },  
+			{ source: 27,target: 42, value: '', },  
+			{ source: 27,target: 43, value: '', },  
+			{ source: 27,target: 44, value: '', },  
+			{ source: 27,target: 45, value: '', },  
+			{ source: 27,target: 46, value: '', },  
+			{ source: 27,target: 47, value: '', },  
+			{ source: 27,target: 48, value: '', },  
+			{ source: 27,target: 49, value: '', },  
+			{ source: 27,target: 50, value: '', },  
+			{ source: 27,target: 51, value: '', },  
+			{ source: 27,target: 52, value: '', },  
+			{ source: 27,target: 53, value: '', },  
+			{ source: 27,target: 54, value: '', },  
+			{ source: 27,target: 55, value: '', },  
+			{ source: 27,target: 56, value: '', },  
+			{ source: 27,target: 57, value: '', }, 
+			{ source: 27,target: 58, value: '', }, 
+			{ source: 13,target: 58, value: '', }, 
+			{ source: 27,target: 59, value: '', }, 
+			{ source: 35,target: 59, value: '', }, 
+			{ source: 27,target: 60, value: '', }, 
+			{ source: 37,target: 60, value: '', },  
+			{ source: 27,target: 61, value: '', },  
+			{ source: 29,target: 61, value: '', }, 
+			{ source: 32,target: 61, value: '', }, 
+			
+			{ source: 0,target: 62, value: '', }, 
+			{ source: 62,target: 20, value: '', }, 
+			
+			{ source: 19,target: 64, value: '', }, 
+			{ source: 19,target: 63, value: '', }, 
             ],
             lineStyle: {
                 normal: {
@@ -253,9 +483,8 @@
 
 if (option && typeof option === 'object') {
     myChart.setOption(option);
-    window.onresize = myChart.resize;  // 适应屏幕放大缩小	
+    //window.onresize = myChart.resize;  // 适应屏幕放大缩小	
 }
     </script>
 </body>
 </html>
-  
