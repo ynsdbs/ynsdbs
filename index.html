@@ -31,6 +31,7 @@
         // 基于准备好的dom，初始化echarts实例
         var dom = document.getElementById("container");
         var myChart = echarts.init(dom);
+	window.onresize = myChart.resize;  // 适应屏幕放大缩小	
         var app = {};
 
         // 指定图表的配置项和数据
@@ -265,7 +266,6 @@
 
 if (option && typeof option === 'object') {
     myChart.setOption(option);
-    window.onresize = myChart.resize;
 }
     </script>
 </body>
