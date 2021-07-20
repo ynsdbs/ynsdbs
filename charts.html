@@ -7,6 +7,8 @@
 </head>
 <body style="height: 100%; margin: 0">
 <div id="container" style="height: 100%"></div>
+<div id="container2" style="height: 100%"></div>
+<div id="container3" style="height: 100%"></div>
 <script type="text/javascript">
 
   var myChart=echarts.init(document.getElementById("container"))
@@ -27,7 +29,7 @@
     grid:{
       show:true,
       data:["姐告","隔离点","畹町","弄岛"],
-          },
+    },
     legend:{
       show:true,
       right:"10%",
@@ -113,10 +115,327 @@
 
   }
   myChart.setOption(option);
+  ///第二绘图区
+  var myChart2=echarts.init(document.getElementById("container2"))
+  var ydata=['0-9', '10-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79']
+  var manData = [4, 3, 10, 10, 5, 9, 1, 1];
+  var womanData =[2, 3, 10, 8, 6, 3, 1, ];
+  var option={
+        tooltip: {
+          show: true,
+          trigger: "axis",
+          axisPointer: {
+            type: "shadow",
+          },
+          formatter: function (params) {
+            return (
+              '<span style="font-size: 20px;font-weight: bold;font-family: SourceHanSansCN;">' +
+              params[0].seriesName +
+              "</span>" +
+              "<br/>" +
+              params[0].marker +
+              '<span style="color:' +
+              params[0].color +
+              ';font-size: 20px;font-weight: bold;font-family: SourceHanSansCN;">' +
+              "\n" +
+              params[0].name +
+              "岁: " +
+              params[0].value +
+              "人" +
+              "</span>"
+            );
+          },
+        },
+        legend: {
+          left: "45.2%", //图例距离左边的距离
+          top: 0,
+          textStyle: {
+            // 图例文字样式  隐藏文字
+            color: "transparent",
+          },
+          selectedMode: false,
+          itemWidth: 25,
+          itemHeight: 55, //图例宽高
+          itemGap: 45, //图例的间隔
+          data: [
+            {
+              name: "男",
+              // icon: `image://${man}`,
+              icon:
+                "image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAfCAMAAAAP3mfjAAAAvVBMVEUAAABAgP9Vqv9Jkv9Vqv9Gov9Onf9JpP9Om/9Mof9SnP9Nm/9Mn/9Onf9Rm/9Rnf9Nn/9OnP9On/tRnvxNnvxQnfxQnvxQnvxOnvxOnf1Pnv1Pnv1Qnv1Pnv1Pnf1Pnv1Pnv1On/1Qnv1Pnv1Onv1On/1Qnv5Qnv5Pnv5Pn/5Qnv5PnvxOnvxPnvxPnvxPnv1Pnv1Pnv1Onv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv3hJDdrAAAAPnRSTlMABAYHCQsNDhceHyElJykvOD5ITE9WWVxfaHF0g4SFi46PkJGWnKqwuLm9wsPHy87S1d3g4+ju7/T19vf4+zNjKZEAAACXSURBVBjTxdBFEgJBEETRxN3d3Rtr3P79j8WGaeYARPBX9Ta5KEmSMp1+Qd/yD6D59RrgHnE+A5B1ngOcQ87pAzwrvsForZF0d3trrbXW7icJSeENrlNKauFrKi39vko7LpePjiDtMObj8T9smHnucZNyw4yB4xaI90qSJANmDHgf+LVXYEbw8jyAbhkWnoP1akDFRkyS3hKPQR3ayj/hAAAAAElFTkSuQmCC",
+            },
+            {
+              name: "女",
+              // icon: `image://${woman}`,
+              icon:
+                "image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAiCAMAAABhn6n1AAABGlBMVEUAAAD/AAD/VVX/VVX/SUn/YGD/Zmb/YmL/VVX/Wlr/Xl7/WVn/VVX/Xl7/WFj/V1f/W1v5WVn6XFz6Wlr6W1v6WFj7WVn7WVn7WVn7WVn7W1v7WVn8Wlr8Wlr8W1v8Wlr8W1v8W1v8W1v9W1v9WVn9Wlr9Wlr9W1v9W1v9WVn9Wlr9WVn9Wlr7Wlr7W1v7Wlr7W1v7WVn7Wlr8W1v8Wlr8W1v8WVn8Wlr8WVn8W1v8Wlr8Wlr8Wlr8Wlr8Wlr8W1v8Wlr8Wlr8WVn8Wlr8W1v8Wlr9Wlr9Wlr9Wlr9Wlr7W1v7Wlr8Wlr8Wlr8Wlr8W1v8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8WlrVqYT9AAAAXXRSTlMAAQMGBwgKDQ8RExQVGyAjKi4yMzU3OTxCRUZIT1VaXl9iZWttbm9wc3V6e32AhIWKjJGVlpidn6Cjpaiqr7C0u72/w8XHzc/S1Nba2+Hl5+jp6+3w8/b3+Pn6/P2iRbbvAAAA7UlEQVQoz8XQV1ICARBF0auYs44BAybEnMUcQDErCGJA5e5/G37AyOzA9/dOVVd3NQDQGp+MEUnvsz50R2BfdTsCl6oXEVhXTUUgdlj52mtu9LbxxPRMIt4S9nhJVQujtd5Vtp6XdgCW/cs8AFdev6oW780AdHy7VFWtrPjRAiT8WawNJHUCOPDmpAbpR3ehqeBGfU1+xycY0oVwSVL7WbO0GcLquymOPboNIXvuAf2bw9UQKsFWHzDbuHQKgNMGpAGayw3IA4wZyQDQEwSB5u58D4Kgs/4izeR8i/z0n+DTs6zFCCSzgyNXcwD8AmVGYKFUgvUsAAAAAElFTkSuQmCC",
+            },
+          ],
+        },
+        grid: [
+          // 左
+          {
+            top: "10%",
+            bottom: "2%",
+            left: "8%",
+            width: "39%",
+            height: "85%",
+            containLabel: true,
+          },
+          // 中
+          {
+            top: 0,
+            bottom: "2%",
+            left: "56%",
+            // left: "center",
+            width: "50%",
+            height: "100%",
+          },
+          // 右
+          {
+            top: "10%",
+            bottom: "2%",
+            right: "8%",
+            width: "39%",
+            height: "85%",
+            containLabel: true,
+          },
+        ],
+        xAxis: [
+          {
+            type: "value",
+            inverse: true,
+            show: true,
+            axisLabel: {
+              color: "#7e8daa",
+              fontSize: "20",
+              fontWeight: "bold",
+              textStyle: {
+                fontFamily: "BoldCondensed",
+              },
+            },
+            splitLine: {
+              // 网格线
+              show: true,
+              lineStyle: {
+                color: ["rgba(22, 39, 60, 1)"],
+                width: 1,
+                type: "dotted",
+              },
+            },
+            axisTick: {
+              //y轴刻度线
+              show: false,
+            },
+            axisLine: {
+              //轴线
+              // show: false,
+              lineStyle: {
+                color: "rgba(25, 35, 57,0.2)",
+              },
+            },
+          },
+          {
+            gridIndex: 1,
+            show: true,
+            axisLabel: {
+              color: "#7e8daa",
+              fontSize: "26",
+              fontWeight: "bold",
+              textStyle: {
+                fontFamily: "BoldCondensed",
+              },
+            },
+            splitLine: {
+              // 网格线
+              show: false,
+              lineStyle: {
+                color: ["rgba(22, 39, 60, 1)"],
+                width: 1,
+                type: "dotted",
+              },
+            },
+            axisTick: {
+              //y轴刻度线
+              show: false,
+            },
+            axisLine: {
+              //轴线
+              show: false,
+            },
+          },
+          {
+            gridIndex: 2,
+            type: "value",
+            show: true,
+            axisLabel: {
+              color: "#7e8daa",
+              fontSize: "20",
+              fontWeight: "bold",
+              textStyle: {
+                fontFamily: "BoldCondensed",
+              },
+            },
+            splitLine: {
+              // 网格线
+              show: true,
+              lineStyle: {
+                color: ["rgba(22, 39, 60, 1)"],
+                width: 1,
+                type: "dotted",
+              },
+            },
+            axisTick: {
+              //y轴刻度线
+              show: false,
+            },
+            axisLine: {
+              //轴线
+              // show: false,
+              lineStyle: {
+                color: "rgba(25, 35, 57,0.2)",
+              },
+            },
+          },
+        ],
+        yAxis: [
+          {
+            axisLabel: {
+              show: false,
+            },
+            align: "center",
+            type: "category",
+            axisTick: {
+              //y轴刻度线
+              show: false,
+            },
+            data: ydata,
+            axisLine: {
+              //轴线
+              // show: false,
+              lineStyle: {
+                color: "rgba(25, 35, 57,0.2)",
+              },
+            },
+          },
+          {
+            axisLabel: {
+              color: "#7e8daa",
+              fontSize: "20",
+              fontWeight: "bold",
+              textStyle: {
+                fontFamily: "BoldCondensed",
+              },
+            },
+            gridIndex: 1,
+            position: "center",
+            axisLine: {
+              show: false,
+            },
+            type: "category",
+            inverse: false,
+            axisTick: {
+              //y轴刻度线
+              show: false,
+            },
+            data: [
+              "       (人)          ",
+              "0-9           ",
+              "10-19         ",
+              "20-29         ",
+              "30-39         ",
+              "40-49         ",
+              "50-59         ",
+              "60-69         ",
+              "70-79         ",
+              "       (岁)          ",
+            ], //使用空格使文字居中
+          },
+          {
+            gridIndex: 2,
+            position: "left",
+            axisLabel: {
+              show: false,
+            },
+            type: "category",
+            inverse: false,
+            axisTick: {
+              //y轴刻度线
+              show: false,
+            },
+            axisLine: {
+              //轴线
+              // show: false,
+              lineStyle: {
+                color: "rgba(25, 35, 57,0.2)",
+              },
+            },
+            data: ydata,
+          },
+        ],
+        series: [
+          {
+            type: "bar",
+            barWidth: 25,
+            name: "男",
+            itemStyle: {
+              emphasis: {
+                barBorderRadius: 30
+              },
+              normal: {
+                //柱形图圆角，初始化效果
+                color: "#4f9efd",
+                barBorderRadius:[10, 0, 0, 10],
+                label: {
+                  show: true,//是否展示
+                  textStyle: {
+                    fontWeight:'bolder',
+                    fontSize : '14',
+                    fontFamily : '微软雅黑',
+                  }
+                }
+              }
+            },
+               data: manData,
+          },
+          {
+            type: "bar",
+            barWidth: 30,
+            xAxisIndex: 2,
+            yAxisIndex: 2,
+            name: "女",
+            itemStyle: {
+              emphasis: {
+                barBorderRadius: 30
+              },
+              normal: {
+                //柱形图圆角，初始化效果
+                color: "#fc5a5a",
+                barBorderRadius:[0, 10, 10, 0],
+                label: {
+                  show: true,//是否展示
+                  textStyle: {
+                    fontWeight:'bolder',
+                    fontSize : '14',
+                    fontFamily : '微软雅黑',
+                  }
+              }
+                }
+            },
+            data: womanData,
+          },
+        ],
+      };
+  window.addEventListener("resize", function () {
+        myChart2.resize();
+      });
+  myChart2.setOption(option);
+  //第三绘图区
+  var myChart3=echarts.init(document.getElementById("container3"))
 
+  window.addEventListener("resize", function () {
+    myChart3.resize();
+  });
 </script>
 </body>
 </html>
-
-
-
