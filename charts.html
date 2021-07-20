@@ -12,7 +12,11 @@
   var myChart=echarts.init(document.getElementById("container"))
   var xdata=['2021/7/2', '2021/7/5', '2021/7/7', '2021/7/8', '2021/7/9', '2021/7/10', '2021/7/11', '2021/7/12', '2021/7/13', '2021/7/14', '2021/7/15', '2021/7/16', '2021/7/17', '2021/7/18']
   var ydata=[8, 15, 11, 6, 13, 5, 2, 1, 1, 2, 1, 0, 4, 6]
-    var option = {
+  var jg=[8, 7, 3, 1, 8, 2, 1, 0, 0, 0, 0, 0, 0, 5]
+  var gl=[0, 8, 7, 5, 4, 3, 1, 1, 1, 1, '-', '-', 4, 0]
+  var wd=[0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+  var nd=[0, 0, 0, 0, 0, 0, 0, 0, 0,'-',1, 0, 0, 1]
+  var option = {
     title:{
       text:"瑞丽“7•04”新冠疫情病例变化",
       textStyle:{
@@ -20,11 +24,17 @@
       },
       left:450
     },
-      grid:{
-      show:true
-      },
+    grid:{
+      show:true,
+      data:["姐告","隔离点","畹町","弄岛"],
+          },
+    legend:{
+      show:true,
+      right:"10%",
+      top:"10%"
+    },
     tooltip:{
-      trigger:'axis',
+      trigger:'item',
       backgroundColor: "DimGray",
       textStyle : {
         color: 'white',
@@ -33,10 +43,7 @@
         fontSize: 16,
         fontWeight: 'bold'
       },
-      formatter:function(arg){
-
-        return arg[0].name+" 新增病例"+arg[0].value+"例"
-      }
+      formatter:"{a} {b} 新增病例{c}例",
     },
     toolbox:{
       feature:{
@@ -44,29 +51,35 @@
       }
     },
     xAxis:{
-    data:xdata,
-    nameTextStyle:{
-      fontSize: 20
-    },
+
+      data:xdata,
+      nameTextStyle:{
+        fontSize: 20
+      },
       axisLabel:{
-      textStyle:{
-        fontWeight: 'bold'
-      }
-      }
-  },
-  yAxis:{
-
-    axisLabel:{
-      formatter: "{value}(例)",
-      textStyle:{
-        fontWeight: 'bold',
-
+        textStyle:{
+          fontWeight: 'bold'
+        },
+        interval:0,
+      },
+      splitLine:{
+        show:true
       }
     },
+    yAxis:{
 
-  },
+      axisLabel:{
+        formatter: "{value}(例)",
+        textStyle:{
+          fontWeight: 'bold',
+
+        }
+      },
+
+    },
     series:[
       {
+        name:"瑞丽",
         color:"red",
         data:ydata,
         type:"line",
@@ -75,16 +88,26 @@
         label:{
           show:true,
           fontSize:16
+        },
       },
-
-
-        emphasis:{},
-        // markPoint:{
-        //   data:[
-        //     {type:"max"}
-        //   ]
-        // }
-
+      {
+        name:"姐告",
+        data:jg,
+        type:"bar"
+      },
+      {
+        name:"隔离点",
+        data:gl,
+        type:"bar"
+      },
+      {
+        name:"畹町",
+        data:wd,
+        type:"bar"
+      },{
+        name:"弄岛",
+        data:nd,
+        type:"bar"
       }
     ]
 
@@ -94,5 +117,6 @@
 </script>
 </body>
 </html>
+
 
 
