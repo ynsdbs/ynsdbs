@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+  <meta charset="utf-8">
+  <title>陇川疫情</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+<body style="height: 100%; margin: 0;">
+<div id="container" style="width: 100%;height:600px"></div>
+<div id="container2" style="width: 100%;height:600px"></div>
+<div id="container3" style="width: 100%;height:600px"></div>
+<div id="container4" style="width: 100%;height:600px"></div>
+<script type="text/javascript">
+  var myChart=echarts.init(document.getElementById("container"))
+  var xdata=['2021/7/13', '2021/7/14', '2021/7/15', '2021/7/16', '2021/7/17', '2021/7/18', '2021/7/19', '2021/7/20']
+  var ydata=[1, 2, 0, 2, 1, 0, 3, 1]
+  // var jg=[8, 7, 3, 1, 8, 2, 1, 0, 0, 0, 0, 0, 0, 5]
+  // var gl=[0, 8, 7, 5, 4, 3, 1, 1, 1, 1, '-', '-', 4, 0]
+  // var wd=[0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+  // var nd=[0, 0, 0, 0, 0, 0, 0, 0, 0,'-',1, 0, 0, 1]
+  var option = {
+    title:{
+      text:"陇川“7•14”新冠疫情病例变化",
+      textStyle:{
+        fontSize:25
+      },
+      left:"35%"
+    },
+    grid:{
+      show:true,
+      // data:["姐告","隔离点","畹町","弄岛"],
+    },
+    // legend:{
+    //   show:true,
+    //   right:"10%",
+    //   top:"10%"
+    // },
+    tooltip:{
+      trigger:'item',
+      backgroundColor: "DimGray",
+      textStyle : {
+        color: 'white',
+        decoration: 'none',
+        // fontFamily: 'Verdana, sans-serif',
+        fontSize: 16,
+        fontWeight: 'bold'
+      },
+      formatter:"{b} 新增病例{c}例",
+    },
+    toolbox:{
+      feature:{
+        saveAsImage:{}
+      }
+    },
+    xAxis:{
+
+      data:xdata,
+      nameTextStyle:{
+        fontSize: 20
+      },
+      axisLabel:{
+        textStyle:{
+          fontWeight: 'bold'
+        },
+        interval:0,
+      },
+      splitLine:{
+        show:true
+      }
+    },
+    yAxis:{
+      type : 'value',
+      scale : true,
+      max : 4,
+      min : 0,
+      // splitNumber : 5,
+      axisLabel:{
+        formatter: "{value}(例)",
+        textStyle:{
+          fontWeight: 'bold',
+
+        }
+      },
+
+    },
+    series:[
+      {
+        name:"陇川",
+        color:"red",
+        data:ydata,
+        type:"line",
+        smooth:true,
+        symbolSize:10,
+        label:{
+          show:true,
+          fontSize:16
+        },
+      },
+      // {
+      //   name:"姐告",
+      //   data:jg,
+      //   type:"bar"
+      // },
+      // {
+      //   name:"隔离点",
+      //   data:gl,
+      //   type:"bar"
+      // },
+      // {
+      //   name:"畹町",
+      //   data:wd,
+      //   type:"bar"
+      // },{
+      //   name:"弄岛",
+      //   data:nd,
+      //   type:"bar"
+      // }
+    ]
+  }
+  myChart.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+
+  ///第二绘图区
+  var myChart2=echarts.init(document.getElementById("container2"))
+  var ydata=['0-9', '10-19', '20-29', '30-39', '40-49', '50-59']
+  var manData = [2, 1, 1, 1, '-', 2]
+  var womanData =['-', 1, 2];
+  var option={
+    tooltip: {
+      show: true,
+      trigger: "axis",
+      axisPointer: {
+        type: "shadow",
+      },
+      formatter: function (params) {
+        return (
+          '<span style="font-size: 20px;font-weight: bold;font-family: SourceHanSansCN;">' +
+          params[0].seriesName +
+          "</span>" +
+          "<br/>" +
+          params[0].marker +
+          '<span style="color:' +
+          params[0].color +
+          ';font-size: 20px;font-weight: bold;font-family: SourceHanSansCN;">' +
+          "\n" +
+          params[0].name +
+          "岁: " +
+          params[0].value +
+          "人" +
+          "</span>"
+        );
+      },
+    },
+    legend: {
+      left: "45.2%", //图例距离左边的距离
+      top: 0,
+      textStyle: {
+        // 图例文字样式  隐藏文字
+        color: "transparent",
+      },
+      selectedMode: false,
+      itemWidth: 25,
+      itemHeight: 55, //图例宽高
+      itemGap: 40, //图例的间隔
+      data: [
+        {
+          name: "男",
+          // icon: `image://${man}`,
+          icon:
+            "image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAfCAMAAAAP3mfjAAAAvVBMVEUAAABAgP9Vqv9Jkv9Vqv9Gov9Onf9JpP9Om/9Mof9SnP9Nm/9Mn/9Onf9Rm/9Rnf9Nn/9OnP9On/tRnvxNnvxQnfxQnvxQnvxOnvxOnf1Pnv1Pnv1Qnv1Pnv1Pnf1Pnv1Pnv1On/1Qnv1Pnv1Onv1On/1Qnv5Qnv5Pnv5Pn/5Qnv5PnvxOnvxPnvxPnvxPnv1Pnv1Pnv1Onv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv3hJDdrAAAAPnRSTlMABAYHCQsNDhceHyElJykvOD5ITE9WWVxfaHF0g4SFi46PkJGWnKqwuLm9wsPHy87S1d3g4+ju7/T19vf4+zNjKZEAAACXSURBVBjTxdBFEgJBEETRxN3d3Rtr3P79j8WGaeYARPBX9Ta5KEmSMp1+Qd/yD6D59RrgHnE+A5B1ngOcQ87pAzwrvsForZF0d3trrbXW7icJSeENrlNKauFrKi39vko7LpePjiDtMObj8T9smHnucZNyw4yB4xaI90qSJANmDHgf+LVXYEbw8jyAbhkWnoP1akDFRkyS3hKPQR3ayj/hAAAAAElFTkSuQmCC",
+        },
+        {
+          name: "女",
+          // icon: `image://${woman}`,
+          icon:
+            "image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAiCAMAAABhn6n1AAABGlBMVEUAAAD/AAD/VVX/VVX/SUn/YGD/Zmb/YmL/VVX/Wlr/Xl7/WVn/VVX/Xl7/WFj/V1f/W1v5WVn6XFz6Wlr6W1v6WFj7WVn7WVn7WVn7WVn7W1v7WVn8Wlr8Wlr8W1v8Wlr8W1v8W1v8W1v9W1v9WVn9Wlr9Wlr9W1v9W1v9WVn9Wlr9WVn9Wlr7Wlr7W1v7Wlr7W1v7WVn7Wlr8W1v8Wlr8W1v8WVn8Wlr8WVn8W1v8Wlr8Wlr8Wlr8Wlr8Wlr8W1v8Wlr8Wlr8WVn8Wlr8W1v8Wlr9Wlr9Wlr9Wlr9Wlr7W1v7Wlr8Wlr8Wlr8Wlr8W1v8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8WlrVqYT9AAAAXXRSTlMAAQMGBwgKDQ8RExQVGyAjKi4yMzU3OTxCRUZIT1VaXl9iZWttbm9wc3V6e32AhIWKjJGVlpidn6Cjpaiqr7C0u72/w8XHzc/S1Nba2+Hl5+jp6+3w8/b3+Pn6/P2iRbbvAAAA7UlEQVQoz8XQV1ICARBF0auYs44BAybEnMUcQDErCGJA5e5/G37AyOzA9/dOVVd3NQDQGp+MEUnvsz50R2BfdTsCl6oXEVhXTUUgdlj52mtu9LbxxPRMIt4S9nhJVQujtd5Vtp6XdgCW/cs8AFdev6oW780AdHy7VFWtrPjRAiT8WawNJHUCOPDmpAbpR3ehqeBGfU1+xycY0oVwSVL7WbO0GcLquymOPboNIXvuAf2bw9UQKsFWHzDbuHQKgNMGpAGayw3IA4wZyQDQEwSB5u58D4Kgs/4izeR8i/z0n+DTs6zFCCSzgyNXcwD8AmVGYKFUgvUsAAAAAElFTkSuQmCC",
+        },
+      ],
+    },
+    grid: [
+      // 左
+      {
+        top: "10%",
+        bottom: "2%",
+        left: "8%",
+        width: "39%",
+        height: "85%",
+        containLabel: true,
+      },
+      // 中
+      {
+        top: 0,
+        bottom: "2%",
+        left: "57%",
+        width: "50%",
+        height: "100%",
+      },
+      // 右
+      {
+        top: "10%",
+        bottom: "2%",
+        right: "8%",
+        width: "39%",
+        height: "85%",
+        containLabel: true,
+      },
+    ],
+    xAxis: [
+      {
+        type: "value",
+        inverse: true,
+        show: true,
+        axisLabel: {
+          color: "#7e8daa",
+          fontSize: "20",
+          fontWeight: "bold",
+          textStyle: {
+            fontFamily: "BoldCondensed",
+          },
+        },
+        splitLine: {
+          // 网格线
+          show: true,
+          lineStyle: {
+            color: ["rgba(22, 39, 60, 1)"],
+            width: 1,
+            type: "dotted",
+          },
+        },
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        axisLine: {
+          //轴线
+          // show: false,
+          lineStyle: {
+            color: "rgba(25, 35, 57,0.2)",
+          },
+        },
+      },
+      {
+        gridIndex: 1,
+        show: true,
+        axisLabel: {
+          color: "#7e8daa",
+          fontSize: "26",
+          fontWeight: "bold",
+          textStyle: {
+            fontFamily: "BoldCondensed",
+          },
+        },
+        splitLine: {
+          // 网格线
+          show: false,
+          lineStyle: {
+            color: ["rgba(22, 39, 60, 1)"],
+            width: 1,
+            type: "dotted",
+          },
+        },
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        axisLine: {
+          //轴线
+          show: false,
+        },
+      },
+      {
+        gridIndex: 2,
+        type: "value",
+        show: true,
+        axisLabel: {
+          color: "#7e8daa",
+          fontSize: "20",
+          fontWeight: "bold",
+          textStyle: {
+            fontFamily: "BoldCondensed",
+          },
+        },
+        splitLine: {
+          // 网格线
+          show: true,
+          lineStyle: {
+            color: ["rgba(22, 39, 60, 1)"],
+            width: 1,
+            type: "dotted",
+          },
+        },
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        axisLine: {
+          //轴线
+          // show: false,
+          lineStyle: {
+            color: "rgba(25, 35, 57,0.2)",
+          },
+        },
+      },
+    ],
+    yAxis: [
+      {
+        axisLabel: {
+          show: false,
+        },
+        align: "center",
+        type: "category",
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        data: ydata,
+        axisLine: {
+          //轴线
+          // show: false,
+          lineStyle: {
+            color: "rgba(25, 35, 57,0.2)",
+          },
+        },
+      },
+      {
+        axisLabel: {
+          color: "#7e8daa",
+          fontSize: "20",
+          fontWeight: "bold",
+          textStyle: {
+            fontFamily: "BoldCondensed",
+          },
+        },
+        gridIndex: 1,
+        position: "center",
+        axisLine: {
+          show: false,
+        },
+        type: "category",
+        inverse: false,
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        data: [
+          "       (人)          ",
+          "0-9           ",
+          "10-19         ",
+          "20-29         ",
+          "30-39         ",
+          "40-49         ",
+          "50-59         ",
+          "       (岁)          ",
+        ], //使用空格使文字居中
+      },
+      {
+        gridIndex: 2,
+        position: "left",
+        axisLabel: {
+          show: false,
+        },
+        type: "category",
+        inverse: false,
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        axisLine: {
+          //轴线
+          // show: false,
+          lineStyle: {
+            color: "rgba(25, 35, 57,0.2)",
+          },
+        },
+        data: ydata,
+      },
+    ],
+    series: [
+      {
+        type: "bar",
+        barWidth: 25,
+        name: "男",
+        itemStyle: {
+          emphasis: {
+            barBorderRadius: 30
+          },
+          normal: {
+            //柱形图圆角，初始化效果
+            color: "#4f9efd",
+            barBorderRadius:[10, 0, 0, 10],
+            label: {
+              show: true,//是否展示
+              textStyle: {
+                fontWeight:'bolder',
+                fontSize : '14',
+                fontFamily : '微软雅黑',
+              }
+            }
+          }
+        },
+        data: manData,
+      },
+      {
+        type: "bar",
+        barWidth: 30,
+        xAxisIndex: 2,
+        yAxisIndex: 2,
+        name: "女",
+        itemStyle: {
+          emphasis: {
+            barBorderRadius: 30
+          },
+          normal: {
+            //柱形图圆角，初始化效果
+            color: "#fc5a5a",
+            barBorderRadius:[0, 10, 10, 0],
+            label: {
+              show: true,//是否展示
+              textStyle: {
+                fontWeight:'bolder',
+                fontSize : '14',
+                fontFamily : '微软雅黑',
+              }
+            }
+          }
+        },
+        data: womanData,
+      },
+    ],
+  };
+  myChart2.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart2.resize();
+  });
+  //第三绘图区
+  var myChart3=echarts.init(document.getElementById("container3"))
+  var data1=[
+    {name: '缅甸', value: 4},
+    {name: '中国', value: 6},
+  ]
+  var data2=[
+    {name: '普通型', value: 3},
+    {name: '轻型', value: 6},
+    // {name: '重型', value: 3},
+    {name: '无症状感染者', value: 1}
+  ]
+  var option={
+    tooltip:{
+      show:true,
+      formatter:"{b}{c}例，占{d}%"
+    },
+    series:[
+      {
+        type:"pie",
+        data:data1,
+        center: ["25%", "45%"],
+        radius:"60%",
+        selectedMode: "multiple",
+        selectedOffset: 30,
+
+      },
+      {
+        type:"pie",
+        data:data2,
+        center: ["75%", "45%"],
+        radius:"60%",
+        selectedMode: "multiple",
+        selectedOffset: 30,
+
+      }
+    ]
+  }
+  myChart3.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart3.resize();
+  });
+  //第四绘图区
+  var myChart4=echarts.init(document.getElementById("container4"))
+  $.getJSON("map/longchuan.json", function (geoJson) {
+    echarts.registerMap('nanyang', geoJson);
+    myChart4.hideLoading();
+
+    var geoCoordMap = {
+
+      "拉影村": [97.727303,24.196549],
+
+    };
+    var data = [
+
+      { name: '拉影村', value: 10 },
+
+    ];
+    var convertData = function (data) {
+      var res = [];
+      for (var i = 0; i < data.length; i++) {
+        var geoCoord = geoCoordMap[data[i].name];
+        if (geoCoord) {
+          res.push({
+            name: data[i].name,
+            value: geoCoord.concat(data[i].value).concat(data[i].img),
+          });
+        }
+      }
+      return res;
+    };
+    option = {
+      Center: [97.796618,24.08672],
+      // title: {
+      //   top: 20,
+      //   text: '南阳市VIP分布',
+      //   subtext: '南阳市VIP分布',
+      //   textStyle: {
+      //     color: '#000',
+      //   },
+      // },
+      tooltip: {
+        formatter: function (params) {
+          var html = '';
+          html =
+            '<div>' +
+            '<div >' +
+            params.name +
+            '</div>' +
+            '<div>' +
+            '<span style="font-size:16px;font-weight:bold;">' +
+            '确诊病例' +
+            params.data.value[2] +
+            '例' +
+            '</span>' +
+            '</div>' +
+            '</div>';
+          return html;
+        },
+      },
+      // color:['#34c6bb'],
+      legend: {
+        orient: 'vertical',
+        id: 1,
+        y: 'bottom',
+        x: 'left',
+        itemWidth: 20,
+        data: [
+          {
+            name: 'QQ',
+            // icon: iconWZ
+          },
+          {
+            name: '微信',
+            // icon: iconJC
+          },
+        ],
+      },
+      geo: {
+        map: 'nanyang',
+        type: 'map',
+        zoom: 1.2,
+        showLegendSymbol: true,
+        label: {
+          normal: {
+            fontSize: 15,
+            fontWeight:"bold",
+            show: true,
+            color: '#fff',
+          },
+          emphasis: {
+            show: true,
+            color: 'yellow',
+          },
+        },
+        itemStyle: {
+          normal: {
+            areaColor: '#3a7fd5',
+            borderColor: '#0a53e9', //线
+            shadowColor: '#092f8f', //外发光
+            shadowBlur: 20,
+          },
+          emphasis: {
+            areaColor: '#0a2dae', //悬浮区背景
+          },
+        },
+      },
+      series: [
+        {
+          name: '666',
+          type: 'scatter',
+          coordinateSystem: 'geo',
+
+          symbol: 'pin',
+          symbolSize: [50, 50],
+          label: {
+            normal: {
+              show: true,
+              textStyle: {
+                color: '#fff',
+                fontSize: 12,
+                fontWeight: "bold"
+              },
+              formatter(value) {
+                return value.data.value[2];
+              },
+            },
+          },
+          //设置点颜色
+          itemStyle: {
+            normal: {
+              color: function (val) {
+                if (val.dataIndex == '0') {
+                  return 'red';
+                } else if (val.dataIndex == '1') {
+                  return 'DarkMagenta';
+                } else if (val.dataIndex == '2') {
+                  return 'blue';
+                } else {
+                  return 'green';
+                }
+              },
+            },
+          },
+          data: convertData(
+            data.sort(function (a, b) {
+              return b.value - a.value;
+            })
+          ),
+          showEffectOn: 'render',
+          rippleEffect: {
+            brushType: 'stroke',
+          },
+          hoverAnimation: true,
+          zlevel: 1,
+        },
+        {
+          name: 'Top 5',
+          type: 'effectScatter',
+          coordinateSystem: 'geo',
+          rippleEffect:{
+            period: 15,
+            scale: 6,
+            brushType: 'fill'
+          },
+          itemStyle: {
+            normal: {
+              color: "#FF5151",
+
+            }
+          },
+          data: convertData(
+            data.sort(function (a, b) {
+              return b.value - a.value;
+            })
+          ),
+
+        },
+      ],
+    };
+    myChart4.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart3.resize();
+    });
+  });
+
+</script>
+</body>
+</html>
