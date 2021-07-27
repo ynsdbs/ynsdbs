@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+  <meta charset="utf-8">
+  <title>姐告近期病例示意图</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=自己的key&plugin=AMap.Scale,AMap.ToolBar,AMap.CustomLayer"></script>
+  <!-- 引入最新版的echarts CDN -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <!-- 引入最新版的echarts-extension-amap 高德地图扩展库 CDN -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-extension-amap/dist/echarts-extension-amap.min.js"></script>
+</head>
+<body style="height: 100%; margin: 0">
+
+<div id="container" style="height: 100%"></div>
+<script type="text/javascript">
+
+  var scatterdata=[
+    {name:"郭建军",value:[97.892867,23.977567]},
+    {name:"张星宇",value:[97.893521,23.976714]},
+    {name:"张志南",value:[97.892985,23.976204]},
+    {name:"玛依依登",value:[97.897008,23.977645]},
+    {name:"岩孟",value:[97.886987,23.972077]},
+  ]
+  var scatterdata1=[
+    {name:"伯乐玉园",value:[97.886173,23.97808]},
+    {name:"国门大道",value:[97.895284,23.978341]},
+
+  ]
+  var linedata=[
+    // {coords:[[102.9199,25.4663],[102.9199,25.4663]]},
+    {coords:[[100.7446,23.4229],[102.9199,25.4663]]}
+  ]
+
+  var myChart=echarts.init(document.getElementById("container"))
+
+    var option = {
+      // 加载 amap 组件
+      amap: {
+        // 高德地图中心经纬度
+        center: [97.887597,23.979382],
+        // 高德地图缩放
+        zoom: 16,
+        // 启用resize
+        resizeEnable: true,
+        // 移动过程中实时渲染 默认为true 如数据量较大 建议置为false
+        renderOnMoving: true,
+
+      },
+
+      series: [
+        {
+          data:scatterdata,
+          type:"effectScatter",
+          coordinateSystem:"amap",
+
+          symbolSize:12,
+          label:{
+            show:true,
+            formatter: function (params) {
+              return params.name;
+            },
+          },
+          rippleEffect:{
+            scale:4
+          },
+          itemStyle:{
+            color:"red"
+          }
+        },
+        {
+          data:scatterdata1,
+          type:"effectScatter",
+          coordinateSystem:"amap",
+          symbol:"pie",
+          symbolSize:15,
+          label:{
+            show:true,
+            formatter: function (params) {
+              return params.name;
+            },
+          },
+          rippleEffect:{
+            scale:4
+          },
+          itemStyle:{
+            color:"blue"
+          }
+        },
+      ]
+    };
+    myChart.setOption(option)
+</script>
+</body>
+</html>
+
