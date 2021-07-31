@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html>
+<!--
+经纬度查找地址：
+WGS84坐标：  http://www.lubulai.com/lnglat2.html     *推荐，直接复制过来即可
+火星坐标：   https://lbs.amap.com/console/show/picker
+火星坐标：   https://lbs.qq.com/getPoint/
+百度坐标：   http://api.map.baidu.com/lbsapi/getpoint/index.html
+
+使用说明：
+（1）对照着例子把数据拷进去
+（2）确定坐标系统，默认为WGS84
+（3）鼠标停在图标上会显示地点名称，可批量显示标注
+（4）可以显示行政区划，根据鼠标点击位置自动显示范围和级别
+（5）可以查看地点列表
+
+-->
+
+<script type="text/javascript">
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  var lnglats=`
+
+
+
+红河源,100.134322,25.488115,流行村
+西山,100.182238,25.424885,流行村
+永安,100.283531,25.475771,流行村
+永胜,100.185027,25.451921,流行村
+永利,100.193892,25.452452,流行村
+永乐,100.219426,25.4687,流行村
+永平,100.229661,25.432581,流行村
+永瑞,100.223839,25.43022,流行村
+永和,100.198552,25.43367,流行村
+小围埂,100.217796,25.447573,流行村
+大仓,100.230869,25.420411,流行村
+幸福,100.202601,25.401338,流行村
+同兴,100.21883,25.413355,流行村
+小河,100.238121,25.397788,流行村
+新胜,100.314708,25.437844,流行村
+团结,100.259159,25.369827,流行村
+甸中,100.243873,25.384735,流行村
+永进,100.211464,25.344882,流行村
+永福,100.226165,25.370418,流行村
+小三家,100.305802,25.404773,流行村
+云鹤,100.246303,25.3202,流行村
+碧清,100.257191,25.313104,流行村
+北桥,100.274068,25.346245,流行村
+慧明,100.277593,25.352502,流行村
+盟石,100.285073,25.315478,流行村
+六合,100.295186,25.296205,流行村
+古城,100.282307,25.294539,流行村
+营盘,100.266145,25.286555,流行村
+添泽,100.303044,25.27709,流行村
+润泽,100.315112,25.275413,流行村
+新华,100.279277,25.265877,流行村
+新云,100.274793,25.248397,流行村
+中和,100.3226,25.0954,流行村
+合作,100.378759,25.095444,流行村
+大箐,100.362599,25.13618,流行村
+安乐,100.332461,25.151364,流行村
+龙潭,100.286953,25.165361,流行村
+建设,100.327465,25.19489,流行村
+白乃,100.211195,25.175919,流行村
+新民,100.150159,25.140716,流行村
+鼠街,100.129896,25.154274,流行村
+岩子脚,100.133464,25.221638,流行村
+龙街,100.038949,25.21191,流行村
+白池,100.108761,25.124439,流行村
+新街,100.061334,25.135506,流行村
+直捷,100.121397,25.0914,流行村
+民强,100.232168,25.124574,流行村
+五星,100.207855,25.088833,流行村
+新山 ,100.263886,25.080422,流行村
+民胜,100.296275,25.038755,流行村
+箐民,100.24592,25.061703,流行村
+青云,100.05052,25.296637,流行村
+三鹤,100.119971,25.304799,流行村
+三胜,100.150632,25.348371,流行村
+五里巷,100.154905,25.288429,流行村
+紫金,100.004165,25.435634,流行村
+新合,100.02684,25.391199,流行村
+民建,100.018511,25.485417,流行村
+东外,100.302736,25.220523,流行村
+群力,100.308691,25.235883,流行村
+日升,100.311375,25.241682,流行村
+北街,100.312972,25.235064,流行村
+文笔,100.318635,25.218688,流行村
+新村,100.334205,25.242756,流行村
+和平,100.329983,25.2267,流行村
+自由,100.330175,25.23737,流行村
+开南,100.305959,25.239502,流行村
+鸡碧,100.3083,25.250389,流行村
+南山,100.284683,25.235649,流行村
+河西,100.297884,25.22082,流行村
+系马庄,100.305001,25.260279,流行村
+新州,100.092741,25.991473,流行村
+中和,100.106766,25.983296,流行村
+腾龙,100.10916,26.014843,流行村
+旧州,100.046338,25.994213,流行村
+梅和,100.073567,26.054996,流行村
+三枚,100.040607,26.080361,流行村
+中所,100.048447,26.058447,流行村
+永安,100.08459,26.034456,流行村
+松曲,100.106922,26.030229,流行村
+陈官,100.077206,26.027946,流行村
+团结,100.042655,26.041544,流行村
+腊坪,100.004908,25.977832,流行村
+右所,100.069015,26.02749,流行村
+温水,100.042452,26.006641,流行村
+西湖,100.047116,26.024972,流行村
+幸福,100.073002,26.012055,流行村
+白塔,99.992842,26.292615,流行村
+西甸,99.976258,26.23876,流行村
+上站,100.003572,26.308778,流行村
+牛街,99.995577,26.256819,流行村
+西坡,99.977282,26.25717,流行村
+太平,100.005862,26.294638,流行村
+大同,99.997386,26.271929,流行村
+永胜,100.005864,26.205625,流行村
+新龙,99.9883,26.197222,流行村
+共和,99.982045,26.214494,流行村
+新联,99.977217,26.171848,流行村
+三营,100.005158,26.231977,流行村
+仕登,99.994827,26.243943,流行村
+永乐,100.006125,26.150218,流行村
+江登,99.958405,25.99627,流行村
+凤河,99.959972,26.007718,流行村
+江旁村,99.833774,25.961678,流行村
+前甸村,99.831148,25.991235,流行村
+新庄,99.797225,26.031333,流行村
+炼铁,99.811646,25.989194,流行村
+北邑,99.83985,25.971174,流行村
+茄叶,99.817135,25.961681,流行村
+源安邑,99.774218,26.064723,流行村
+乔后,99.774476,26.102919,流行村
+大集,99.782888,26.08276,流行村
+黄花坪,99.714145,26.09286,流行村
+九台,99.96311,26.120812,流行村
+鹅堆,99.940029,26.113064,流行村
+玉湖,99.93635,26.123393,流行村
+中炼,99.984966,26.094451,流行村
+文强,99.984668,26.107959,流行村
+丰源,99.961227,26.10348,流行村
+巡检,100.010738,26.105842,流行村
+松鹤,99.924239,26.08234,流行村
+碧云,99.927348,26.141387,流行村
+海口,99.93785,26.152958,流行村
+永兴,99.922062,26.152501,流行村
+大庄,99.947534,26.135763,流行村
+果胜,99.93635,26.123393,流行村
+永联,99.986206,26.136567,流行村
+喜洲,100.138158,25.856472,流行村
+寺里,100.144249,25.852345,流行村
+金河,100.158037,25.859324,流行村
+沙村,100.14389,25.862943,流行村
+文阁,100.119937,25.86019,流行村
+永兴,100.125793,25.880866,流行村
+仁里邑,100.124744,25.893381,流行村
+庆洞,100.113501,25.835561,流行村
+上关,100.107483,25.927487,流行村
+桃源,100.120146,25.916911,流行村
+作邑,100.128795,25.832406,流行村
+周城,100.114061,25.901922,流行村
+河矣江,100.156086,25.843298,流行村
+上阳溪,100.113456,25.81409,流行村
+向阳溪,100.152747,25.824852,流行村
+甸中,100.136997,25.786959,流行村
+湾桥,100.128533,25.803164,流行村
+石岭,100.149067,25.797857,流行村
+中庄,100.133456,25.816955,流行村
+云峰,100.123398,25.780449,流行村
+银桥,100.13421,25.754057,流行村
+新邑,100.152446,25.756198,流行村
+阳波,100.158815,25.750074,流行村
+马久邑,100.172351,25.735941,流行村
+五里桥,100.154458,25.725539,流行村
+磻溪,100.154651,25.775671,流行村
+合阳,100.122566666667,25.7576166666667,流行村
+双阳,100.14515,25.731804,流行村
+东门,100.179073,25.706255,流行村
+西门,100.154826,25.704294,流行村
+南门,100.168409,25.693496,流行村
+三文笔,100.151795,25.709914,流行村
+小岑,100.170192,25.726995,流行村
+上鸡邑,100.183925,25.72676,流行村
+下鸡邑,100.186437,25.733774,流行村
+龙龛,100.203199,25.704889,流行村
+才村,100.197022,25.72329,流行村
+大理,100.163276,25.722906,流行村
+下兑,100.199229,25.68792,流行村
+上末,100.187728,25.661444,流行村
+阳和,100.191101,25.680647,流行村
+太和,100.213007,25.63709,流行村
+刘官厂,100.198322,25.65937,流行村
+大庄,100.214958,25.673137,流行村
+洱滨,100.219711,25.626031,流行村
+金星,100.238949,25.597247,流行村
+文献,100.245372,25.587492,流行村
+龙泉,100.214369,25.59921,流行村
+玉龙,100.232512,25.587607,流行村
+大关邑,100.227954,25.607948,流行村
+荷花,100.214202,25.613619,流行村
+福兴,100.22444,25.581661,流行村
+温泉,100.185494,25.575409,流行村
+大麦地,100.252618,25.515524,流行村
+下关,100.2269,25.59625,流行村
+天井,100.27268,25.606409,流行村
+满江,100.282686,25.617258,流行村
+桃树,100.064726,25.574538,流行村
+太邑,100.100522,25.565451,流行村
+石龙,100.306347,25.609552,流行村
+庄科,100.333135,25.59997,流行村
+华营,100.328906,25.626233,流行村
+云浪,100.354422,25.624488,流行村
+东山,100.335258,25.586954,流行村
+乐和,100.334885,25.572425,流行村
+凤鸣,100.318029,25.590317,流行村
+江西,100.333019,25.535228,流行村
+丰乐,100.343272,25.533826,流行村
+錦阜,100.340692,25.55652,流行村
+后山,100.376236,25.44289,流行村
+三哨,100.345562,25.485258,流行村
+吉祥,100.341801,25.512146,流行村
+芝华,100.319654,25.572713,流行村
+文武,100.27947,25.724657,流行村
+向阳,100.267136,25.716114,流行村
+上和,100.315492,25.671989,流行村
+名庄,100.275407,25.733238,流行村
+上登,100.332104,25.69498,流行村
+南村,100.283217,25.693297,流行村
+文笔,100.235144,25.747393,流行村
+海岛,100.265352,25.699339,流行村
+海潮河,100.162301,25.96155,流行村
+马厂,100.137207,25.967823,流行村
+青索,100.1279,25.981733,流行村
+马甲邑,100.11335,25.991786,流行村
+兆邑,100.113866,25.966836,流行村
+漏邑,100.101343,25.962448,流行村
+江尾,100.129745,25.964131,流行村
+沙坪,100.102524,25.944953,流行村
+五星,100.231468,25.993643,流行村
+石块,100.261707,26.003624,流行村
+三合,100.238737,26.67807,流行村
+逢密,100.223839,26.670779,流行村
+辛屯,100.221716,26.658673,流行村
+新登,100.221396,26.648963,流行村
+大登,100.197974,26.645519,流行村
+新村,100.187731,26.63819,流行村
+连义,100.241179,26.638396,流行村
+如意,100.2408,26.624628,流行村
+双龙,100.225433,26.631449,流行村
+南河,100.234793,26.60282,流行村
+妙登,100.20874,26.634675,流行村
+新华,100.183584,26.624897,流行村
+板桥,100.201598,26.612546,流行村
+母屯,100.196334,26.599542,流行村
+彭屯,100.191912,26.586379,流行村
+罗伟邑,100.181004,26.585342,流行村
+新民,100.184025,26.575154,流行村
+田屯,100.196862,26.556783,流行村
+太平,100.198389,26.563866,流行村
+小水美,100.218817,26.554966,流行村
+石朵河,100.216355,26.580067,流行村
+柳绿河,100.222285,26.598649,流行村
+仓河街,100.179967,26.564441,流行村
+东升街,100.18337,26.56343,流行村
+秀邑,100.169352,26.572382,流行村
+菜园,100.185517,26.570982,流行村
+新生邑,100.179746,26.556726,流行村
+和邑,100.168646,26.539851,流行村
+金锁,100.190876,26.53728,流行村
+建邑,100.199116,26.527019,流行村
+赵屯,100.175995,26.525397,流行村
+积德,100.180425,26.515753,流行村
+康福,100.187969,26.520469,流行村
+北溪,100.222545,26.517849,流行村
+化龙,100.190403,26.497974,流行村
+邑头,100.193772,26.490123,流行村
+金墩,100.206172,26.500986,流行村
+孝廉,100.199356,26.510853,流行村
+银河,100.211098,26.492169,流行村
+西甸,100.249421,26.468763,流行村
+新庄,100.258312,26.447295,流行村
+古乐,100.269795,26.462225,流行村
+磨光,100.295227,26.496798,流行村
+长头,100.176874,26.437369,流行村
+文星,100.208613,26.447686,流行村
+三庄,100.198772,26.418545,流行村
+波罗,100.196668,26.390192,流行村
+松桂,100.207979,26.359546,流行村
+勤劳,100.236337,26.361994,流行村
+龙珠,100.257246,26.392754,流行村
+松园,100.321542,26.467845,流行村
+灵地,100.307579,26.443049,流行村
+江东,100.438898,26.516993,流行村
+上河川,100.297922,26.292131,流行村
+下河川,100.331725,26.292394,流行村
+乐秋,100.347531,25.030541,流行村
+东升,100.403772,25.033436,流行村
+麻栗,100.296639,25.010564,流行村
+猪街,100.375194,25.012972,流行村
+米家禄,100.411463,24.991018,流行村
+白云,100.434841,25.082468,流行村
+安定,100.535895,25.047276,流行村
+复兴,100.41729,25.129645,流行村
+南街,100.444609,25.044018,流行村
+得胜,100.543158,25.06538,流行村
+吉祥,100.430188,25.480739,流行村
+竹元,100.425466,25.457879,流行村
+班局,100.436621,25.446662,流行村
+红岩,100.423648,25.431108,流行村
+赤水,100.444349,25.426247,流行村
+史近,100.444585,25.412455,流行村
+东海,100.452839,25.408846,流行村
+罗营,100.426811,25.41567,流行村
+大营,100.40944,25.42032,流行村
+理卫,100.412706,25.413846,流行村
+章岗,100.41727,25.405188,流行村
+清水沟,100.348831,25.417185,流行村
+良种场,100.43707,25.42772,流行村
+永增,100.444256,25.359642,流行村
+永祥,100.474149,25.362352,流行村
+新胜,100.451261,25.370078,流行村
+新街,100.474149,25.362352,流行村
+陶营,100.45079,25.382424,流行村
+六一,100.452415,25.390699,流行村
+董和,100.431629,25.397095,流行村
+西庄,100.422663,25.388535,流行村
+西河,100.424288,25.375582,流行村
+罗荡,100.481669,25.392481,流行村
+金岗,100.374533,25.35651,流行村
+海坝庄,100.473393,25.414412,流行村
+毗江社区,100.497863,25.345898,流行村
+青螺社区,100.493988,25.353954,流行村
+建宁社区,100.500936,25.340476,流行村
+张迁,100.491222,25.377564,流行村
+双海社区,100.500489,25.361757,流行村
+龙泉社区,100.49785,25.33477,流行村
+谷芹,100.48384,25.327343,流行村
+新城,100.486566,25.347455,流行村
+蔡庄,100.458188,25.343411,流行村
+龙华,100.462565,25.332121,流行村
+寅街,100.536621,25.27424,流行村
+高营,100.518026,25.300383,流行村
+永丰,100.508517,25.308156,流行村
+大庄,100.511271,25.294298,流行村
+勤劳,100.485501,25.269339,流行村
+河东,100.56278,25.263411,流行村
+武邑,100.539325,25.28292,流行村
+东风,100.52416,25.283403,流行村
+天马,99.928017,26.462789,流行村
+回龙,99.931554,26.462624,流行村
+鳌凤,99.84731,26.311744,流行村
+长乐,99.843213,26.320814,流行村
+寺登,99.854608,26.320348,流行村
+北龙,99.868272,26.328969,流行村
+灯塔,99.837866,26.295534,流行村
+甸头,99.858324,26.348881,流行村
+华龙,99.871378,26.315104,流行村
+东南,99.862868,26.31368,流行村
+沙坪,99.855354,26.33461,流行村
+四联,99.871442,26.343738,流行村
+兴文,99.808018,26.484257,流行村
+新松,99.816189,26.451081,流行村
+六联,99.796367,26.44955,流行村
+大营,100.46968,25.79195,流行村
+瓦溪,100.419722,25.737827,流行村
+排营,100.37316,25.734083,流行村
+莴村,100.32157,25.7828,流行村
+江股,100.406643,25.89202,流行村
+龙口,100.486611,25.715439,流行村
+城东,100.567108,25.478636,流行村
+城南,100.559537,25.47743,流行村
+城西,100.55783,25.484848,流行村
+华严,100.55888,25.47188,流行村
+楮家,100.55318,25.468619,流行村
+罗家,100.598615,25.524702,流行村
+周家,100.565072,25.498243,流行村
+茨坪,100.535088,25.510759,流行村
+红土坡,100.555744,25.507598,流行村
+新邑,100.572634,25.504202,流行村
+程官,100.589245,25.491425,流行村
+美长,100.602323,25.502606,流行村
+汪情,100.698402,25.379277,流行村
+棕棚,100.69123,25.370537,流行村
+蛟起,100.651295,25.393139,流行村
+前所,100.691015,25.394715,流行村
+青海营,100.627208,25.438362,流行村
+白石岩,100.616452,25.425479,流行村
+石门社区,99.376187,25.893666,流行村
+平坡村,100.057135,25.586434,流行村
+兴云,100.75583,26.75023,流行村
+中和,100.75067,26.71922,流行村
+胜利,100.752599,26.702034,流行村
+文化,100.763314,26.691869,流行村
+灵源,100.772435,26.695528,流行村
+凤鸣,100.754395,26.685001,流行村
+东北,100.626799,26.855139,流行村
+西南,100.74767,26.68728,流行村
+凉水,100.753331,26.666735,流行村
+南华,100.753401,26.646076,流行村
+睦科,100.614682,26.796685,流行村
+章斐,100.632942,26.782629,流行村
+军和,100.646356,26.771141,流行村
+翁彭,100.627885,26.771277,流行村
+清河,100.63334,26.752894,流行村
+扬伍,100.656769,26.75699,流行村
+金官,100.665858,26.75235,流行村
+西湖,100.660858,26.735828,流行村
+普枫,100.680994,26.757418,流行村
+翠湖,100.696066,26.751133,流行村
+大源,100.715347,26.821683,流行村
+梁官,100.685459,26.711499,流行村
+三友,100.675564,26.731302,流行村
+中州,100.68856,26.72726,流行村
+东河,100.70935,26.714633,流行村
+兴文,100.709718,26.701766,流行村
+四维,100.697948,26.705437,流行村
+清泉,100.686043,26.703693,流行村
+文祥,100.710513,26.677137,流行村
+新生,100.671102,26.818633,流行村
+新民,100.653152,26.826327,流行村
+光明,100.58854,26.856002,流行村
+水井,100.646628,26.893429,流行村
+光华,100.626739,26.855103,流行村
+永乐,100.579689,26.775741,流行村
+水坪,100.60917,26.72267,流行村
+阳禾,100.659722,26.832139,流行村
+军民,100.50683,26.51403,流行村
+新河,100.481859,26.550829,流行村
+板桥,100.469097,26.565758,流行村
+锦江,100.432425,26.560311,流行村
+龙门,100.410083,26.66768,流行村
+清水,100.656782,26.401844,流行村
+街西,100.646887,26.38599,流行村
+满官,100.629843,26.342687,流行村
+大沟,100.622323,26.313384,流行村
+刘官,100.62513,26.284157,流行村
+凤羽,100.62513,26.284157,流行村
+河口,100.656825,26.448346,流行村
+马军,100.673577,26.438041,流行村
+莨峨,100.7255,26.50017,流行村
+潘莨,100.63417,26.53305,流行村
+仁义,100.65733,26.64055,流行村
+五峰,100.261558,26.656852,流行村
+三义,100.258121,26.684381,流行村
+新民,100.250056,26.72432,流行村
+七河,100.269644,26.711212,流行村
+共和,100.276503,26.754616,流行村
+羊见,100.364211,26.781095,流行村
+新团,100.286958,26.888698,流行村
+金山,100.267658,26.867706,流行村
+东元,100.280351,26.854918,流行村
+良美,100.293869,26.840909,流行村
+漾西,100.281328,26.803872,流行村
+祥云,100.239755,26.861274,流行村
+文智,100.267783,26.88718,流行村
+八河,100.245826,26.869841,流行村
+义尚,100.250977,26.878554,流行村
+五台,100.251542,26.831298,流行村
+碧源,100.702812,26.941278,流行村
+詹家,101.559796,25.064683,流行村
+桃园,101.595164,25.076832,流行村
+车坪,101.542429,25.07263,流行村
+邓关,101.584,25.078,流行村
+庄甸,101.578376,25.055117,流行村
+兴隆,101.526803,25.120875,流行村
+永兴,101.515366,25.096758,流行村
+东瓜,101.510472,25.089694,流行村
+苍岭,101.689135,25.055195,流行村
+黄草,101.678348,25.0392,流行村
+李家,101.658748,25.075169,流行村
+智明,101.6557,25.107097,流行村
+军屯,101.604447,24.949994,流行村
+富民,101.607633,24.993417,流行村
+下白庙,101.581942,24.997349,流行村
+李家庵,101.593935,25.025067,流行村
+大东,101.602853,25.003187,流行村
+万家坝,101.562882,25.017461,流行村
+河前,101.501786,25.052019,流行村
+环城,101.507,25.044,流行村
+钱粮,101.394422,25.133031,流行村
+斗阁,101.44095,25.135935,流行村
+吕合,101.377459,25.150657,流行村
+朵基,101.487123,25.012067,流行村
+法邑,101.556378,24.885283,流行村
+一平浪,101.90949,25.159746,流行村
+舍资,101.917171,25.193377,流行村
+苏家,101.924398,25.223852,流行村
+龙井,103.250085,23.425296,流行村
+戴家庄,103.252394,23.413135,流行村
+杨家寨,103.270086,23.402795,流行村
+
+
+
+
+
+
+`;
+  var CRS=3;// 1= WGS84  2=火星坐标   3=百度坐标
+
+  //步骤3：设置图标大小、颜色、图标中的文本及图例显示的文本/////////
+  var mheight=24                          ;//设置图标高度
+  var mwidth=16                           ;//设置图标宽度
+  var SymCol=["red","red","red","Gray","DarkMagenta","Darkorange","Auqamarin","Olive","SaddleBrown","Gray","Cyan","DarkMagenta","GreenYellow"]; //设置图标颜色
+  var SymLet=["A","B","C","D","E","F","G","H","I", "J", "K", "L", "M", "N", "O","P","Q","R","S", "T", "U", "V", "W","X","Y","Z"]	;//设置图标中的文字
+  var Legendtxt=["流行村","第二轮","第三轮","第四轮","第五轮","第六轮"]	//设置图例显示文本，按首次出现的顺序
+
+
+  ////！！！！！！！！！以下部分不要修改！！！！！！！！！///////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</script>
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=3664b7738ba0979d33c4e58032438d29&plugin=AMap.CustomLayer,AMap.MarkerClusterer"></script>
+  <script src="https://webapi.amap.com/ui/1.1/main.js?v=1.1.1"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <style type="text/css">
+    html, body{	width: 100%; height: 100%;border: none;margin:0; }
+    #divx{position: absolute;bottom:0.5rem;right:1rem;z-index: 20;	}
+    .legend {width: 200px; position: absolute; left: 10px; bottom: 50px;  background-color:white; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+    .legend ul {overflow: hidden;list-style: none;margin: 0;padding: 0;z-index:20}
+    .legend ul li {float: left;height: 30px;width:170px;}
+    .legend ul li a {float: left;color: #555; font-size: 14px; text-decoration: none; height: 30px;line-height: 30px;}
+    .legend ul li span {float: left;width:14px;height: 14px; margin: 8px; }
+    .namelist {width: 300px; position: absolute; right: 10px; bottom: 50px; background-color:white ; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+    .namelist ul {list-style: none;margin: 0;padding: 0;z-index:20;;overflow-y:scroll;height:400px}
+    .namelist ul li {height: 30px;}
+  </style>
+  <title>云南省血吸虫病流行村</title>
+</head>
+<body>
+<div id="divmap"  style="width: 100%;height:100%" >
+  <div  id="divx" >
+    <label id="pp0"><input type="checkbox" class="pointckb" id="ckblab">标签</label>
+    <label><input type="checkbox" class="pointckb" id="ckblist">列表</label>
+    <label><input type="checkbox" class="pointckb" id="ckblegend">图例</label>
+    <label><input type="checkbox" class="pointckb" id="ckbcluster">聚合图</label>
+    <input type="checkbox" style="margin-left: 2em;" id="ckbarea" >
+    <label  class="mapstylelab" style="font-family: 微软雅黑;">行政区划</label>
+    &emsp;<input  type="button"  id="btndisplay"  value="恢复最佳显示" />
+  </div>
+</div>
+<div class="legend" id="legend"><ul></ul></div>
+<div class="namelist" id="namelist"><ul></ul></div>
+<script type="text/javascript">
+  ////S1 坐标转化函数///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //定义一些常量
+  var x_PI = 3.14159265358979324 * 3000.0 / 180.0;
+  var PI = 3.1415926535897932384626;
+  var a = 6378245.0;
+  var ee = 0.00669342162296594323;
+  //
+  function bd09towgs84(bd_lon, bd_lat){
+    var jin_gcj_value = bd09togcj02( bd_lon , bd_lat)[0]
+    var wei_gcj_value = bd09togcj02( bd_lon , bd_lat)[1]
+    var jin_wgs_value = gcj02towgs84(jin_gcj_value, wei_gcj_value)[0]
+    var wei_wgs_value = gcj02towgs84(jin_gcj_value, wei_gcj_value)[1]
+    return [jin_wgs_value, wei_wgs_value]
+  };
+  //
+  function wgs84tobd09(wgs_lon, wgs_lat){
+    var jin_gcj_value = wgs84togcj02 ( wgs_lon, wgs_lat)[0]
+    var wei_gcj_value = wgs84togcj02 ( wgs_lon, wgs_lat)[1]
+    var jin_bd_value  = gcj02tobd09(jin_gcj_value, wei_gcj_value)[0]
+    var wei_bd_value  = gcj02tobd09(jin_gcj_value, wei_gcj_value)[1]
+    return [jin_bd_value, wei_bd_value]
+  };
+  //
+  function bd09togcj02(bd_lon, bd_lat) {
+    var x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+    var x = bd_lon - 0.0065;
+    var y = bd_lat - 0.006;
+    var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * x_pi);
+    var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * x_pi);
+    var gg_lng = z * Math.cos(theta);
+    var gg_lat = z * Math.sin(theta);
+    return [gg_lng, gg_lat]
+  }
+  //
+  function gcj02tobd09(lng, lat) {
+    var z = Math.sqrt(lng * lng + lat * lat) + 0.00002 * Math.sin(lat * x_PI);
+    var theta = Math.atan2(lat, lng) + 0.000003 * Math.cos(lng * x_PI);
+    var bd_lng = z * Math.cos(theta) + 0.0065;
+    var bd_lat = z * Math.sin(theta) + 0.006;
+    return [bd_lng, bd_lat]
+  }
+  //
+  function wgs84togcj02(lng, lat) {
+    if (out_of_china(lng, lat)) {return [lng, lat]}	else {
+      var dlat = transformlat(lng - 105.0, lat - 35.0);
+      var dlng = transformlng(lng - 105.0, lat - 35.0);
+      var radlat = lat / 180.0 * PI;
+      var magic = Math.sin(radlat);
+      magic = 1 - ee * magic * magic;
+      var sqrtmagic = Math.sqrt(magic);
+      dlat = (dlat * 180.0) / ((a * (1 - ee)) / (magic * sqrtmagic) * PI);
+      dlng = (dlng * 180.0) / (a / sqrtmagic * Math.cos(radlat) * PI);
+      var mglat = lat + dlat;
+      var mglng = lng + dlng;
+      return [mglng, mglat]
+    }
+  }
+  //
+  function gcj02towgs84(lng, lat) {
+    if (out_of_china(lng, lat)) {return [lng, lat]}else {
+      var dlat = transformlat(lng - 105.0, lat - 35.0);
+      var dlng = transformlng(lng - 105.0, lat - 35.0);
+      var radlat = lat / 180.0 * PI;
+      var magic = Math.sin(radlat);
+      magic = 1 - ee * magic * magic;
+      var sqrtmagic = Math.sqrt(magic);
+      dlat = (dlat * 180.0) / ((a * (1 - ee)) / (magic * sqrtmagic) * PI);
+      dlng = (dlng * 180.0) / (a / sqrtmagic * Math.cos(radlat) * PI);
+      mglat = lat + dlat;
+      mglng = lng + dlng;
+      return [lng * 2 - mglng, lat * 2 - mglat]
+    }
+  }
+  //
+  function transformlat(lng, lat) {
+    var ret = -100.0 + 2.0 * lng + 3.0 * lat + 0.2 * lat * lat + 0.1 * lng * lat + 0.2 * Math.sqrt(Math.abs(lng));
+    ret += (20.0 * Math.sin(6.0 * lng * PI) + 20.0 * Math.sin(2.0 * lng * PI)) * 2.0 / 3.0;
+    ret += (20.0 * Math.sin(lat * PI) + 40.0 * Math.sin(lat / 3.0 * PI)) * 2.0 / 3.0;
+    ret += (160.0 * Math.sin(lat / 12.0 * PI) + 320 * Math.sin(lat * PI / 30.0)) * 2.0 / 3.0;
+    return ret
+  }
+  //
+  function transformlng(lng, lat) {
+    var ret = 300.0 + lng + 2.0 * lat + 0.1 * lng * lng + 0.1 * lng * lat + 0.1 * Math.sqrt(Math.abs(lng));
+    ret += (20.0 * Math.sin(6.0 * lng * PI) + 20.0 * Math.sin(2.0 * lng * PI)) * 2.0 / 3.0;
+    ret += (20.0 * Math.sin(lng * PI) + 40.0 * Math.sin(lng / 3.0 * PI)) * 2.0 / 3.0;
+    ret += (150.0 * Math.sin(lng / 12.0 * PI) + 300.0 * Math.sin(lng / 30.0 * PI)) * 2.0 / 3.0;
+    return ret
+  }
+  //
+  function out_of_china(lng, lat) { return (lng < 72.004 || lng > 137.8347) || ((lat < 0.8293 || lat > 55.8271) || false);}
+  ////CRS-END////////////////////////////
+
+  //////S2 地图设置/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //显示地图及控件
+  var map = new AMap.Map('divmap', {viewMode: '2D', animateEnable:false, zoom:4,center: [105,33] });
+  AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.MapType'], function(){
+    map.addControl(new AMap.Scale());
+    map.addControl(new AMap.MapType());
+  });
+
+  //整理数据////////////////////////////////////////////////////////////
+  var points =[],ccates=[];
+  var adds=lnglats.split(/[(\r\n)\r\n]+/);
+  var id=0;
+  for (var i = 0; i < adds.length; i++) {
+    var add=adds[i];
+
+    if(add!=""){
+      id++;
+      var eachplace=   add.split(",");
+      var address=eachplace[0];
+      var lng=eachplace[1];
+      var lat=eachplace[2];
+      var ccate=eachplace[3];
+      if(typeof(ccate)=="undefined"){ccate=""};
+      ccates.push(ccate);
+      if(CRS==1){
+        var lnggd=wgs84togcj02(parseFloat(lng), parseFloat(lat) )[0];
+        var latgd=wgs84togcj02(parseFloat(lng), parseFloat(lat) )[1];
+      }
+      if(CRS==2){
+        var lnggd=lng;
+        var latgd=lat;
+      }
+      if(CRS==3){
+        var lnggd=bd09togcj02(parseFloat(lng), parseFloat(lat) )[0];
+        var latgd=bd09togcj02(parseFloat(lng), parseFloat(lat) )[1];
+      }
+      points.push({"id":id,"lnggd":lnggd,"latgd":latgd,"address":address,"ccate":ccate});
+    };
+  };
+  //////
+  console.log(points)
+  /////////分类/////////////
+  var sset=new Set(ccates);
+  sset.delete("");
+  var SymUni=[...sset];
+  ////////////////////////////////////////////////////////// //////
+  var labtxtscale=function(x){if(x<100) return(12);if(x>=100 && x<1000) return(9);if(x>=1000) return(5) };
+  var markers=[],labelMarkers=[],SymIi=1;
+  ///显示图标	///////
+  var labtxtbig;
+  if(ccates.length<10){labtxtbig=20}else{labtxtbig=6}
+  AMapUI.loadUI(['overlay/SvgMarker'], function(SvgMarker) {
+    ///////////////////////////////////////////////////////
+    if(SymUni.length>0){
+      ////////////////
+      for(var i = 0,pointsLen = points.length;i <pointsLen;i++){
+        var j=SymUni.indexOf(points[i].ccate);
+        if( points[i].ccate!="" ){
+          var marker = new SvgMarker(
+            new SvgMarker.Shape.WaterDrop({height: mheight,width:mwidth, fillColor: SymCol[Math.min(j,SymCol.length-1 )], strokeWidth: 1,strokeColor: SymCol[Math.min(j,SymCol.length-1 )]}),
+            {position: [points[i].lnggd, points[i].latgd],title: points[i].address,iconLabel:{innerHTML:'<div style="font-size:10px;text-align:center;">‘</div>', style: {color:'white'}}}
+          );
+        }else{
+          var marker = new SvgMarker(
+            new SvgMarker.Shape.WaterDrop({height: mheight,width:mwidth, fillColor: 'red', strokeWidth: 1,strokeColor: 'red'}),
+            {position: [points[i].lnggd, points[i].latgd],title: points[i].address,iconLabel:{innerHTML:'<div style="font-size:'+labtxtscale(SymIi)+'px;text-align:center;">'+points[i].id+'</div>', style: {color:'white'}}}
+          );
+          SymIi++;
+        }
+        markers.push(marker);
+        //添加标签
+        var labelMarker = new AMap.LabelMarker({
+          position:[points[i].lnggd, points[i].latgd],
+          text:{content: points[i].address, direction:'bottom', offset: [0, 0],style:{fontSize:13,fontWeight:'normal',fillColor:'#fff',padding:'2, 5',backgroundColor:'#22884f'}}
+        });
+        labelMarkers.push(labelMarker);
+      }
+      /////////////////////
+    }else{
+      for(var i = 0,pointsLen = points.length;i <pointsLen;i++){
+        var marker = new SvgMarker(
+          new SvgMarker.Shape.WaterDrop({height: mheight,width:mwidth, fillColor: 'red', strokeWidth: 1,strokeColor: 'red'}),
+          {position: [points[i].lnggd, points[i].latgd],title: points[i].address,iconLabel:{innerHTML:'<div style="font-size:'+labtxtscale(SymIi)+'px;text-align:center;">'+points[i].id+'</div>', style: {color:'white'}}}
+        );
+        SymIi++;
+        markers.push(marker);
+        //添加标签
+        var labelMarker = new AMap.LabelMarker({
+          position:[points[i].lnggd, points[i].latgd],
+          text:{content: points[i].address, direction:'bottom', offset: [0, 0],style:{fontSize:13,fontWeight:'normal',fillColor:'#fff',padding:'2, 5',backgroundColor:'#22884f'}}
+        });
+        labelMarkers.push(labelMarker);
+      }
+      /////////////////////////
+    }
+    ///////////////////////////////////////////////////////////
+    //
+    gdlabellayer=new AMap.LabelsLayer({zooms: [3, 20],zIndex: 1000,collision: true,animation: false});
+    gdlabellayer.add(labelMarkers);
+    gdlabellayer.setMap(null);
+    //
+
+
+    var gdcluster=new AMap.MarkerClusterer(map,markers,{gridSize: 80 });
+    gdcluster.setMap(null);
+
+
+
+    map.add(markers);
+    map.setFitView();
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //最佳显示/////////////////////
+    document.getElementById("btndisplay").onclick=function(){
+      map.setFitView(markers)
+    }
+
+    ///聚合图
+    var pointcluster=document.getElementById("ckbcluster");
+    pointcluster.onclick=function(){
+      if(pointcluster.checked){
+        gdcluster.setMap(map);
+      }else{gdcluster.setMap(null);
+        map.add(markers);
+
+      }
+    }
+
+//////////////////////
+  });
+
+
+  //显示标签/////////////////////////////
+  var pointlab=document.getElementById("ckblab");
+  pointlab.onclick=function(){
+    if(pointlab.checked){
+      gdlabellayer.setMap(map);
+    }else{
+      gdlabellayer.setMap(null);
+    }
+  }
+
+  //显示列表////////////////////////////////////////////////////////
+  var varnamelist=document.getElementById("namelist")
+  varnamelist.style.display="none";//隐藏
+  var ul2 = document.querySelector('.namelist ul');
+  var ul2txt="<br>";
+  var ccount=1;
+  for(var i = 0;i <points.length;i++){
+    ul2txt +='<li class="litest"><a   href="#"   class="test"   lng='+ points[i].lnggd +' lat='+        points[i].latgd      +  '  > ' + ("00"+ccount).slice(-3) + '： '+points[i].address+'</a></li>';
+    ccount++;
+  }
+  //
+  var markersel;
+  var dislist=document.getElementById("ckblist");
+  dislist.onclick=function(){
+    if(dislist.checked){
+      ul2.innerHTML=ul2txt
+      varnamelist.style.display="";
+      $(".test").click(function(){
+        map.setCenter( [ $(this).attr("lng") , $(this).attr("lat")]     );
+        if(typeof(markersel)!='undefined'){
+          map.remove(markersel);
+        }
+        markersel =new AMap.CircleMarker({
+          center: [$(this).attr("lng"), $(this).attr("lat")  ] ,
+          radius:10, fillColor:'yellow', strokeColor:'red',strokeWeight:6, fillOpacity:0.5,zIndex:300
+        });
+        map.add(markersel);
+      });
+      //
+      $(".litest").mouseover(function(){
+        this.style.background = '#58FA58';
+      });
+
+      $(".litest").mouseleave(function(){
+        this.style.background = '';
+      });
+      //
+    }else{
+      varnamelist.style.display="none";
+      if(typeof(markersel)!='undefined'){
+        map.remove(markersel);
+      }
+    }
+  }
+
+
+
+  //显示图例////////////////////////////////////////////////////////
+  var ul = document.querySelector('.legend ul');
+  var ultxt="";
+  for(var i=0;i < sset.size; i++) {
+    ultxt +='<li><span style="background: ' + SymCol[i]+ ';"></span><a> ' +SymLet[i] + '： '+ Legendtxt[i]+'</a></li>';
+  }
+  //
+  var dislegend=document.getElementById("ckblegend");
+  dislegend.onclick=function(){
+    if(dislegend.checked){
+      ul.innerHTML=ultxt
+    }else{
+      ul.innerHTML=""
+    }
+  }
+
+
+  //////S3 添加行政区划///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  var colors = [
+    "#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395",
+    "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac"
+  ];
+  AMapUI.load(['ui/geo/DistrictExplorer', 'lib/$'], function(DistrictExplorer, $) {
+    //////////////////////////////////////////////////////////////////////
+    //鼠标hover提示内容
+    var $tipMarkerContent = $('<div style="width:200px;font-size:16px;font-family: 微软雅黑;color:gray" class="tipMarker2"></div>');
+    var tipMarker = new AMap.Marker({
+      content: $tipMarkerContent.get(0),
+      offset: new AMap.Pixel(0, 0),
+      bubble: true
+    });
+    //根据Hover状态设置相关样式
+    function toggleHoverFeature(feature, isHover, position) {
+      tipMarker.setMap(isHover ? map : null);
+      if (!feature) { return;   }
+      var props = feature.properties;
+      if (isHover) {
+        $tipMarkerContent.html(props.name+'\n('+props.adcode + ')');
+        tipMarker.setPosition(position || props.center);
+      }
+      var polys = districtExplorer.findFeaturePolygonsByAdcode(props.adcode);
+      for (var i = 0, len = polys.length; i < len; i++) {polys[i].setOptions({fillOpacity: isHover ? 0.5 : 0.2});}
+    }
+    //绘制某个区域的边界
+    function renderAreaPolygons(areaNode) {
+      districtExplorer.clearFeaturePolygons();
+      districtExplorer.renderSubFeatures(areaNode, function(feature, i) {
+        var fillColor = colors[i % colors.length];
+        var strokeColor = colors[colors.length - 1 - i % colors.length];
+        return { cursor: 'default',bubble: true,strokeColor: strokeColor,strokeOpacity: 1, strokeWeight: 1, fillColor: fillColor, fillOpacity: 0.35 };
+      });
+      districtExplorer.renderParentFeature(areaNode, {cursor: 'default', bubble: true,strokeColor: 'black',strokeOpacity: 1, strokeWeight: 1,fillColor: areaNode.getSubFeatures().length ? null : colors[0],fillOpacity: 0.35});
+    }
+    //切换区域
+    function switch2AreaNode(adcode, callback) {
+      loadAreaNode(adcode, function(error, areaNode) {
+        if (error) { if (callback) {callback(error); }; return; }
+        currentAreaNode = window.currentAreaNode = areaNode;
+        districtExplorer.setAreaNodesForLocating([currentAreaNode]);
+        districtExplorer.setHoverFeature(null);
+        renderAreaPolygons(areaNode);
+        if (callback) { callback(null, areaNode);  }
+      });
+    }
+    //加载区域
+    function loadAreaNode(adcode, callback) {
+      districtExplorer.loadAreaNode(adcode, function(error, areaNode) {
+        if (error) {if (callback) { callback(error); }; console.error(error); return; }
+        if (callback) { callback(null, areaNode); }
+      });
+    }
+    //判断定位级别
+    function  displayxzqh(positon){
+      districtExplorer.locatePosition(positon, function(error, routeFeatures) {
+          let gdmapzoom=map.getZoom();
+          if (routeFeatures && routeFeatures.length > 1) {
+            if(gdmapzoom<6) {switch2AreaNode(routeFeatures[0].properties.adcode);}
+            if(gdmapzoom>=6 && gdmapzoom<8){switch2AreaNode(routeFeatures[1].properties.adcode);}
+            if(gdmapzoom>=9 ){switch2AreaNode(routeFeatures[2].properties.adcode);}
+          } else {
+            switch2AreaNode(100000);
+          }
+        },
+        {  levelLimit: 4 }
+      );
+    }
+    ////////////////
+    var xzqh=document.getElementById("ckbarea");
+    xzqh.onclick=function(){
+      if(xzqh.checked){
+        districtExplorer = new DistrictExplorer({eventSupport: true,  map: map });
+        districtExplorer.on('featureMouseout featureMouseover', function(e, feature) {toggleHoverFeature(feature, e.type === 'featureMouseover', e.originalEvent ? e.originalEvent.lnglat : null);});
+        districtExplorer.on('featureMousemove', function(e, feature) {tipMarker.setPosition(e.originalEvent.lnglat);});
+        districtExplorer.on('featureClick', function(e, feature) { var props = feature.properties;switch2AreaNode(props.adcode);   });
+        districtExplorer.on('outsideClick', function(e) {displayxzqh(e.originalEvent.lnglat)  });
+        displayxzqh(map.getCenter());
+      }else{
+        districtExplorer.clearFeaturePolygons();
+        districtExplorer.destroy();
+        map.remove(tipMarker);
+      }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////
+  });
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+</script>
+</body>
+</html>
