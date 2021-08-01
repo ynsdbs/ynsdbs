@@ -45,12 +45,12 @@
 <!--<div id="container" style="width: 100%;height:600px"></div>-->
 <!--<div id="container2" style="width: 100%;height:600px"></div>-->
 <div id="container3" style="width: 100%;height:600px"></div>
-<!--<div id="container4" style="width: 100%;height:600px"></div>-->
+<div id="container4" style="width: 100%;height:600px"></div>
 <script type="text/javascript">
 
   //第三绘图区
-  var myChart3=echarts.init(document.getElementById("container3"))
-  var data1=[
+  var myChart3 = echarts.init(document.getElementById("container3"))
+  var data1 = [
     {name: '垃圾未及时清运', value: 12},
     {name: '未开展健康监测', value: 12},
     {name: '基础防护物资紧缺（口罩、体温枪等）', value: 8},
@@ -74,20 +74,20 @@
     {name: '特殊人群关爱问题', value: 1}
   ]
 
-  var option={
-    label:{
-      formatter:"{b}{c}条，占{d}%"
+  var option = {
+    label: {
+      formatter: "{b}{c}条，占{d}%"
     },
-    tooltip:{
-      show:true,
-      formatter:"{b}{c}条，占{d}%"
+    tooltip: {
+      show: true,
+      formatter: "{b}{c}条，占{d}%"
     },
-    series:[
+    series: [
       {
-        type:"pie",
-        data:data1,
+        type: "pie",
+        data: data1,
         center: ["50%", "45%"],
-        radius:"60%",
+        radius: "60%",
         selectedMode: "multiple",
         selectedOffset: 30,
 
@@ -100,90 +100,35 @@
     myChart3.resize();
   });
   //第四绘图区
-  var myChart4=echarts.init(document.getElementById("container4"))
-  $.getJSON("map/longchuan.json", function (geoJson) {
+  var myChart4 = echarts.init(document.getElementById("container4"))
+  $.getJSON("map/wg.json", function (geoJson) {
     echarts.registerMap('nanyang', geoJson);
+    console.log(geoJson)
     myChart4.hideLoading();
 
     var geoCoordMap = {
 
-      "拉影村": [97.727303,24.196549],
+      "姐告第一网格": [97.887597, 23.979382],
 
     };
-    var data = [
 
-      { name: '拉影村', value: 10 },
-
-    ];
-    var convertData = function (data) {
-      var res = [];
-      for (var i = 0; i < data.length; i++) {
-        var geoCoord = geoCoordMap[data[i].name];
-        if (geoCoord) {
-          res.push({
-            name: data[i].name,
-            value: geoCoord.concat(data[i].value).concat(data[i].img),
-          });
-        }
-      }
-      return res;
-    };
     option = {
-      Center: [97.796618,24.08672],
-      // title: {
-      //   top: 20,
-      //   text: '南阳市VIP分布',
-      //   subtext: '南阳市VIP分布',
-      //   textStyle: {
-      //     color: '#000',
-      //   },
-      // },
-      tooltip: {
-        formatter: function (params) {
-          var html = '';
-          html =
-            '<div>' +
-            '<div >' +
-            params.name +
-            '</div>' +
-            '<div>' +
-            '<span style="font-size:16px;font-weight:bold;">' +
-            '确诊病例' +
-            params.data.value[2] +
-            '例' +
-            '</span>' +
-            '</div>' +
-            '</div>';
-          return html;
-        },
-      },
-      // color:['#34c6bb'],
-      legend: {
-        orient: 'vertical',
-        id: 1,
-        y: 'bottom',
-        x: 'left',
-        itemWidth: 20,
-        data: [
-          {
-            name: 'QQ',
-            // icon: iconWZ
-          },
-          {
-            name: '微信',
-            // icon: iconJC
-          },
-        ],
-      },
+      Center: [97.887597, 23.979382],
+
+
       geo: {
         map: 'nanyang',
         type: 'map',
         zoom: 1.2,
         showLegendSymbol: true,
+        tooltip: {
+
+        },
+
         label: {
           normal: {
-            fontSize: 15,
-            fontWeight:"bold",
+            fontSize: 10,
+            fontWeight: "bold",
             show: true,
             color: '#fff',
           },
@@ -203,87 +148,28 @@
             areaColor: '#0a2dae', //悬浮区背景
           },
         },
+        series: [
+          {
+            type: "map",
+            mapType: "nanyang",
+            data: [
+              {
+                name: "第一网格（兴瑞）", xm: "李",
+              },
+            ]
+          }
+        ]
       },
-      series: [
-        {
-          name: '666',
-          type: 'scatter',
-          coordinateSystem: 'geo',
 
-          symbol: 'pin',
-          symbolSize: [50, 50],
-          label: {
-            normal: {
-              show: true,
-              textStyle: {
-                color: '#fff',
-                fontSize: 12,
-                fontWeight: "bold"
-              },
-              formatter(value) {
-                return value.data.value[2];
-              },
-            },
-          },
-          //设置点颜色
-          itemStyle: {
-            normal: {
-              color: function (val) {
-                if (val.dataIndex == '0') {
-                  return 'red';
-                } else if (val.dataIndex == '1') {
-                  return 'DarkMagenta';
-                } else if (val.dataIndex == '2') {
-                  return 'blue';
-                } else {
-                  return 'green';
-                }
-              },
-            },
-          },
-          data: convertData(
-            data.sort(function (a, b) {
-              return b.value - a.value;
-            })
-          ),
-          showEffectOn: 'render',
-          rippleEffect: {
-            brushType: 'stroke',
-          },
-          hoverAnimation: true,
-          zlevel: 1,
-        },
-        {
-          name: 'Top 5',
-          type: 'effectScatter',
-          coordinateSystem: 'geo',
-          rippleEffect:{
-            period: 15,
-            scale: 6,
-            brushType: 'fill'
-          },
-          itemStyle: {
-            normal: {
-              color: "#FF5151",
-
-            }
-          },
-          data: convertData(
-            data.sort(function (a, b) {
-              return b.value - a.value;
-            })
-          ),
-
-        },
-      ],
     };
     myChart4.setOption(option);
     window.addEventListener("resize", function () {
-      myChart3.resize();
+      myChart4.resize();
     });
   });
 
 </script>
 </body>
 </html>
+
 
