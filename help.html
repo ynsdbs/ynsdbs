@@ -39,6 +39,11 @@
     <td><a href="inventory/tuan-14.html">团结第十四网格</a></td>
     <td><a href="inventory/tuan-15.html">团结第十五网格</a></td>
   </tr>
+  <tr align="center" style="height:70px">
+    <td><a href="inventory/tuan-2.html">团结第二网格</a></td>
+    <td></td>
+    <td></td>
+  </tr>
 </table>
 </body>
 <body style="height: 100%; margin: 0;">
@@ -46,7 +51,7 @@
 <!--<div id="container2" style="width: 100%;height:600px"></div>-->
 <h2 align="center">网格防控问题分项统计图</h2>
 <div id="container3" style="width: 100%;height:500px"></div>
-<div id="container4" style="width: 100%;height:600px"></div>
+<!--<div id="container4" style="width: 100%;height:600px"></div>-->
 <script type="text/javascript">
 
   //第三绘图区
@@ -57,11 +62,11 @@
       trigger: 'item',
       formatter: "{b}: {c}条({d}%)"
     },
-    legend: {
-      orient: 'vertical',
-      x: '3%',
-      data:['健康宣传','核酸检测','环境整治','居家管理','防疫准备','区域管控','心理疏导']
-    },
+    // legend: {
+    //   orient: 'vertical',
+    //   x: '3%',
+    //   data:['健康宣传','核酸检测','环境整治','居家管理','防疫准备','区域管控','心理疏导']
+    // },
     series: [
       {
         // name:'访问来源',
@@ -135,76 +140,76 @@
     myChart3.resize();
   });
   //第四绘图区
-  var myChart4 = echarts.init(document.getElementById("container4"))
-  $.getJSON("map/wg.json", function (geoJson) {
-    echarts.registerMap('nanyang', geoJson);
-    console.log(geoJson)
-    myChart4.hideLoading();
-
-    var geoCoordMap = {
-
-      "姐告第一网格": [97.887597, 23.979382],
-
-    };
-
-    option = {
-      Center: [97.887597, 23.979382],
-
-
-      geo: {
-        map: 'nanyang',
-        type: 'map',
-        zoom: 1.2,
-        showLegendSymbol: true,
-        tooltip: {
-
-        },
-
-        label: {
-          normal: {
-            fontSize: 10,
-            fontWeight: "bold",
-            show: true,
-            color: '#fff',
-          },
-          emphasis: {
-            show: true,
-            color: 'yellow',
-          },
-        },
-        itemStyle: {
-          normal: {
-            areaColor: '#3a7fd5',
-            borderColor: '#0a53e9', //线
-            shadowColor: '#092f8f', //外发光
-            shadowBlur: 20,
-          },
-          emphasis: {
-            areaColor: '#0a2dae', //悬浮区背景
-          },
-        },
-        series: [
-          {
-            type: "map",
-            geoIndex:0,
-            data: [
-              {
-                name: "第一网格（兴瑞）", xm: "李",
-                tooltip:{
-
-                }
-              },
-            ]
-          }
-        ]
-      },
-
-    };
-    myChart4.setOption(option);
-    window.addEventListener("resize", function () {
-      myChart4.resize();
-    });
-  });
+  // var myChart4 = echarts.init(document.getElementById("container4"))
+  // $.getJSON("map/wg.json", function (geoJson) {
+  //   echarts.registerMap('nanyang', geoJson);
+  //   console.log(geoJson)
+  //   myChart4.hideLoading();
+  //
+  //   var geoCoordMap = {
+  //
+  //     "姐告第一网格": [97.887597, 23.979382],
+  //
+  //   };
+  //
+  //   option = {
+  //     Center: [97.887597, 23.979382],
+  //
+  //
+  //     geo: {
+  //       map: 'nanyang',
+  //       type: 'map',
+  //       zoom: 1.2,
+  //       showLegendSymbol: true,
+  //       tooltip: {
+  //
+  //       },
+  //
+  //       label: {
+  //         normal: {
+  //           fontSize: 10,
+  //           fontWeight: "bold",
+  //           show: true,
+  //           color: '#fff',
+  //         },
+  //         emphasis: {
+  //           show: true,
+  //           color: 'yellow',
+  //         },
+  //       },
+  //       itemStyle: {
+  //         normal: {
+  //           areaColor: '#3a7fd5',
+  //           borderColor: '#0a53e9', //线
+  //           shadowColor: '#092f8f', //外发光
+  //           shadowBlur: 20,
+  //         },
+  //         emphasis: {
+  //           areaColor: '#0a2dae', //悬浮区背景
+  //         },
+  //       },
+  //       series: [
+  //         {
+  //           type: "map",
+  //           geoIndex:0,
+  //           data: [
+  //             {
+  //               name: "第一网格（兴瑞）", xm: "李",
+  //               tooltip:{
+  //
+  //               }
+  //             },
+  //           ]
+  //         }
+  //       ]
+  //     },
+  //
+  //   };
+  //   myChart4.setOption(option);
+  //   window.addEventListener("resize", function () {
+  //     myChart4.resize();
+  //   });
+  // });
 
 </script>
 </body>
