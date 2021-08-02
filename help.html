@@ -1,219 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html style="height: 100%">
 <head>
-  <meta charset="UTF-8">
-  <title>前期问题清单</title>
+  <meta charset="utf-8">
+  <title>ECharts</title>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=自己的key&plugin=AMap.Scale,AMap.ToolBar,AMap.CustomLayer"></script>
+  <!-- 引入最新版的echarts CDN -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <!-- 引入最新版的echarts-extension-amap 高德地图扩展库 CDN -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-extension-amap/dist/echarts-extension-amap.min.js"></script>
 </head>
-<body>
-<h1 align="center">网格防控前期问题速查</h1>
-<table border="1" align="center" cellspacing=0 cellpadding=0 width="80%" height="50%" style="font-size:24px">
-  <tr align="center" style="height:70px" >
-    <td><a href="inventory/jiegao-1.html">姐告第一网格</a></td>
-    <td><a href="inventory/jiegao-2.html">姐告第二网格</a></td>
-    <td><a href="inventory/jiegao-3.html">姐告第三网格</a></td>
-  </tr>
-  <tr align="center" style="height:70px">
-    <td><a href="inventory/jiegao-4.html">姐告第四网格</a></td>
-    <td><a href="inventory/jiegao-5.html">姐告第五网格</a></td>
-    <td><a href="inventory/jiegao-6.html">姐告第六网格</a></td>
-  </tr>
-  <tr align="center" style="height:70px">
-    <td><a href="inventory/jiegao-7.html">姐告第七网格</a></td>
-    <td><a href="inventory/jiegao-8.html">姐告第八网格</a></td>
-    <td><a href="inventory/jiegao-9.html">姐告第九网格</a></td>
-  </tr>
-  <tr align="center" style="height:70px">
-    <td><a href="inventory/jiegao-10.html">姐告第十网格</a></td>
-    <td><a href="inventory/jiegao-11.html">姐告第十一网格</a></td>
-    <td><a href="inventory/jiegao-12.html">姐告第十二网格</a></td>
-  </tr>
-  <tr align="center" style="height:70px">
-    <td><a href="inventory/jiegao-13.html">姐告第十三网格</a></td>
-    <td><a href="inventory/jiegao-14.html">姐告第十四网格</a></td>
-    <td><a href="inventory/jiegao-15.html">姐告第十五网格</a></td>
-  </tr>
-  <tr align="center" style="height:70px">
-    <td><a href="inventory/jiegao-16.html">姐告第十六网格</a></td>
-    <td><a href="inventory/tuan-14.html">团结第十四网格</a></td>
-    <td><a href="inventory/tuan-15.html">团结第十五网格</a></td>
-  </tr>
-  <tr align="center" style="height:70px">
-    <td><a href="inventory/tuan-2.html">团结第二网格</a></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-</body>
-<body style="height: 100%; margin: 0;">
-<!--<div id="container" style="width: 100%;height:600px"></div>-->
-<!--<div id="container2" style="width: 100%;height:600px"></div>-->
-<h2 align="center">网格防控问题分项统计图</h2>
-<div id="container3" style="width: 100%;height:500px"></div>
-<!--<div id="container4" style="width: 100%;height:600px"></div>-->
+<body style="height: 100%; margin: 0">
+<div id="container" style="height: 100%"></div>
+
 <script type="text/javascript">
+  var data=[
+    {name: '昆明市', value: 3},
+    {name: '玉溪市', value: 2}
+  ]
+  var scatterdata=[
+    {value:[102.9199,25.4663]},
+    {value:[100.7446,23.4229]}
+  ]
+  var linedata=[
+    // {coords:[[102.9199,25.4663],[102.9199,25.4663]]},
+    {coords:[[100.7446,23.4229],[102.9199,25.4663]]}
+  ]
 
-  //第三绘图区
-  var myChart3 = echarts.init(document.getElementById("container3"))
-  var option = {
+  var myChart=echarts.init(document.getElementById("container"))
 
-    tooltip: {
-      trigger: 'item',
-      formatter: "{b}: {c}条({d}%)"
-    },
-    // legend: {
-    //   orient: 'vertical',
-    //   x: '3%',
-    //   data:['健康宣传','核酸检测','环境整治','居家管理','防疫准备','区域管控','心理疏导']
-    // },
-    series: [
-      {
-        // name:'访问来源',
-        type:'pie',
-        selectedMode: 'single',
-        radius: [0, '50%'],
+    var option = {
+      // 加载 amap 组件
+      amap: {
+        // 高德地图中心经纬度
+        center: [108.39, 39.9],
+        // 高德地图缩放
+        zoom: 4,
+        // 启用resize
+        resizeEnable: true,
+        // 移动过程中实时渲染 默认为true 如数据量较大 建议置为false
+        renderOnMoving: true,
 
-        label: {
-          formatter: "{b}\n{c}条",
-          textStyle: {
-            fontSize: 7
-          },
-          position: 'inner',
-        },
-
-        // labelLine: {
-        //   normal: {
-        //     show: false
-        //   }
-        // },
-        data:[
-          {value:8, name:'健康宣传'},
-          {value:13, name:'核酸检测'},
-          {value:30, name:'环境整治'},
-          {value:16, name:'居家管理'},
-          {value:20, name:'防疫准备'},
-          {value:17, name:'区域管控'},
-          {value:9, name:'心理疏导'},
-        ]
       },
-      {
-        // name:'访问来源',
-        type:'pie',
-        radius: ['60%', '80%'],
-        label: {
-          formatter:"{b}{c}条，占{d}%"
+
+      series: [
+        {
+          data:scatterdata,
+          type:"effectScatter",
+          coordinateSystem:"amap",
+          rippleEffect:{
+            scale:4
+          },
+          itemStyle:{
+            color:"red"
+          }
         },
-        data:[
-          {name: '居民防护意识不足', value: 4},
-          {name: '“五个一”工具包未发放', value: 4},
-          {name: '采样前未进行手消', value: 5},
-          {name: '间隔不足1米', value: 3},
-          {name: '对鼻拭子采样有抵触', value: 2},
-          {name: '样本未及时转运', value: 1},
-          {name: '样本转运不符合规范', value: 1},
-          {name: '核酸漏检', value: 1},
-          {name: '垃圾未及时清运', value: 12},
-          {name: '垃圾未消杀', value: 7},
-          {name: '污水直接排放', value: 1},
-          {name: '缺消毒记录', value: 10},
-          {name: '人员信息登记不全', value: 2},
-          {name: '未开展健康监测', value: 14},
-          {name: '生活物资保障不足', value: 2},
-          {name: '消杀物资紧缺', value: 8},
-          {name: '基础防护物资紧缺（口罩、体温枪等）', value: 10},
-          {name: '密接未完全转运', value: 2},
-          {name: '警戒线和标识损坏', value: 1},
-          {name: '出入口无监控', value: 4},
-          {name: '有外出情况或聚集', value: 7},
-          {name: '无查证、扫码、测温、登记', value: 3},
-          {name: '特殊人群关爱问题', value: 2},
-          {name: '居民抱怨情绪', value: 7}
-        ]
-      }
-    ]
-
-
-  }
-  myChart3.setOption(option);
-  window.addEventListener("resize", function () {
-    myChart3.resize();
-  });
-  //第四绘图区
-  // var myChart4 = echarts.init(document.getElementById("container4"))
-  // $.getJSON("map/wg.json", function (geoJson) {
-  //   echarts.registerMap('nanyang', geoJson);
-  //   console.log(geoJson)
-  //   myChart4.hideLoading();
-  //
-  //   var geoCoordMap = {
-  //
-  //     "姐告第一网格": [97.887597, 23.979382],
-  //
-  //   };
-  //
-  //   option = {
-  //     Center: [97.887597, 23.979382],
-  //
-  //
-  //     geo: {
-  //       map: 'nanyang',
-  //       type: 'map',
-  //       zoom: 1.2,
-  //       showLegendSymbol: true,
-  //       tooltip: {
-  //
-  //       },
-  //
-  //       label: {
-  //         normal: {
-  //           fontSize: 10,
-  //           fontWeight: "bold",
-  //           show: true,
-  //           color: '#fff',
-  //         },
-  //         emphasis: {
-  //           show: true,
-  //           color: 'yellow',
-  //         },
-  //       },
-  //       itemStyle: {
-  //         normal: {
-  //           areaColor: '#3a7fd5',
-  //           borderColor: '#0a53e9', //线
-  //           shadowColor: '#092f8f', //外发光
-  //           shadowBlur: 20,
-  //         },
-  //         emphasis: {
-  //           areaColor: '#0a2dae', //悬浮区背景
-  //         },
-  //       },
-  //       series: [
-  //         {
-  //           type: "map",
-  //           geoIndex:0,
-  //           data: [
-  //             {
-  //               name: "第一网格（兴瑞）", xm: "李",
-  //               tooltip:{
-  //
-  //               }
-  //             },
-  //           ]
-  //         }
-  //       ]
-  //     },
-  //
-  //   };
-  //   myChart4.setOption(option);
-  //   window.addEventListener("resize", function () {
-  //     myChart4.resize();
-  //   });
-  // });
-
+        {
+          coordinateSystem: 'amap',
+          type:"lines",
+          data:linedata,
+          effect:{
+            show:true,
+            symbol:"arrow",
+            symbolSize:10,
+            period:2    //时间1秒
+          },
+          lineStyle:{
+            color:'blue',
+            width:2,
+            curveness:0.3,
+            opacity:0.3  //透明度
+          }
+        },
+      ]
+    };
+    myChart.setOption(option)
 </script>
 </body>
 </html>
+
+
 
 
 
