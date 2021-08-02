@@ -2,7 +2,7 @@
 <html style="height: 100%">
 <head>
   <meta charset="utf-8">
-  <title>姐告近期病例示意图</title>
+  <title>近期病例示意图</title>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
   <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=自己的key&plugin=AMap.Scale,AMap.ToolBar,AMap.CustomLayer"></script>
@@ -13,21 +13,28 @@
 </head>
 <body style="height: 100%; margin: 0">
 
-<div id="container" style="height: 100%"></div>
+<div id="container" style="height: 100%" ></div>
 <script type="text/javascript">
 
   var scatterdata=[
-    {name:"郭建军",value:[97.892867,23.977567]},
-    {name:"张星宇",value:[97.893521,23.976714]},
-    {name:"张志南",value:[97.892985,23.976204]},
-    {name:"玛依依登",value:[97.897008,23.977645]},
-    {name:"岩孟",value:[97.886987,23.972077]},
+    {name:"87",value:[97.89162,23.98025]},
+    {name:"86",value:[97.89471,23.978495]},
+    {name:"85",value:[97.923916,24.030615]},
+    {name:"84",value:[97.869682,23.987666]},
+    {name:"83",value:[97.876736,23.980686]},
+    {name:"82",value:[97.894868,23.979373]},
+    {name:"81",value:[97.895726,23.979294]},
+    {name:"80",value:[97.886049,23.978137]},
+    {name:"79",value:[97.89622,23.978333]},
+    {name:"78",value:[97.882868,23.97902]},
+    {name:"77",value:[97.868448,23.981863]},
+    {name:"76",value:[97.87525,23.991037]},
   ]
-  var scatterdata1=[
-    {name:"伯乐玉园",value:[97.886173,23.97808]},
-    {name:"国门大道",value:[97.895284,23.978341]},
-
-  ]
+  // var scatterdata1=[
+  //   {name:"伯乐玉园",value:[97.886173,23.97808]},
+  //   {name:"国门大道",value:[97.895284,23.978341]},
+  //
+  // ]
   var linedata=[
     // {coords:[[102.9199,25.4663],[102.9199,25.4663]]},
     {coords:[[100.7446,23.4229],[102.9199,25.4663]]}
@@ -69,29 +76,32 @@
             color:"red"
           }
         },
-        {
-          data:scatterdata1,
-          type:"effectScatter",
-          coordinateSystem:"amap",
-          symbol:"pie",
-          symbolSize:15,
-          label:{
-            show:true,
-            formatter: function (params) {
-              return params.name;
-            },
-          },
-          rippleEffect:{
-            scale:4
-          },
-          itemStyle:{
-            color:"blue"
-          }
-        },
+        // {
+        //   data:scatterdata1,
+        //   type:"effectScatter",
+        //   coordinateSystem:"amap",
+        //   symbol:"pin",    //形状
+        //   symbolSize:15,
+        //   label:{
+        //     show:true,
+        //     formatter: function (params) {
+        //       return params.name;
+        //     },
+        //   },
+        //   rippleEffect:{
+        //     scale:4,
+        //     period:10    //动画时长
+        //   },
+        //   itemStyle:{
+        //     color:"blue"
+        //   }
+        // },
       ]
     };
     myChart.setOption(option)
 </script>
 </body>
 </html>
+
+
 
