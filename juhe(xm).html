@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript">
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //步骤1：替换数据
+    var lnglats=`
+
+荷玛奥,97.8914513070138,23.97427171586,第1传播链
+杜琴丹伍,97.8902638999969,23.9774226362292,第1传播链
+貌代本伍,97.8901254151296,23.9773337666335,第1传播链
+王连生,97.890312981471,23.9776848576498,第1传播链
+恒麻推,97.8959975655765,23.9805668825159,第1传播链
+玛伦麻薇,97.8918652453816,23.9789469781363,第1传播链
+卖恩静,97.8906557161896,23.9809482042196,第1传播链
+貌昂谬铁,97.889250129102,23.9739614316107,第1传播链
+AwngSanmin,97.8913408482397,23.9744703918267,第1传播链
+貌坡亚,97.8913127861436,23.9742848319104,第1传播链
+玛宁努努耐,97.8917477220721,23.9791307487406,第1传播链
+廖剑珍,97.89622,23.978333,第1传播链
+段生槐,97.875368,24.009055,第1传播链
+管国志,97.8823974509978,23.9723024343163,第1传播链
+耐耐索,97.8915366195815,23.9742994110713,第1传播链
+左腊生,97.8826503223626,23.9723488510586,第1传播链
+玛宁贝漂,97.8944352608546,23.9746525504046,第2传播链
+梁礼贤,97.8941223063838,23.9772440164547,第2传播链
+徐博韬,97.8941996051382,23.9772018636968,第2传播链
+梁晨,97.8941685482063,23.9770493431745,第2传播链
+柳君鹏,97.8940692051751,23.9769928361053,第2传播链
+林龙,97.8940149678833,23.9770976388849,第2传播链
+岩卯,97.884293,23.990243,第3传播链
+字蓉 ,98.0518635353767,24.0733082599076,第3传播链
+玛丁萨温,97.8909293953705,23.981559924573,第3传播链
+貌谬明,97.8908300129633,23.9815784429222,第3传播链
+龙彩华,97.8911164234395,23.9765056706503,第3传播链
+貌伟漂昂,97.8899065051805,23.9816665751763,第3传播链
+玛朵朵五,97.8942200091134,23.9788183835852,第3传播链
+岩良,97.887830999534,23.9829071052176,第3传播链
+梦腊,97.8909969175381,23.9810839616857,第3传播链
+马伍,97.8906183520135,23.9813497178294,第3传播链
+吴谬明,97.8904024903588,23.9814440099761,第3传播链
+貌索林,97.8909385007019,23.9814358038321,第3传播链
+顶波,97.890817095096,23.9813506747206,第3传播链
+吞路,97.8877275931648,23.9829416730376,第3传播链
+也门,97.8906595040996,23.9813530871573,第3传播链
+行腿奥,97.8908170361716,23.981453660299,第3传播链
+杜敏敏,97.8906775741452,23.9813488110934,第3传播链
+杜莱,97.8907177081911,23.9813771923634,第3传播链
+貌丁林索,97.8907629480401,23.9812525181449,第3传播链
+貌孟杰昂,97.8889750363264,23.9816378427635,第3传播链
+赵玉菲,97.8881781406306,23.9773065586838,第3传播链
+貌索莫觉,97.8940986496137,23.9786302220199,第3传播链
+余菊玉,97.8883136623897,23.9772634955687,第3传播链
+特苗吞,97.8907047155584,23.9812784059104,第3传播链
+多亚迪,97.8940443918732,23.9787620195045,第3传播链
+当奈,97.8881359710534,23.9773391984704,第3传播链
+楠瑞,97.8904918564526,23.9813886493628,第3传播链
+琴美,97.8916618861542,23.9801799242027,第3传播链
+杜漂特,97.8904214641342,23.9774902158194,第3传播链
+梦丁,97.890794064724,23.9812520418408,第3传播链
+玛卫,97.8907229202393,23.9810341628203,第3传播链
+貌凯明伍,97.8907719160278,23.9813683637341,第3传播链
+昂吞磊,97.890812125684,23.98126376363,第3传播链
+吉漂达,97.8907629480401,23.9812525181449,第3传播链
+陈云湘,97.871815,24.012596,第3传播链
+岩俩,97.886294,23.978056,第3传播链
+文虎,97.868448,23.981863,第3传播链
+梅莱,97.876736,23.980686,第3传播链
+占喊,97.8830548056923,23.9789875832848,第4传播链
+张志南,97.8920948653722,23.9771016778782,第4传播链
+玛诶兰,97.869682,23.987666,第4传播链
+范文刚,97.89471,23.978495,第4传播链
+吕河,97.89162,23.98025,第4传播链
+春明,97.6359692282445,23.8927727531558,第6传播链
+南也静,97.6359873455775,23.8926895640482,第6传播链
+相也,97.6357346583136,23.8926764280778,第6传播链
+岳管喊,97.637992202144,23.8870009975231,第6传播链
+赛帅,97.6380735280763,23.8869170088933,第6传播链
+左和,97.6379200867448,23.886893916138,第6传播链
+貌丹温,97.8855614754221,23.9738403357785,第7传播链
+欧彩够,97.875425,23.994289,第7传播链
+刘应兰,97.875924,23.994732,第7传播链
+郭建军,97.891877602042,23.9782438707413,第9传播链
+杨惠芬,97.894868,23.979373,第9传播链
+岩孟,97.8873171109651,23.9728659612336,第9传播链
+玛依依登,97.8968552037235,23.9770308849471,第10传播链
+叶凯晴,97.87525,23.991037,第11传播链
+李焕崃,97.882868,23.97902,第12传播链
+陈春勤,98.0519890917925,24.0730953475565,第13传播链
+何光珍,98.0652621405543,24.0772290217101,第13传播链
+玛素咩昂昂,97.886049,23.978137,第13传播链
+李敬琴,97.895726,23.979294,第14传播链
+郭云威,97.923916,24.030615,第15传播链
+张玺,97.905559,24.021765,第15传播链
+林壁灿,97.905559,24.022875,第15传播链
+李才文,97.904559,24.023985,第15传播链
+岩旺依鲁,97.905559,24.024095,第15传播链
+张旭奎,97.904559,24.023155,第15传播链
+黄美荣,97.885212,23.978147,第16传播链
+卢英,97.886113,23.975382,第17传播链
+
+
+`;
+    //步骤2：确定坐标系统
+    var CRS=2;// 1= WGS84  2=火星坐标   3=百度坐标
+
+    //步骤3：设置图标大小、颜色、图标中的文本及图例显示的文本/////////
+    var mheight=25                          ;//设置图标高度
+    var mwidth=18                          ;//设置图标宽度
+    var SymCol=["red","blue","green","DeepPink","DarkMagenta","Darkorange","DarkSlateGray","Olive","SaddleBrown","Gray","Cyan","DarkMagenta","Teal","#99CC00","#336699"]; //设置图标颜色
+    var SymLet=["A","B","C","D","E","F","G","H","I", "J", "K", "L", "M", "N", "O","P","Q","R","S", "T", "U", "V", "W","X","Y","Z"]	;//设置图标中的文字
+    var Legendtxt=["第1传播链","第2传播链","第3传播链","第4传播链","第6传播链","第7传播链","第9传播链","第10传播链","第11传播链","第12传播链","第13传播链","第14传播链","第15传播链","第16传播链","第17传播链"]	//设置图例显示文本，按首次出现的顺序
+
+    ////！！！！！！！！！以下部分不要修改！！！！！！！！！///////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  </script>
+  <meta charset="utf-8">
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=3664b7738ba0979d33c4e58032438d29&plugin=AMap.CustomLayer,AMap.MarkerClusterer"></script>
+  <script src="https://webapi.amap.com/ui/1.1/main.js?v=1.1.1"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <style type="text/css">
+    html, body{	width: 100%; height: 100%;border: none;margin:0; }
+    #divx{position: absolute;bottom:0.5rem;right:1rem;z-index: 20;	}
+    .legend {width: 200px; position: absolute; left: 10px; bottom: 50px; background-color:white; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+    .legend ul {overflow: hidden;list-style: none;margin: 0;padding: 0;z-index:20}
+    .legend ul li {float: left;height: 30px;width:170px;}
+    .legend ul li a {float: left;color: #555; font-size: 14px; text-decoration: none; height: 30px;line-height: 30px;}
+    .legend ul li span {float: left;width:14px;height: 14px; margin: 8px; }
+    .namelist {width: 300px; position: absolute; right: 10px; bottom: 50px; background-color:white ; border-radius: 5px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+    .namelist ul {list-style: none;margin: 0;padding: 0;z-index:20;;overflow-y:scroll;height:400px}
+    .namelist ul li {height: 30px;}
+  </style>
+
+</head>
+<body>
+<div id="divmap"  style="width: 100%;height:100%" >
+  <div  id="divx" >
+    <label id="pp0"><input type="checkbox" class="pointckb" id="ckblab">标签</label>
+    <label><input type="checkbox" class="pointckb" id="ckblist">列表</label>
+    <label><input type="checkbox" class="pointckb" id="ckblegend">图例</label>
+    <label><input type="checkbox" class="pointckb" id="ckbcluster">聚合图</label>
+    <input type="checkbox" style="margin-left: 2em;" id="ckbarea" >
+    <label  class="mapstylelab" style="font-family: 微软雅黑;">行政区划</label>
+    &emsp;<input  type="button"  id="btndisplay"  value="恢复最佳显示" />
+  </div>
+</div>
+<div class="legend" id="legend"><ul></ul></div>
+<div class="namelist" id="namelist"><ul></ul></div>
+<script type="text/javascript">
+  ////S1 坐标转化函数///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //定义一些常量
+  var x_PI = 3.14159265358979324 * 3000.0 / 180.0;
+  var PI = 3.1415926535897932384626;
+  var a = 6378245.0;
+  var ee = 0.00669342162296594323;
+  //
+  function bd09towgs84(bd_lon, bd_lat){
+    var jin_gcj_value = bd09togcj02( bd_lon , bd_lat)[0]
+    var wei_gcj_value = bd09togcj02( bd_lon , bd_lat)[1]
+    var jin_wgs_value = gcj02towgs84(jin_gcj_value, wei_gcj_value)[0]
+    var wei_wgs_value = gcj02towgs84(jin_gcj_value, wei_gcj_value)[1]
+    return [jin_wgs_value, wei_wgs_value]
+  };
+  //
+  function wgs84tobd09(wgs_lon, wgs_lat){
+    var jin_gcj_value = wgs84togcj02 ( wgs_lon, wgs_lat)[0]
+    var wei_gcj_value = wgs84togcj02 ( wgs_lon, wgs_lat)[1]
+    var jin_bd_value  = gcj02tobd09(jin_gcj_value, wei_gcj_value)[0]
+    var wei_bd_value  = gcj02tobd09(jin_gcj_value, wei_gcj_value)[1]
+    return [jin_bd_value, wei_bd_value]
+  };
+  //
+  function bd09togcj02(bd_lon, bd_lat) {
+    var x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+    var x = bd_lon - 0.0065;
+    var y = bd_lat - 0.006;
+    var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * x_pi);
+    var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * x_pi);
+    var gg_lng = z * Math.cos(theta);
+    var gg_lat = z * Math.sin(theta);
+    return [gg_lng, gg_lat]
+  }
+  //
+  function gcj02tobd09(lng, lat) {
+    var z = Math.sqrt(lng * lng + lat * lat) + 0.00002 * Math.sin(lat * x_PI);
+    var theta = Math.atan2(lat, lng) + 0.000003 * Math.cos(lng * x_PI);
+    var bd_lng = z * Math.cos(theta) + 0.0065;
+    var bd_lat = z * Math.sin(theta) + 0.006;
+    return [bd_lng, bd_lat]
+  }
+  //
+  function wgs84togcj02(lng, lat) {
+    if (out_of_china(lng, lat)) {return [lng, lat]}	else {
+      var dlat = transformlat(lng - 105.0, lat - 35.0);
+      var dlng = transformlng(lng - 105.0, lat - 35.0);
+      var radlat = lat / 180.0 * PI;
+      var magic = Math.sin(radlat);
+      magic = 1 - ee * magic * magic;
+      var sqrtmagic = Math.sqrt(magic);
+      dlat = (dlat * 180.0) / ((a * (1 - ee)) / (magic * sqrtmagic) * PI);
+      dlng = (dlng * 180.0) / (a / sqrtmagic * Math.cos(radlat) * PI);
+      var mglat = lat + dlat;
+      var mglng = lng + dlng;
+      return [mglng, mglat]
+    }
+  }
+  //
+  function gcj02towgs84(lng, lat) {
+    if (out_of_china(lng, lat)) {return [lng, lat]}else {
+      var dlat = transformlat(lng - 105.0, lat - 35.0);
+      var dlng = transformlng(lng - 105.0, lat - 35.0);
+      var radlat = lat / 180.0 * PI;
+      var magic = Math.sin(radlat);
+      magic = 1 - ee * magic * magic;
+      var sqrtmagic = Math.sqrt(magic);
+      dlat = (dlat * 180.0) / ((a * (1 - ee)) / (magic * sqrtmagic) * PI);
+      dlng = (dlng * 180.0) / (a / sqrtmagic * Math.cos(radlat) * PI);
+      mglat = lat + dlat;
+      mglng = lng + dlng;
+      return [lng * 2 - mglng, lat * 2 - mglat]
+    }
+  }
+  //
+  function transformlat(lng, lat) {
+    var ret = -100.0 + 2.0 * lng + 3.0 * lat + 0.2 * lat * lat + 0.1 * lng * lat + 0.2 * Math.sqrt(Math.abs(lng));
+    ret += (20.0 * Math.sin(6.0 * lng * PI) + 20.0 * Math.sin(2.0 * lng * PI)) * 2.0 / 3.0;
+    ret += (20.0 * Math.sin(lat * PI) + 40.0 * Math.sin(lat / 3.0 * PI)) * 2.0 / 3.0;
+    ret += (160.0 * Math.sin(lat / 12.0 * PI) + 320 * Math.sin(lat * PI / 30.0)) * 2.0 / 3.0;
+    return ret
+  }
+  //
+  function transformlng(lng, lat) {
+    var ret = 300.0 + lng + 2.0 * lat + 0.1 * lng * lng + 0.1 * lng * lat + 0.1 * Math.sqrt(Math.abs(lng));
+    ret += (20.0 * Math.sin(6.0 * lng * PI) + 20.0 * Math.sin(2.0 * lng * PI)) * 2.0 / 3.0;
+    ret += (20.0 * Math.sin(lng * PI) + 40.0 * Math.sin(lng / 3.0 * PI)) * 2.0 / 3.0;
+    ret += (150.0 * Math.sin(lng / 12.0 * PI) + 300.0 * Math.sin(lng / 30.0 * PI)) * 2.0 / 3.0;
+    return ret
+  }
+  //
+  function out_of_china(lng, lat) { return (lng < 72.004 || lng > 137.8347) || ((lat < 0.8293 || lat > 55.8271) || false);}
+  ////CRS-END////////////////////////////
+
+  //////S2 地图设置/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //显示地图及控件
+  var map = new AMap.Map('divmap', {viewMode: '2D', animateEnable:false, zoom:4,center: [105,33] });
+  AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.MapType'], function(){
+    map.addControl(new AMap.Scale());
+    map.addControl(new AMap.MapType());
+  });
+
+  //整理数据////////////////////////////////////////////////////////////
+  var points =[],ccates=[];
+  var adds=lnglats.split(/[(\r\n)\r\n]+/);
+  var id=0;
+  for (var i = 0; i < adds.length; i++) {
+    var add=adds[i];
+
+    if(add!=""){
+      id++;
+      var eachplace=   add.split(",");
+      var address=eachplace[0];
+      var lng=eachplace[1];
+      var lat=eachplace[2];
+      var ccate=eachplace[3];
+      if(typeof(ccate)=="undefined"){ccate=""};
+      ccates.push(ccate);
+      if(CRS==1){
+        var lnggd=wgs84togcj02(parseFloat(lng), parseFloat(lat) )[0];
+        var latgd=wgs84togcj02(parseFloat(lng), parseFloat(lat) )[1];
+      }
+      if(CRS==2){
+        var lnggd=lng;
+        var latgd=lat;
+      }
+      if(CRS==3){
+        var lnggd=bd09togcj02(parseFloat(lng), parseFloat(lat) )[0];
+        var latgd=bd09togcj02(parseFloat(lng), parseFloat(lat) )[1];
+      }
+      points.push({"id":id,"lnggd":lnggd,"latgd":latgd,"address":address,"ccate":ccate});
+    };
+  };
+  //////
+  console.log(points)
+  /////////分类/////////////
+  var sset=new Set(ccates);
+  sset.delete("");
+  var SymUni=[...sset];
+  ////////////////////////////////////////////////////////// //////
+  var labtxtscale=function(x){if(x<100) return(12);if(x>=100 && x<1000) return(9);if(x>=1000) return(5) };
+  var markers=[],labelMarkers=[],SymIi=1;
+  ///显示图标	///////
+  var labtxtbig;
+  if(ccates.length<10){labtxtbig=20}else{labtxtbig=6}
+  AMapUI.loadUI(['overlay/SvgMarker'], function(SvgMarker) {
+    ///////////////////////////////////////////////////////
+    if(SymUni.length>0){
+      ////////////////
+      for(var i = 0,pointsLen = points.length;i <pointsLen;i++){
+        var j=SymUni.indexOf(points[i].ccate);
+        if( points[i].ccate!="" ){
+          var marker = new SvgMarker(
+            new SvgMarker.Shape.WaterDrop({height: mheight,width:mwidth, fillColor: SymCol[Math.min(j,SymCol.length-1 )], strokeWidth: 1,strokeColor: SymCol[Math.min(j,SymCol.length-1 )]}),
+            {position: [points[i].lnggd, points[i].latgd],title: points[i].address,iconLabel:{innerHTML:'<div style="font-size:7px;text-align:center;">'+points[i].address+'</div>', style: {color:'white'}}}
+          );
+        }else{
+          var marker = new SvgMarker(
+            new SvgMarker.Shape.WaterDrop({height: mheight,width:mwidth, fillColor: 'red', strokeWidth: 1,strokeColor: 'red'}),
+            {position: [points[i].lnggd, points[i].latgd],title: points[i].address,iconLabel:{innerHTML:'<div style="font-size:7px;text-align:center;">'+points[i].address+'</div>', style: {color:'white'}}}
+          );
+          SymIi++;
+        }
+        markers.push(marker);
+        //添加标签
+        var labelMarker = new AMap.LabelMarker({
+          position:[points[i].lnggd, points[i].latgd],
+          text:{content: points[i].address, direction:'bottom', offset: [0, 0],style:{fontSize:13,fontWeight:'normal',fillColor:'#fff',padding:'2, 5',backgroundColor:SymCol[Math.min(j,SymCol.length-1 )]}}
+        });
+        labelMarkers.push(labelMarker);
+      }
+      /////////////////////
+    }else{
+      for(var i = 0,pointsLen = points.length;i <pointsLen;i++){
+        var marker = new SvgMarker(
+          new SvgMarker.Shape.WaterDrop({height: mheight,width:mwidth, fillColor: 'red', strokeWidth: 1,strokeColor: 'red'}),
+          {position: [points[i].lnggd, points[i].latgd],title: points[i].address,iconLabel:{innerHTML:'<div style="font-size:12px;text-align:center;">'+points[i].address+'</div>', style: {color:'white'}}}
+        );
+        SymIi++;
+        markers.push(marker);
+      }
+      /////////////////////////
+    }
+    ///////////////////////////////////////////////////////////
+    //
+    gdlabellayer=new AMap.LabelsLayer({zooms: [3, 20],zIndex: 1000,collision: true,animation: false});
+    gdlabellayer.add(labelMarkers);
+    gdlabellayer.setMap(null);
+    //
+
+
+    var gdcluster=new AMap.MarkerClusterer(map,markers,{gridSize: 80 });
+    gdcluster.setMap(null);
+
+
+
+    map.add(markers);
+    map.setFitView();
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //最佳显示/////////////////////
+    document.getElementById("btndisplay").onclick=function(){
+      map.setFitView(markers)
+    }
+
+    ///聚合图
+    var pointcluster=document.getElementById("ckbcluster");
+    pointcluster.onclick=function(){
+      if(pointcluster.checked){
+        gdcluster.setMap(map);
+      }else{gdcluster.setMap(null);
+        map.add(markers);
+
+      }
+    }
+
+//////////////////////
+  });
+
+
+  //显示标签/////////////////////////////
+  var pointlab=document.getElementById("ckblab");
+  pointlab.onclick=function(){
+    if(pointlab.checked){
+      gdlabellayer.setMap(map);
+    }else{
+      gdlabellayer.setMap(null);
+    }
+  }
+
+  //显示列表////////////////////////////////////////////////////////
+  var varnamelist=document.getElementById("namelist")
+  varnamelist.style.display="none";//隐藏
+  var ul2 = document.querySelector('.namelist ul');
+  var ul2txt="<br>";
+  var ccount=1;
+  for(var i = 0;i <points.length;i++){
+    ul2txt +='<li class="litest"><a   href="#"   class="test"   lng='+ points[i].lnggd +' lat='+        points[i].latgd      +  '  > ' + ("00"+ccount).slice(-3) + '： '+points[i].address+'</a></li>';
+    ccount++;
+  }
+  //
+  var markersel;
+  var dislist=document.getElementById("ckblist");
+  dislist.onclick=function(){
+    if(dislist.checked){
+      ul2.innerHTML=ul2txt
+      varnamelist.style.display="";
+      $(".test").click(function(){
+        map.setCenter( [ $(this).attr("lng") , $(this).attr("lat")]     );
+        if(typeof(markersel)!='undefined'){
+          map.remove(markersel);
+        }
+        markersel =new AMap.CircleMarker({
+          center: [$(this).attr("lng"), $(this).attr("lat")  ] ,
+          radius:10, fillColor:'yellow', strokeColor:'red',strokeWeight:6, fillOpacity:0.5,zIndex:300
+        });
+        map.add(markersel);
+      });
+      //
+      $(".litest").mouseover(function(){
+        this.style.background = '#58FA58';
+      });
+
+      $(".litest").mouseleave(function(){
+        this.style.background = '';
+      });
+      //
+    }else{
+      varnamelist.style.display="none";
+      if(typeof(markersel)!='undefined'){
+        map.remove(markersel);
+      }
+    }
+  }
+
+
+
+  //显示图例////////////////////////////////////////////////////////
+  var ul = document.querySelector('.legend ul');
+  var ultxt="";
+  for(var i=0;i < sset.size; i++) {
+    ultxt +='<li><span style="background: ' + SymCol[i]+ ';"></span><a> ' +SymLet[i] + '： '+ Legendtxt[i]+'</a></li>';
+  }
+  //
+  var dislegend=document.getElementById("ckblegend");
+  dislegend.onclick=function(){
+    if(dislegend.checked){
+      ul.innerHTML=ultxt
+    }else{
+      ul.innerHTML=""
+    }
+  }
+
+
+  //////S3 添加行政区划///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  var colors = [
+    "#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395",
+    "#994499", "#22aa99", "#aaaa11", "#6633cc", "#e67300", "#8b0707", "#651067", "#329262", "#5574a6", "#3b3eac"
+  ];
+  AMapUI.load(['ui/geo/DistrictExplorer', 'lib/$'], function(DistrictExplorer, $) {
+    //////////////////////////////////////////////////////////////////////
+    //鼠标hover提示内容
+    var $tipMarkerContent = $('<div style="width:200px;font-size:16px;font-family: 微软雅黑;color:gray" class="tipMarker2"></div>');
+    var tipMarker = new AMap.Marker({
+      content: $tipMarkerContent.get(0),
+      offset: new AMap.Pixel(0, 0),
+      bubble: true
+    });
+    //根据Hover状态设置相关样式
+    function toggleHoverFeature(feature, isHover, position) {
+      tipMarker.setMap(isHover ? map : null);
+      if (!feature) { return;   }
+      var props = feature.properties;
+      if (isHover) {
+        $tipMarkerContent.html(props.name+'\n('+props.adcode + ')');
+        tipMarker.setPosition(position || props.center);
+      }
+      var polys = districtExplorer.findFeaturePolygonsByAdcode(props.adcode);
+      for (var i = 0, len = polys.length; i < len; i++) {polys[i].setOptions({fillOpacity: isHover ? 0.5 : 0.2});}
+    }
+    //绘制某个区域的边界
+    function renderAreaPolygons(areaNode) {
+      districtExplorer.clearFeaturePolygons();
+      districtExplorer.renderSubFeatures(areaNode, function(feature, i) {
+        var fillColor = colors[i % colors.length];
+        var strokeColor = colors[colors.length - 1 - i % colors.length];
+        return { cursor: 'default',bubble: true,strokeColor: strokeColor,strokeOpacity: 1, strokeWeight: 1, fillColor: fillColor, fillOpacity: 0.35 };
+      });
+      districtExplorer.renderParentFeature(areaNode, {cursor: 'default', bubble: true,strokeColor: 'black',strokeOpacity: 1, strokeWeight: 1,fillColor: areaNode.getSubFeatures().length ? null : colors[0],fillOpacity: 0.35});
+    }
+    //切换区域
+    function switch2AreaNode(adcode, callback) {
+      loadAreaNode(adcode, function(error, areaNode) {
+        if (error) { if (callback) {callback(error); }; return; }
+        currentAreaNode = window.currentAreaNode = areaNode;
+        districtExplorer.setAreaNodesForLocating([currentAreaNode]);
+        districtExplorer.setHoverFeature(null);
+        renderAreaPolygons(areaNode);
+        if (callback) { callback(null, areaNode);  }
+      });
+    }
+    //加载区域
+    function loadAreaNode(adcode, callback) {
+      districtExplorer.loadAreaNode(adcode, function(error, areaNode) {
+        if (error) {if (callback) { callback(error); }; console.error(error); return; }
+        if (callback) { callback(null, areaNode); }
+      });
+    }
+    //判断定位级别
+    function  displayxzqh(positon){
+      districtExplorer.locatePosition(positon, function(error, routeFeatures) {
+          let gdmapzoom=map.getZoom();
+          if (routeFeatures && routeFeatures.length > 1) {
+            if(gdmapzoom<6) {switch2AreaNode(routeFeatures[0].properties.adcode);}
+            if(gdmapzoom>=6 && gdmapzoom<8){switch2AreaNode(routeFeatures[1].properties.adcode);}
+            if(gdmapzoom>=9 ){switch2AreaNode(routeFeatures[2].properties.adcode);}
+          } else {
+            switch2AreaNode(100000);
+          }
+        },
+        {  levelLimit: 4 }
+      );
+    }
+
+    ////////////////
+    var xzqh=document.getElementById("ckbarea");
+    xzqh.onclick=function(){
+      if(xzqh.checked){
+        districtExplorer = new DistrictExplorer({eventSupport: true,  map: map });
+        districtExplorer.on('featureMouseout featureMouseover', function(e, feature) {toggleHoverFeature(feature, e.type === 'featureMouseover', e.originalEvent ? e.originalEvent.lnglat : null);});
+        districtExplorer.on('featureMousemove', function(e, feature) {tipMarker.setPosition(e.originalEvent.lnglat);});
+        districtExplorer.on('featureClick', function(e, feature) { var props = feature.properties;switch2AreaNode(props.adcode);   });
+        districtExplorer.on('outsideClick', function(e) {displayxzqh(e.originalEvent.lnglat)  });
+        displayxzqh(map.getCenter());
+      }else{
+        districtExplorer.clearFeaturePolygons();
+        districtExplorer.destroy();
+        map.remove(tipMarker);
+      }
+    }
+    ////////////////////////////////////////////////////////////////////////////////////
+  });
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////
+</script>
+</body>
+</html>
