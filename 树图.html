@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+  <meta charset="utf-8">
+  <title>ECharts</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+</head>
+<body style="height: 1500px; margin: 0">
+<div id="container" style="height: 1500px"></div>
+<script type="text/javascript">
+  var myChart=echarts.init(document.getElementById("container"))
+  
+  var data = {
+    "name": "新冠",
+    "children": [
+      {
+        "name": "第一支",
+        "children": [
+          {name: '荷玛奥', value: 23},
+          {name: '杜琴丹伍', value: 4},
+          {name: '貌代本伍', value: 14},
+          {name: '王连生', value: 1},
+          {name: '恒麻推', value: 21},
+          {name: '玛伦麻薇', value: 29},
+          {name: '卖恩静', value: 31},
+          {name: '貌昂谬铁', value: 35},
+          {name: 'AwngSanmin', value: 36},
+          {name: '貌坡亚', value: 38},
+          {name: '玛宁努努耐', value: 28},
+          {name: '廖剑珍', value: 79},
+          {name: '段生槐', value: 88},
+          {name: '管国志', value: 57},
+          {name: '耐耐索', value: 61},
+          {name: '左腊生', value: 63}
+        ]
+      },
+      {
+        "name": "第二支",
+        "children": [
+          {name: '玛宁贝漂', value: 44},
+          {name: '梁礼贤', value: 3},
+          {name: '徐博韬', value: 10},
+          {name: '梁晨', value: 39},
+          {name: '柳君鹏', value: 24},
+          {name: '林龙', value: 25}
+        ]
+      },
+      {
+        "name": "第三支",
+        "children": [
+
+            {name: '岩卯', value: 92},
+            {name: '字蓉 ', value: 34},
+            {name: '玛丁萨温', value: 37},
+            {name: '貌谬明', value: 40},
+            {name: '龙彩华', value: 22},
+            {name: '貌伟漂昂', value: 26},
+            {name: '玛朵朵五', value: 27},
+            {name: '岩良', value: 32},
+            {name: '梦腊', value: 33},
+            {name: '马伍', value: 30},
+            {name: '吴谬明', value: 11},
+            {name: '貌索林', value: 20},
+            {name: '顶波', value: 16},
+            {name: '吞路', value: 13},
+            {name: '也门', value: 9},
+            {name: '行腿奥', value: 19},
+            {name: '杜敏敏', value: 18},
+            {name: '杜莱', value: 17},
+            {name: '貌丁林索', value: 2},
+            {name: '貌孟杰昂', value: 58},
+            {name: '赵玉菲', value: 59},
+            {name: '貌索莫觉', value: 48},
+            {name: '余菊玉', value: 62},
+            {name: '特苗吞', value: 7},
+            {name: '多亚迪', value: 47},
+            {name: '当奈', value: 46},
+            {name: '楠瑞', value: 52},
+            {name: '琴美', value: 49},
+            {name: '杜漂特', value: 50},
+            {name: '梦丁', value: 6},
+            {name: '玛卫', value: 12},
+            {name: '貌凯明伍', value: 15},
+            {name: '昂吞磊', value: 5},
+            {name: '吉漂达', value: 8},
+            {name: '陈云湘', value: 91},
+            {name: '岩俩', value: 94},
+            {name: '文虎', value: 77},
+            {name: '梅莱', value: 83}
+        ]
+      },
+      {
+        "name": "第四支",
+        "children": [
+          {name: '占喊', value: 41},
+          {name: '张志南', value: 71},
+          {name: '玛诶兰', value: 84},
+          {name: '范文刚', value: 86},
+          {name: '吕河', value: 87}
+        ]
+      },
+      {
+        "name": "第五支",
+        "children": [
+          {name: '小闷', value: 5},
+          {name: '排麻糯', value: 5},
+          {name: '雷勒弄', value: 5},
+          {name: '雷雨杰', value: 5},
+          {name: '咩盛', value: 5},
+          {name: '糯散', value: 5},
+          {name: '内林吞', value: 5},
+          {name: '张宜敏', value: 5}
+        ]
+      },
+      {
+        "name": "第六支",
+        "children": [
+          {name: '春明', value: 65},
+          {name: '南也静', value: 68},
+          {name: '相也', value: 69},
+          {name: '岳管喊', value: 66},
+          {name: '赛帅', value: 67},
+          {name: '左和', value: 70}
+        ]
+      },
+      {
+        "name": "第七支",
+        "children": [
+          {name: '貌丹温', value: 56},
+          {name: '欧彩够', value: 90},
+          {name: '刘应兰', value: 93}
+        ]
+      },
+      {
+        "name": "第八支",
+        "children": [
+          {name: '孔老放', value: 8},
+        ]
+      },
+      {
+        "name": "第九支",
+        "children": [
+          {name: '郭建军', value: 73},
+          {name: '杨惠芬', value: 82},
+          {name: '岩孟', value: 74}
+        ]
+      },
+      {
+        "name": "第十支",
+        "children": [
+          {name: '玛依依登', value: 75},
+        ]
+      },
+      {
+        "name": "第十一支",
+        "children": [
+          {name: '叶凯晴', value: 76},
+        ]
+      },
+      {
+        "name": "第十二支",
+        "children": [
+          {name: '李焕崃', value: 78},
+        ]
+      },
+      {
+        "name": "第十三支",
+        "children": [
+          {name: '陈春勤', value: 64},
+          {name: '何光珍', value: 51},
+          {name: '玛素咩昂昂', value: 80}
+        ]
+      },
+      {
+        "name": "第十四支",
+        "children": [
+          {name: '李敬琴', value: 81},
+        ]
+      },
+      {
+        "name": "第十五支",
+        "children": [
+          {name: '郭云威', value: 85},
+          {name: '张玺', value: 95},
+          {name: '林壁灿', value: 96},
+          {name: '李才文', value: 97},
+          {name: '岩旺依鲁', value: 98},
+          {name: '张旭奎', value: 99}
+        ]
+      },
+      {
+        "name": "第十六支",
+        "children": [
+          {name: '黄美荣', value: 101},
+        ]
+      },
+      {
+        "name": "第十七支",
+        "children": [
+          {name: '卢英', value: 100},
+        ]
+      }
+    ]
+  };
+
+  var option = {
+    tooltip: {
+      trigger: 'item',
+      triggerOn: 'mousemove'
+    },
+    series:[
+      {
+        type: 'tree',
+        id: 0,
+        name: 'tree1',
+        data: [data],
+
+        top: '5%',
+        left: '30%',
+        bottom: '5%',
+        right: '30%',
+
+        symbolSize: 7,
+
+        edgeShape: 'polyline',
+        edgeForkPosition: '63%',
+        initialTreeDepth: 3,
+
+        lineStyle: {
+          width: 2
+        },
+
+        label: {
+          backgroundColor: '#fff',
+          position: 'left',
+          verticalAlign: 'middle',
+          align: 'right'
+        },
+
+        leaves: {
+          label: {
+            position: 'right',
+            verticalAlign: 'middle',
+            align: 'left'
+          }
+        },
+
+        emphasis: {
+          focus: 'descendant'
+        },
+
+        expandAndCollapse: true,
+        animationDuration: 550,
+        animationDurationUpdate: 750
+      }
+    ]
+  };
+  myChart.setOption(option);
+
+</script>
+</body>
+</html>
+
+
