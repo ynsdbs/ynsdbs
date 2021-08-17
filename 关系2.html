@@ -1,0 +1,375 @@
+﻿<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+  <meta charset="utf-8">
+  <title>ECharts</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+</head>
+<body style="height: 100%; margin: 0">
+<div id="container" style="height: 100%"></div>
+<script type="text/javascript">
+  var myChart=echarts.init(document.getElementById("container"))
+  option = {
+    backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
+      offset: 0,
+      color: '#f7f8fa'
+    }, {
+      offset: 1,
+      color: '#cdd0d5'
+    }]),
+    // title:{
+    //   text: "广州大学数据分析",
+    //   subtext: "各学院专业关系-Acring",
+    //   top: "top",
+    //   left: "center"
+    // },
+    tooltip: {},
+    // legend: [{
+    //   formatter: function (name) {
+    //     return echarts.format.truncateText(name, 40, '14px Microsoft Yahei', '…');
+    //   },
+    //   tooltip: {
+    //     show: true
+    //   },
+    //   selectedMode: 'false',
+    //   bottom: 20,
+    //   data: ['计算机科学与教育软件学院', '地理科学学院', '机械与电气工程学院', '经济与统计学院', '土木工程学院', '新闻与传播学院', '外国语学院', '人文学院', '数学与信息科学学院', '工商管理学院', '法学院', '公共管理学院', '卫斯理安学院', '政治与公民教育学院', '旅游学院', '教育学院', '环境科学与工程学院', '化学化工学院', '物理与电子工程学院', '建筑与城市规划学院', '美术与设计学院', '生命科学学院', '体育学院', '音乐舞蹈学院']
+    // }],
+    // toolbox: {
+    //   show : true,
+    //   feature : {
+    //     dataView : {show: true, readOnly: true},
+    //     restore : {show: true},
+    //     saveAsImage : {show: true}
+    //   }
+    // },
+    animationDuration: 3000,
+    animationEasingUpdate: 'quinticInOut',
+    series: [{
+      type: 'graph',
+      layout: 'force',
+
+      force: {
+        repulsion: 50
+      },
+      data: [
+        {name: '瑞丽新冠', symbolSize: 25, category: 0, draggable: 'TRUE', value: 15},
+        {name: '第1链', symbolSize: 20, category: 1, draggable: 'TRUE', value: 15},
+        {name: '荷玛奥', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '杜琴丹伍', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '貌代本伍', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '王连生', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '恒麻推', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '玛伦麻薇', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '卖恩静', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '貌昂谬铁', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: 'AwngSanmin', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '貌坡亚', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '玛宁努努耐', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '廖剑珍', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '段生槐', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '管国志', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '耐耐索', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '左腊生', symbolSize: 15, category: 1, draggable: 'TRUE', value: 15},
+        {name: '第2链', symbolSize: 20, category: 2, draggable: 'TRUE', value: 15},
+        {name: '玛宁贝漂', symbolSize: 15, category: 2, draggable: 'TRUE', value: 15},
+        {name: '梁礼贤', symbolSize: 15, category: 2, draggable: 'TRUE', value: 15},
+        {name: '徐博韬', symbolSize: 15, category: 2, draggable: 'TRUE', value: 15},
+        {name: '梁晨', symbolSize: 15, category: 2, draggable: 'TRUE', value: 15},
+        {name: '柳君鹏', symbolSize: 15, category: 2, draggable: 'TRUE', value: 15},
+        {name: '林龙', symbolSize: 15, category: 2, draggable: 'TRUE', value: 15},
+        {name: '第3链', symbolSize: 20, category: 3, draggable: 'TRUE', value: 15},
+        {name: '岩卯', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '字蓉 ', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '玛丁萨温', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '貌谬明', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '龙彩华', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '貌伟漂昂', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '玛朵朵五', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '岩良', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '梦腊', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '马伍', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '吴谬明', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '貌索林', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '顶波', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '吞路', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '也门', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '行腿奥', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '杜敏敏', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '杜莱', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '貌丁林索', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '貌孟杰昂', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '赵玉菲', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '貌索莫觉', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '余菊玉', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '特苗吞', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '多亚迪', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '当奈', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '楠瑞', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '琴美', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '杜漂特', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '梦丁', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '玛卫', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '貌凯明伍', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '昂吞磊', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '吉漂达', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '陈云湘', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '岩俩', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '文虎', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '梅莱', symbolSize: 15, category: 3, draggable: 'TRUE', value: 15},
+        {name: '第4链', symbolSize: 20, category: 4, draggable: 'TRUE', value: 15},
+        {name: '占喊', symbolSize: 15, category: 4, draggable: 'TRUE', value: 15},
+        {name: '张志南', symbolSize: 15, category: 4, draggable: 'TRUE', value: 15},
+        {name: '玛诶兰', symbolSize: 15, category: 4, draggable: 'TRUE', value: 15},
+        {name: '范文刚', symbolSize: 15, category: 4, draggable: 'TRUE', value: 15},
+        {name: '吕河', symbolSize: 15, category: 4, draggable: 'TRUE', value: 15},
+        {name: '第5链', symbolSize: 20, category: 5, draggable: 'TRUE', value: 15},
+        {name: '小闷', symbolSize: 15, category: 5, draggable: 'TRUE', value: 15},
+        {name: '排麻糯', symbolSize: 15, category: 5, draggable: 'TRUE', value: 15},
+        {name: '雷勒弄', symbolSize: 15, category: 5, draggable: 'TRUE', value: 15},
+        {name: '雷雨杰', symbolSize: 15, category: 5, draggable: 'TRUE', value: 15},
+        {name: '咩盛', symbolSize: 15, category: 5, draggable: 'TRUE', value: 15},
+        {name: '糯散', symbolSize: 15, category: 5, draggable: 'TRUE', value: 15},
+        {name: '内林吞', symbolSize: 15, category: 5, draggable: 'TRUE', value: 15},
+        {name: '张宜敏', symbolSize: 15, category: 5, draggable: 'TRUE', value: 15},
+        {name: '第6链', symbolSize: 20, category: 6, draggable: 'TRUE', value: 15},
+        {name: '春明', symbolSize: 15, category: 6, draggable: 'TRUE', value: 15},
+        {name: '南也静', symbolSize: 15, category: 6, draggable: 'TRUE', value: 15},
+        {name: '相也', symbolSize: 15, category: 6, draggable: 'TRUE', value: 15},
+        {name: '岳管喊', symbolSize: 15, category: 6, draggable: 'TRUE', value: 15},
+        {name: '赛帅', symbolSize: 15, category: 6, draggable: 'TRUE', value: 15},
+        {name: '左和', symbolSize: 15, category: 6, draggable: 'TRUE', value: 15},
+        {name: '第7链', symbolSize: 20, category: 7, draggable: 'TRUE', value: 15},
+        {name: '貌丹温', symbolSize: 15, category: 7, draggable: 'TRUE', value: 15},
+        {name: '欧彩够', symbolSize: 15, category: 7, draggable: 'TRUE', value: 15},
+        {name: '刘应兰', symbolSize: 15, category: 7, draggable: 'TRUE', value: 15},
+        {name: '第8链', symbolSize: 20, category: 8, draggable: 'TRUE', value: 15},
+        {name: '孔老放', symbolSize: 15, category: 8, draggable: 'TRUE', value: 15},
+        {name: '第9链', symbolSize: 20, category: 9, draggable: 'TRUE', value: 15},
+        {name: '郭建军', symbolSize: 15, category: 9, draggable: 'TRUE', value: 15},
+        {name: '杨惠芬', symbolSize: 15, category: 9, draggable: 'TRUE', value: 15},
+        {name: '岩孟', symbolSize: 15, category: 9, draggable: 'TRUE', value: 15},
+        {name: '第10链', symbolSize: 20, category: 10, draggable: 'TRUE', value: 15},
+        {name: '玛依依登', symbolSize: 15, category: 10, draggable: 'TRUE', value: 15},
+        {name: '第11链', symbolSize: 20, category: 11, draggable: 'TRUE', value: 15},
+        {name: '叶凯晴', symbolSize: 15, category: 11, draggable: 'TRUE', value: 15},
+        {name: '第12链', symbolSize: 15, category: 12, draggable: 'TRUE', value: 15},
+        {name: '李焕崃', symbolSize: 15, category: 12, draggable: 'TRUE', value: 15},
+        {name: '第13链', symbolSize: 20, category: 13, draggable: 'TRUE', value: 15},
+        {name: '陈春勤', symbolSize: 15, category: 13, draggable: 'TRUE', value: 15},
+        {name: '何光珍', symbolSize: 15, category: 13, draggable: 'TRUE', value: 15},
+        {name: '玛素咩昂昂', symbolSize: 15, category: 13, draggable: 'TRUE', value: 15},
+        {name: '第14链', symbolSize: 20, category: 14, draggable: 'TRUE', value: 15},
+        {name: '李敬琴', symbolSize: 15, category: 14, draggable: 'TRUE', value: 15},
+        {name: '第15链', symbolSize: 20, category: 15, draggable: 'TRUE', value: 15},
+        {name: '郭云威', symbolSize: 15, category: 15, draggable: 'TRUE', value: 15},
+        {name: '张玺', symbolSize: 15, category: 15, draggable: 'TRUE', value: 15},
+        {name: '林壁灿', symbolSize: 15, category: 15, draggable: 'TRUE', value: 15},
+        {name: '李才文', symbolSize: 15, category: 15, draggable: 'TRUE', value: 15},
+        {name: '岩旺依鲁', symbolSize: 15, category: 15, draggable: 'TRUE', value: 15},
+        {name: '张旭奎', symbolSize: 15, category: 15, draggable: 'TRUE', value: 15},
+        {name: '第16链', symbolSize: 20, category: 16, draggable: 'TRUE', value: 15},
+        {name: '黄美荣', symbolSize: 15, category: 16, draggable: 'TRUE', value: 15},
+        {name: '第17链', symbolSize: 20, category: 17, draggable: 'TRUE', value: 15},
+        {name: '卢英', symbolSize: 15, category: 17, draggable: 'TRUE', value: 15}
+      ],
+      links: [
+        {"source": "瑞丽新冠", "target": "第1链"},
+        {"source": "瑞丽新冠", "target": "第2链"},
+        {"source": "瑞丽新冠", "target": "第3链"},
+        {"source": "瑞丽新冠", "target": "第4链"},
+        {"source": "瑞丽新冠", "target": "第5链"},
+        {"source": "瑞丽新冠", "target": "第6链"},
+        {"source": "瑞丽新冠", "target": "第7链"},
+        {"source": "瑞丽新冠", "target": "第8链"},
+        {"source": "瑞丽新冠", "target": "第9链"},
+        {"source": "瑞丽新冠", "target": "第10链"},
+        {"source": "瑞丽新冠", "target": "第11链"},
+        {"source": "瑞丽新冠", "target": "第12链"},
+        {"source": "瑞丽新冠", "target": "第13链"},
+        {"source": "瑞丽新冠", "target": "第14链"},
+        {"source": "瑞丽新冠", "target": "第15链"},
+        {"source": "瑞丽新冠", "target": "第16链"},
+        {"source": "瑞丽新冠", "target": "第17链"},
+
+        {"source": "第1链", "target": "荷玛奥"},
+        {"source": "第1链", "target": "荷玛奥"},
+        {"source": "第1链", "target": "杜琴丹伍"},
+        {"source": "第1链", "target": "貌代本伍"},
+        {"source": "第1链", "target": "王连生"},
+        {"source": "第1链", "target": "恒麻推"},
+        {"source": "第1链", "target": "玛伦麻薇"},
+        {"source": "第1链", "target": "卖恩静"},
+        {"source": "第1链", "target": "貌昂谬铁"},
+        {"source": "第1链", "target": "AwngSanmin"},
+        {"source": "第1链", "target": "貌坡亚"},
+        {"source": "第1链", "target": "玛宁努努耐"},
+        {"source": "第1链", "target": "廖剑珍"},
+        {"source": "第1链", "target": "段生槐"},
+        {"source": "第1链", "target": "管国志"},
+        {"source": "第1链", "target": "耐耐索"},
+        {"source": "第1链", "target": "左腊生"},
+
+        {"source": "第2链", "target": "玛宁贝漂"},
+        {"source": "第2链", "target": "梁礼贤"},
+        {"source": "第2链", "target": "徐博韬"},
+        {"source": "第2链", "target": "梁晨"},
+        {"source": "第2链", "target": "柳君鹏"},
+        {"source": "第2链", "target": "林龙"},
+        {"source": "第3链", "target": "岩卯"},
+        {"source": "第3链", "target": "字蓉 "},
+        {"source": "第3链", "target": "玛丁萨温"},
+        {"source": "第3链", "target": "貌谬明"},
+        {"source": "第3链", "target": "龙彩华"},
+        {"source": "第3链", "target": "貌伟漂昂"},
+        {"source": "第3链", "target": "玛朵朵五"},
+        {"source": "第3链", "target": "岩良"},
+        {"source": "第3链", "target": "梦腊"},
+        {"source": "第3链", "target": "马伍"},
+        {"source": "第3链", "target": "吴谬明"},
+        {"source": "第3链", "target": "貌索林"},
+        {"source": "第3链", "target": "顶波"},
+        {"source": "第3链", "target": "吞路"},
+        {"source": "第3链", "target": "也门"},
+        {"source": "第3链", "target": "行腿奥"},
+        {"source": "第3链", "target": "杜敏敏"},
+        {"source": "第3链", "target": "杜莱"},
+        {"source": "第3链", "target": "貌丁林索"},
+        {"source": "第3链", "target": "貌孟杰昂"},
+        {"source": "第3链", "target": "赵玉菲"},
+        {"source": "第3链", "target": "貌索莫觉"},
+        {"source": "第3链", "target": "余菊玉"},
+        {"source": "第3链", "target": "特苗吞"},
+        {"source": "第3链", "target": "多亚迪"},
+        {"source": "第3链", "target": "当奈"},
+        {"source": "第3链", "target": "楠瑞"},
+        {"source": "第3链", "target": "琴美"},
+        {"source": "第3链", "target": "杜漂特"},
+        {"source": "第3链", "target": "梦丁"},
+        {"source": "第3链", "target": "玛卫"},
+        {"source": "第3链", "target": "貌凯明伍"},
+        {"source": "第3链", "target": "昂吞磊"},
+        {"source": "第3链", "target": "吉漂达"},
+        {"source": "第3链", "target": "陈云湘"},
+        {"source": "第3链", "target": "岩俩"},
+        {"source": "第3链", "target": "文虎"},
+        {"source": "第3链", "target": "梅莱"},
+        {"source": "第4链", "target": "占喊"},
+        {"source": "第4链", "target": "张志南"},
+        {"source": "第4链", "target": "玛诶兰"},
+        {"source": "第4链", "target": "范文刚"},
+        {"source": "第4链", "target": "吕河"},
+        {"source": "第5链", "target": "小闷"},
+        {"source": "第5链", "target": "排麻糯"},
+        {"source": "第5链", "target": "雷勒弄"},
+        {"source": "第5链", "target": "雷雨杰"},
+        {"source": "第5链", "target": "咩盛"},
+        {"source": "第5链", "target": "糯散"},
+        {"source": "第5链", "target": "内林吞"},
+        {"source": "第5链", "target": "张宜敏"},
+        {"source": "第6链", "target": "春明"},
+        {"source": "第6链", "target": "南也静"},
+        {"source": "第6链", "target": "相也"},
+        {"source": "第6链", "target": "岳管喊"},
+        {"source": "第6链", "target": "赛帅"},
+        {"source": "第6链", "target": "左和"},
+        {"source": "第7链", "target": "貌丹温"},
+        {"source": "第7链", "target": "欧彩够"},
+        {"source": "第7链", "target": "刘应兰"},
+        {"source": "第8链", "target": "孔老放"},
+        {"source": "第9链", "target": "郭建军"},
+        {"source": "第9链", "target": "杨惠芬"},
+        {"source": "第9链", "target": "岩孟"},
+        {"source": "第10链", "target": "玛依依登"},
+        {"source": "第11链", "target": "叶凯晴"},
+        {"source": "第12链", "target": "李焕崃"},
+        {"source": "第13链", "target": "陈春勤"},
+        {"source": "第13链", "target": "何光珍"},
+        {"source": "第13链", "target": "玛素咩昂昂"},
+        {"source": "第14链", "target": "李敬琴"},
+        {"source": "第15链", "target": "郭云威"},
+        {"source": "第15链", "target": "张玺"},
+        {"source": "第15链", "target": "林壁灿"},
+        {"source": "第15链", "target": "李才文"},
+        {"source": "第15链", "target": "岩旺依鲁"},
+        {"source": "第15链", "target": "张旭奎"},
+        {"source": "第16链", "target": "黄美荣"},
+        {"source": "第17链", "target": "卢英"},
+        {"source": "玛依依登", "target": "卢英"},
+
+
+      ],
+      categories: [{
+        'name': '计算机科学与教育软件学院'
+      }, {
+        'name': '地理科学学院'
+      }, {
+        'name': '机械与电气工程学院'
+      }, {
+        'name': '经济与统计学院'
+      }, {
+        'name': '土木工程学院'
+      }, {
+        'name': '新闻与传播学院'
+      }, {
+        'name': '外国语学院'
+      }, {
+        'name': '人文学院'
+      }, {
+        'name': '数学与信息科学学院'
+      }, {
+        'name': '工商管理学院'
+      }, {
+        'name': '法学院'
+      }, {
+        'name': '公共管理学院'
+      }, {
+        'name': '卫斯理安学院'
+      }, {
+        'name': '政治与公民教育学院'
+      }, {
+        'name': '旅游学院'
+      }, {
+        'name': '教育学院'
+      }, {
+        'name': '环境科学与工程学院'
+      }, {
+        'name': '化学化工学院'
+      }, {
+        'name': '物理与电子工程学院'
+      }, {
+        'name': '建筑与城市规划学院'
+      }, {
+        'name': '美术与设计学院'
+      }, {
+        'name': '生命科学学院'
+      }, {
+        'name': '体育学院'
+      }, {
+        'name': '音乐舞蹈学院'
+      }],
+      focusNodeAdjacency: true,
+      roam: true,
+      label: {
+        normal: {
+
+          show: true,
+          position: 'top',
+
+        }
+      },
+      lineStyle: {
+        normal: {
+          color: 'source',
+          curveness: 0,
+          type: "solid"
+        }
+      }
+    }]
+  };
+  myChart.setOption(option);
+
+</script>
+</body>
+</html>
+
