@@ -245,11 +245,12 @@ AwngSanmin,97.8913408482397,23.9744703918267,第1传播链
 
   //////S2 地图设置/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //显示地图及控件
-  var map = new AMap.Map('divmap', {viewMode: '2D', animateEnable:false, zoom:10,center: [[116.397428, 39.90923]] });
-  AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.MapType'], function(){
-    map.addControl(new AMap.Scale());
-    map.addControl(new AMap.MapType());
-  });
+  var map = new AMap.Map('divmap', {viewMode: '2D', animateEnable:false, zoom:12,center: [116.397428, 39.90923] });
+  // AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.MapType'], function(){
+  //   map.addControl(new AMap.Scale());
+  //   map.addControl(new AMap.MapType());
+  // });
+  map.setMapStyle('amap://styles/whitesmoke');
 
   //整理数据////////////////////////////////////////////////////////////
   var points =[],ccates=[];
@@ -496,7 +497,7 @@ AwngSanmin,97.8913408482397,23.9744703918267,第1传播链
         if (callback) { callback(null, areaNode); }
       });
     }
-    //判断定位级别
+    判断定位级别
     function  displayxzqh(positon){
       districtExplorer.locatePosition(positon, function(error, routeFeatures) {
           let gdmapzoom=map.getZoom();
@@ -534,4 +535,5 @@ AwngSanmin,97.8913408482397,23.9744703918267,第1传播链
 </script>
 </body>
 </html>
+
 
