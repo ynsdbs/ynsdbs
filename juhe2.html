@@ -325,7 +325,7 @@ AwngSanmin,97.8913408482397,23.9744703918267,第1传播链
       for(var i = 0,pointsLen = points.length;i <pointsLen;i++){
         var marker = new SvgMarker(
           new SvgMarker.Shape.WaterDrop({height: mheight,width:mwidth, fillColor: 'red', strokeWidth: 1,strokeColor: 'red'}),
-          {position: [points[i].lnggd, points[i].latgd],title: points[i].address,iconLabel:{innerHTML:'<div style="font-size:12px;text-align:center;">'+points[i].address+'</div>', style: {color:'white'}}}
+          {position: [points[i].lnggd, points[i].latgd],title: points[i].address,iconLabel:{innerHTML:'<div style="font-size:7px;text-align:center;">'+points[i].address+'</div>', style: {color:'white'}}}
         );
         SymIi++;
         markers.push(marker);
