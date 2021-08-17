@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>瑞丽329</title>
   <script type="text/javascript">
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -245,7 +245,7 @@ AwngSanmin,97.8913408482397,23.9744703918267,第1传播链
 
   //////S2 地图设置/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //显示地图及控件
-  var map = new AMap.Map('divmap', {viewMode: '2D', animateEnable:false, zoom:4,center: [105,33] });
+  var map = new AMap.Map('divmap', {viewMode: '2D', animateEnable:false, zoom:10,center: [[116.397428, 39.90923]] });
   AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.MapType'], function(){
     map.addControl(new AMap.Scale());
     map.addControl(new AMap.MapType());
@@ -325,7 +325,7 @@ AwngSanmin,97.8913408482397,23.9744703918267,第1传播链
       for(var i = 0,pointsLen = points.length;i <pointsLen;i++){
         var marker = new SvgMarker(
           new SvgMarker.Shape.WaterDrop({height: mheight,width:mwidth, fillColor: 'red', strokeWidth: 1,strokeColor: 'red'}),
-          {position: [points[i].lnggd, points[i].latgd],title: points[i].address,iconLabel:{innerHTML:'<div style="font-size:7px;text-align:center;">'+points[i].address+'</div>', style: {color:'white'}}}
+          {position: [points[i].lnggd, points[i].latgd],title: points[i].address,iconLabel:{innerHTML:'<div style="font-size:12px;text-align:center;">'+points[i].address+'</div>', style: {color:'white'}}}
         );
         SymIi++;
         markers.push(marker);
@@ -534,3 +534,4 @@ AwngSanmin,97.8913408482397,23.9744703918267,第1传播链
 </script>
 </body>
 </html>
+
