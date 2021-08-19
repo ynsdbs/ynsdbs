@@ -2,7 +2,7 @@
 <html style="height: 100%">
 <head>
   <meta charset="utf-8">
-  <title>传播链示意图</title>
+  <title>瑞丽传播链</title>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
   <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=7f0d646ea8a6b7b94bdaa2396be26eb1"></script>
@@ -15,27 +15,27 @@
 
 <div id="container" style="height:100%" ></div>
 <script type="text/javascript">
+  //"#316395","#994499", "#22aa99", "#aaaa11","#00c3ff"
   var colors = [
-    "#ff0033", "red", "#3b3eac", "#109618", "#990099", "#0099c6", "#dd4477", "#66aa00", "#b82e2e", "#316395",
-    "#994499", "#22aa99", "#aaaa11", "#e67300", "#8b0707", "#6633cc", "#651067", "#329262", "#5574a6",
+    "#ED213A", "#ffcc00", "#0099ff", "#45b649", "#990099", "#ccc", "#6633cc", "#66aa00", "#e67300",
   ];
   var data1=[
-    {name:"23",xm:"荷玛奥",value:[97.8914513070138,23.97427171586]},//7-5
-    {name:"4",xm:"杜琴丹伍",value:[97.8902638999969,23.9774226362292]},//7-3
-    {name:"14",xm:"貌代本伍",value:[97.8901254151296,23.9773337666335]},//7-6
-    {name:"1",xm:"王连生",value:[97.890312981471,23.9776848576498]},   //7-3
-    {name:"21",xm:"恒麻推",value:[97.8959975655765,23.9805668825159]},
-    {name:"28",xm:"玛宁努努耐",value:[97.8917477220721,23.9791307487406]},
-    {name:"29",xm:"玛伦麻薇",value:[97.8918652453816,23.9789469781363]},
-    {name:"31",xm:"卖恩静",value:[97.8906557161896,23.9809482042196]},
-    {name:"35",xm:"貌昂谬铁",value:[97.889250129102,23.9739614316107]},
-    {name:"36",xm:"AwngSanmin",value:[97.8913408482397,23.9744703918267]},
-    {name:"38",xm:"貌坡亚",value:[97.8913127861436,23.9742848319104]},
-    {name:"57",xm:"管国志",value:[97.8823974509978,23.9723024343163]},
-    {name:"61",xm:"耐耐索",value:[97.8915366195815,23.9742994110713]},
-    {name:"63",xm:"左腊生",value:[97.8826503223626,23.9723488510586]},
-    {name:"79",xm:"廖剑珍",value:[97.89622,23.978333]},
-    {name:"88",xm:"段生槐",value:[97.875368,24.009055]},
+    {id:"第一传播链",name:"23",xm:"荷玛奥",value:[97.8914513070138,23.97427171586]},//7-5
+    {id:"第一传播链",name:"4",xm:"杜琴丹伍",value:[97.8902638999969,23.9774226362292]},//7-3
+    {id:"第一传播链",name:"14",xm:"貌代本伍",value:[97.8901254151296,23.9773337666335]},//7-6
+    {id:"第一传播链",name:"1",xm:"王连生",value:[97.890312981471,23.9776848576498]},   //7-3
+    {id:"第一传播链",name:"21",xm:"恒麻推",value:[97.8959975655765,23.9805668825159]},
+    {id:"第一传播链",name:"28",xm:"玛宁努努耐",value:[97.8917477220721,23.9791307487406]},
+    {id:"第一传播链",name:"29",xm:"玛伦麻薇",value:[97.8918652453816,23.9789469781363]},
+    {id:"第一传播链",name:"31",xm:"卖恩静",value:[97.8906557161896,23.9809482042196]},
+    {id:"第一传播链",name:"35",xm:"貌昂谬铁",value:[97.889250129102,23.9739614316107]},
+    {id:"第一传播链",name:"36",xm:"AwngSanmin",value:[97.8913408482397,23.9744703918267]},
+    {id:"第一传播链",name:"38",xm:"貌坡亚",value:[97.8913127861436,23.9742848319104]},
+    {id:"第一传播链",name:"57",xm:"管国志",value:[97.8823974509978,23.9723024343163]},
+    {id:"第一传播链",name:"61",xm:"耐耐索",value:[97.8915366195815,23.9742994110713]},
+    {id:"第一传播链",name:"63",xm:"左腊生",value:[97.8826503223626,23.9723488510586]},
+    {id:"第一传播链",name:"79",xm:"廖剑珍",value:[97.89622,23.978333]},
+    {id:"第一传播链",name:"88",xm:"段生槐",value:[97.875368,24.009055]},
 
 ]
   var linedata1=[
@@ -57,81 +57,165 @@
         [97.89622,23.978333],
         [97.875368,24.009055]
       ]},
-
   ]
   var data2=[
-    {name:"44",xm:"玛宁贝漂",value:[97.8944352608546,23.9746525504046]},
-    {name:"3",xm:"梁礼贤",value:[97.8941223063838,23.9772440164547]},
-    {name:"10",xm:"徐博韬",value:[97.8941996051382,23.9772018636968]},
-    {name:"39",xm:"梁晨",value:[97.8941685482063,23.9770493431745]},
-    {name:"24",xm:"柳君鹏",value:[97.8940692051751,23.9769928361053]},
-    {name:"25",xm:"林龙",value:[97.8940149678833,23.9770976388849]},
+    {id:"第二传播链",name:"44",xm:"玛宁贝漂",value:[97.8944352608546,23.9746525504046]},
+    {id:"第二传播链",name:"3",xm:"梁礼贤",value:[97.8941223063838,23.9772440164547]},
+    {id:"第二传播链",name:"10",xm:"徐博韬",value:[97.8941996051382,23.9772018636968]},
+    {id:"第二传播链",name:"39",xm:"梁晨",value:[97.8941685482063,23.9770493431745]},
+    {id:"第二传播链",name:"24",xm:"柳君鹏",value:[97.8940692051751,23.9769928361053]},
+    {id:"第二传播链",name:"25",xm:"林龙",value:[97.8940149678833,23.9770976388849]},
+  ]
+  var linedata2=[
+    {coords:[
+        [97.8941223063838,23.9772440164547],
+        [97.8941996051382,23.9772018636968],
+        [97.8940692051751,23.9769928361053],
+        [97.8940149678833,23.9770976388849],
+        [97.8941685482063,23.9770493431745],
+        [97.8944352608546,23.9746525504046],
+      ]},
   ]
   var data3=[
-    {name:"92",xm:"岩卯",value:[97.884293,23.990243]},
-    {name:"34",xm:"字蓉 ",value:[98.0518635353767,24.0733082599076]},
-    {name:"37",xm:"玛丁萨温",value:[97.8909293953705,23.981559924573]},
-    {name:"40",xm:"貌谬明",value:[97.8908300129633,23.9815784429222]},
-    {name:"22",xm:"龙彩华",value:[97.8911164234395,23.9765056706503]},
-    {name:"26",xm:"貌伟漂昂",value:[97.8899065051805,23.9816665751763]},
-    {name:"27",xm:"玛朵朵五",value:[97.8942200091134,23.9788183835852]},
-    {name:"32",xm:"岩良",value:[97.887830999534,23.9829071052176]},
-    {name:"33",xm:"梦腊",value:[97.8909969175381,23.9810839616857]},
-    {name:"30",xm:"马伍",value:[97.8906183520135,23.9813497178294]},
-    {name:"11",xm:"吴谬明",value:[97.8904024903588,23.9814440099761]},
-    {name:"20",xm:"貌索林",value:[97.8909385007019,23.9814358038321]},
-    {name:"16",xm:"顶波",value:[97.890817095096,23.9813506747206]},
-    {name:"13",xm:"吞路",value:[97.8877275931648,23.9829416730376]},
-    {name:"9",xm:"也门",value:[97.8906595040996,23.9813530871573]},
-    {name:"19",xm:"行腿奥",value:[97.8908170361716,23.981453660299]},
-    {name:"18",xm:"杜敏敏",value:[97.8906775741452,23.9813488110934]},
-    {name:"17",xm:"杜莱",value:[97.8907177081911,23.9813771923634]},
-    {name:"2",xm:"貌丁林索",value:[97.8907629480401,23.9812525181449]},
-    {name:"58",xm:"貌孟杰昂",value:[97.8889750363264,23.9816378427635]},
-    {name:"59",xm:"赵玉菲",value:[97.8881781406306,23.9773065586838]},
-    {name:"48",xm:"貌索莫觉",value:[97.8940986496137,23.9786302220199]},
-    {name:"62",xm:"余菊玉",value:[97.8883136623897,23.9772634955687]},
-    {name:"7",xm:"特苗吞",value:[97.8907047155584,23.9812784059104]},
-    {name:"47",xm:"多亚迪",value:[97.8940443918732,23.9787620195045]},
-    {name:"46",xm:"当奈",value:[97.8881359710534,23.9773391984704]},
-    {name:"52",xm:"楠瑞",value:[97.8904918564526,23.9813886493628]},
-    {name:"49",xm:"琴美",value:[97.8916618861542,23.9801799242027]},
-    {name:"50",xm:"杜漂特",value:[97.8904214641342,23.9774902158194]},
-    {name:"6",xm:"梦丁",value:[97.890794064724,23.9812520418408]},
-    {name:"12",xm:"玛卫",value:[97.8907229202393,23.9810341628203]},
-    {name:"15",xm:"貌凯明伍",value:[97.8907719160278,23.9813683637341]},
-    {name:"5",xm:"昂吞磊",value:[97.890812125684,23.98126376363]},
-    {name:"8",xm:"吉漂达",value:[97.8907629480401,23.9812525181449]},
-    {name:"91",xm:"陈云湘",value:[97.871815,24.012596]},
-    {name:"94",xm:"岩俩",value:[97.886294,23.978056]},
-    {name:"77",xm:"文虎",value:[97.868448,23.981863]},
-    {name:"83",xm:"梅莱",value:[97.876736,23.980686]},
+    {id:"第三传播链",name:"2",xm:"貌丁林索",value:[97.8907629480401,23.9812525181449]},
+    {id:"第三传播链",name:"5",xm:"昂吞磊",value:[97.890812125684,23.98126376363]},
+    {id:"第三传播链",name:"6",xm:"梦丁",value:[97.890794064724,23.9812520418408]},
+    {id:"第三传播链",name:"7",xm:"特苗吞",value:[97.8907047155584,23.9812784059104]},
+    {id:"第三传播链",name:"8",xm:"吉漂达",value:[97.8907629480401,23.9812525181449]},
+    {id:"第三传播链",name:"9",xm:"也门",value:[97.8906595040996,23.9813530871573]},
+    {id:"第三传播链",name:"11",xm:"吴谬明",value:[97.8904024903588,23.9814440099761]},
+    {id:"第三传播链",name:"12",xm:"玛卫",value:[97.8907229202393,23.9810341628203]},
+    {id:"第三传播链",name:"13",xm:"吞路",value:[97.8877275931648,23.9829416730376]},
+    {id:"第三传播链",name:"15",xm:"貌凯明伍",value:[97.8907719160278,23.9813683637341]},
+    {id:"第三传播链",name:"16",xm:"顶波",value:[97.890817095096,23.9813506747206]},
+    {id:"第三传播链",name:"17",xm:"杜莱",value:[97.8907177081911,23.9813771923634]},
+    {id:"第三传播链",name:"18",xm:"杜敏敏",value:[97.8906775741452,23.9813488110934]},
+    {id:"第三传播链",name:"19",xm:"行腿奥",value:[97.8908170361716,23.981453660299]},
+    {id:"第三传播链",name:"20",xm:"貌索林",value:[97.8909385007019,23.9814358038321]},
+    {id:"第三传播链",name:"22",xm:"龙彩华",value:[97.8911164234395,23.9765056706503]},
+    {id:"第三传播链",name:"26",xm:"貌伟漂昂",value:[97.8899065051805,23.9816665751763]},
+    {id:"第三传播链",name:"27",xm:"玛朵朵五",value:[97.8942200091134,23.9788183835852]},
+    {id:"第三传播链",name:"30",xm:"马伍",value:[97.8906183520135,23.9813497178294]},
+    {id:"第三传播链",name:"32",xm:"岩良",value:[97.887830999534,23.9829071052176]},
+    {id:"第三传播链",name:"33",xm:"梦腊",value:[97.8909969175381,23.9810839616857]},
+    {id:"第三传播链",name:"34",xm:"字蓉 ",value:[98.0518635353767,24.0733082599076]},
+    {id:"第三传播链",name:"37",xm:"玛丁萨温",value:[97.8909293953705,23.981559924573]},
+    {id:"第三传播链",name:"40",xm:"貌谬明",value:[97.8908300129633,23.9815784429222]},
+    {id:"第三传播链",name:"46",xm:"当奈",value:[97.8881359710534,23.9773391984704]},
+    {id:"第三传播链",name:"47",xm:"多亚迪",value:[97.8940443918732,23.9787620195045]},
+    {id:"第三传播链",name:"48",xm:"貌索莫觉",value:[97.8940986496137,23.9786302220199]},
+    {id:"第三传播链",name:"49",xm:"琴美",value:[97.8916618861542,23.9801799242027]},
+    {id:"第三传播链",name:"50",xm:"杜漂特",value:[97.8904214641342,23.9774902158194]},
+    {id:"第三传播链",name:"52",xm:"楠瑞",value:[97.8904918564526,23.9813886493628]},
+    {id:"第三传播链",name:"58",xm:"貌孟杰昂",value:[97.8889750363264,23.9816378427635]},
+    {id:"第三传播链",name:"59",xm:"赵玉菲",value:[97.8881781406306,23.9773065586838]},
+    {id:"第三传播链",name:"62",xm:"余菊玉",value:[97.8883136623897,23.9772634955687]},
+    {id:"第三传播链",name:"77",xm:"文虎",value:[97.868448,23.981863]},
+    {id:"第三传播链",name:"83",xm:"梅莱",value:[97.876736,23.980686]},
+    {id:"第三传播链",name:"92",xm:"岩卯",value:[97.884293,23.990243]},
+    {id:"第三传播链",name:"91",xm:"陈云湘",value:[97.871815,24.012596]},
+    {id:"第三传播链",name:"94",xm:"岩俩",value:[97.886294,23.978056]},
+  ]
+  var linedata3=[
+    {coords:[
+        [97.8907629480401,23.9812525181449],
+       [97.890812125684,23.98126376363],
+        [97.890794064724,23.9812520418408],
+        [97.8907047155584,23.9812784059104],
+        [97.8907629480401,23.9812525181449],
+        [97.8906595040996,23.9813530871573],
+        [97.8904024903588,23.9814440099761],
+        [97.8907229202393,23.9810341628203],
+        [97.8877275931648,23.9829416730376],
+        [97.8907719160278,23.9813683637341],
+        [97.890817095096,23.9813506747206],
+        [97.8907177081911,23.9813771923634],
+        [97.8906775741452,23.9813488110934],
+        [97.8908170361716,23.981453660299],
+        [97.8909385007019,23.9814358038321],
+        [97.8911164234395,23.9765056706503],
+        [97.8899065051805,23.9816665751763],
+        [97.8942200091134,23.9788183835852],
+        [97.8906183520135,23.9813497178294],
+        [97.887830999534,23.9829071052176],
+        [97.8909969175381,23.9810839616857],
+        [98.0518635353767,24.0733082599076],
+        [97.8909293953705,23.981559924573],
+        [97.8908300129633,23.9815784429222],
+        [97.8881359710534,23.9773391984704],
+        [97.8940443918732,23.9787620195045],
+        [97.8940986496137,23.9786302220199],
+        [97.8916618861542,23.9801799242027],
+        [97.8904214641342,23.9774902158194],
+        [97.8904918564526,23.9813886493628],
+        [97.8889750363264,23.9816378427635],
+        [97.8881781406306,23.9773065586838],
+        [97.8883136623897,23.9772634955687],
+        [97.868448,23.981863],
+        [97.876736,23.980686],
+        [97.884293,23.990243],
+        [97.871815,24.012596],
+        [97.886294,23.978056],
+      ]},
   ]
   var data4=[
-    {name:"41",xm:"占喊",value:[97.8830548056923,23.9789875832848]},
-    {name:"71",xm:"张志南",value:[97.8920948653722,23.9771016778782]},
-    {name:"84",xm:"玛诶兰",value:[97.869682,23.987666]},
-    {name:"86",xm:"范文刚",value:[97.89471,23.978495]},
-    {name:"87",xm:"吕河",value:[97.89162,23.98025]},
+    {id:"第四传播链",name:"41",xm:"占喊",value:[97.8830548056923,23.9789875832848]},
+    {id:"第四传播链",name:"71",xm:"张志南",value:[97.8920948653722,23.9771016778782]},
+    {id:"第四传播链",name:"84",xm:"玛诶兰",value:[97.869682,23.987666]},
+    {id:"第四传播链",name:"86",xm:"范文刚",value:[97.89471,23.978495]},
+    {id:"第四传播链",name:"87",xm:"吕河",value:[97.89162,23.98025]},
+  ]
+  var linedata4=[
+    {coords:[
+        [97.8830548056923,23.9789875832848],
+        [97.8920948653722,23.9771016778782],
+        [97.869682,23.987666],
+        [97.89471,23.978495],
+        [97.89162,23.98025],
+      ]},
   ]
 
   var data6=[
-    {name:"65",xm:"春明",value:[97.6359692282445,23.8927727531558]},
-    {name:"68",xm:"南也静",value:[97.6359873455775,23.8926895640482]},
-    {name:"69",xm:"相也",value:[97.6357346583136,23.8926764280778]},
-    {name:"66",xm:"岳管喊",value:[97.637992202144,23.8870009975231]},
-    {name:"67",xm:"赛帅",value:[97.6380735280763,23.8869170088933]},
-    {name:"70",xm:"左和",value:[97.6379200867448,23.886893916138]},
+    {id:"第六传播链",name:"65",xm:"春明",value:[97.6359692282445,23.8927727531558]},
+    {id:"第六传播链",name:"68",xm:"南也静",value:[97.6359873455775,23.8926895640482]},
+    {id:"第六传播链",name:"69",xm:"相也",value:[97.6357346583136,23.8926764280778]},
+    {id:"第六传播链",name:"66",xm:"岳管喊",value:[97.637992202144,23.8870009975231]},
+    {id:"第六传播链",name:"67",xm:"赛帅",value:[97.6380735280763,23.8869170088933]},
+    {id:"第六传播链",name:"70",xm:"左和",value:[97.6379200867448,23.886893916138]},
+  ]
+  var linedata6=[
+    {coords:[
+        [97.6359692282445,23.8927727531558],
+        [97.637992202144,23.8870009975231],
+        [97.6380735280763,23.8869170088933],
+        [97.6359873455775,23.8926895640482],
+        [97.6357346583136,23.8926764280778],
+        [97.6379200867448,23.886893916138]
+      ]},
   ]
   var data7=[
-    {name:"56",xm:"貌丹温",value:[97.8855614754221,23.9738403357785]},
-    {name:"90",xm:"欧彩够",value:[97.875425,23.994289]},
-    {name:"93",xm:"刘应兰",value:[97.875924,23.994732]},
+    {id:"第七传播链",name:"56",xm:"貌丹温",value:[97.8855614754221,23.9738403357785]},
+    {id:"第七传播链",name:"90",xm:"欧彩够",value:[97.875425,23.994289]},
+    {id:"第七传播链",name:"93",xm:"刘应兰",value:[97.875924,23.994732]},
+  ]
+  var linedata7=[
+    {coords:[
+        [97.8855614754221,23.9738403357785],
+        [97.875425,23.994289],
+        [97.875924,23.994732],
+      ]},
   ]
   var data9=[
-    {name:"73",xm:"郭建军",value:[97.891877602042,23.9782438707413]},
-    {name:"82",xm:"杨惠芬",value:[97.894868,23.979373]},
-    {name:"74",xm:"岩孟",value:[97.8873171109651,23.9728659612336]},
+    {id:"第九传播链",name:"73",xm:"郭建军",value:[97.891877602042,23.9782438707413]},
+    {id:"第九传播链",name:"82",xm:"杨惠芬",value:[97.894868,23.979373]},
+    {id:"第九传播链",name:"74",xm:"岩孟",value:[97.8873171109651,23.9728659612336]},
+  ]
+  var linedata9=[
+    {coords:[
+        [97.891877602042,23.9782438707413],
+        [97.8873171109651,23.9728659612336],
+        [97.894868,23.979373],
+      ]},
   ]
   var data10=[
     {name:"75",xm:"玛依依登",value:[97.8968552037235,23.9770308849471]},
@@ -143,20 +227,33 @@
   {name:"78",xm:"李焕崃",value:[97.882868,23.97902]},
   ]
   var data13=[
-    {name:"64",xm:"陈春勤",value:[98.0519890917925,24.0730953475565]},
-    {name:"51",xm:"何光珍",value:[98.0652621405543,24.0772290217101]},
-    {name:"80",xm:"玛素咩昂昂",value:[97.886049,23.978137]},
+    {id:"第十三传播链",name:"64",xm:"陈春勤",value:[98.0519890917925,24.0730953475565]},
+    {id:"第十三传播链",name:"51",xm:"何光珍",value:[98.0652621405543,24.0772290217101]},
+    {id:"第十三传播链",name:"80",xm:"玛素咩昂昂",value:[97.886049,23.978137]},
+  ]
+  var linedata13=[
+    {coords:[
+        [98.0652621405543,24.0772290217101],
+        [98.0519890917925,24.0730953475565],
+        [97.886049,23.978137],
+      ]},
   ]
   var data14=[
     {name:"81",xm:"李敬琴",value:[97.895726,23.979294]},
   ]
   var data15=[
-    {name:"85",xm:"郭云威",value:[97.923916,24.030615]},
-    {name:"95",xm:"张玺",value:[97.905559,24.021765]},
-    {name:"96",xm:"林壁灿",value:[97.905559,24.022875]},
-    {name:"97",xm:"李才文",value:[97.904559,24.023985]},
-    {name:"98",xm:"岩旺依鲁",value:[97.905559,24.024095]},
-    {name:"99",xm:"张旭奎",value:[97.904559,24.023155]},
+    {id:"第十五传播链",name:"85",xm:"郭云威",value:[97.923916,24.030615]},
+    {id:"第十五传播链",name:"95",xm:"张玺",value:[97.904559,24.023985]},
+    {id:"第十五传播链",name:"96",xm:"林壁灿",value:[97.904559,24.023985]},
+    {id:"第十五传播链",name:"97",xm:"李才文",value:[97.904559,24.023985]},
+    {id:"第十五传播链",name:"98",xm:"岩旺依鲁",value:[97.904559,24.023985]},
+    {id:"第十五传播链",name:"99",xm:"张旭奎",value:[97.904559,24.023985]},
+  ]
+  var linedata15=[
+    {coords:[
+        [97.923916,24.030615],
+        [97.904559,24.023985],
+      ]},
   ]
   var data16=[
     {name:"101",xm:"黄美荣",value:[97.885212,23.978147]},
@@ -213,7 +310,11 @@
         renderOnMoving: true,
         mapStyle: 'amap://styles/dark'    //地图风格
       },
-
+      tooltip:{
+        formatter: function (params) {
+          return params.data.id+":"+params.data.xm;
+        },
+      },
       series: [
         {
           data:data1,
@@ -238,6 +339,60 @@
               // fontWeight: "bold"
             },
             formatter: function (params) {
+              return params.data.xm;
+            },
+          },
+        },
+        {
+          name:"第一链",
+          coordinateSystem: 'amap',
+          type:"lines",
+          polyline:true,   //多段线
+          data:linedata1,
+          tooltip:{
+            formatter: function (params) {
+              console.log(params)
+              return params.data.name;
+            },
+          },
+          effect:{
+            show:true,
+            symbol:"arrow",
+            symbolSize:7,
+            period:10, //时间10秒
+            trailLength: 0.05, //特效尾迹长度[0,1]值越大，尾迹越长重
+          },
+          lineStyle:{
+            color:colors[0],
+            width:1.5,      //尾迹线条宽度
+            curveness:0.5,//尾迹线条曲直度
+            opacity:0.5,  //尾迹线条透明度
+            type:"dotted"
+          }
+        },
+        {
+          data:data2,
+          type: 'effectScatter',
+          coordinateSystem:"amap",
+          // symbol: 'pin',
+          symbolSize: 10,
+          zlevel: 2,
+          rippleEffect: {  //涟漪特效
+            brushType: 'stroke',//波纹绘制方式 stroke，fill
+            period:5,//动画时间，值越小速度越快
+            scale:3,//波纹圆环最大显示，值越大波纹越大
+          },
+          itemStyle:{
+            color:colors[1]
+          },
+          label:{
+            show:true,
+            textStyle: {
+              // color: '#fff',
+              fontSize: 6,
+              // fontWeight: "bold"
+            },
+            formatter: function (params) {
               console.log(params)
               return params.data.xm;
             },
@@ -247,7 +402,7 @@
           coordinateSystem: 'amap',
           type:"lines",
           polyline:true,   //多段线
-          data:linedata1,
+          data:linedata2,
           effect:{
             show:true,
             symbol:"arrow",
@@ -256,359 +411,355 @@
             trailLength: 0.05, //特效尾迹长度[0,1]值越大，尾迹越长重
           },
           lineStyle:{
-            color:'#58B3CC',
+            color:colors[1],
             width:1.5,      //尾迹线条宽度
             curveness:0.5,//尾迹线条曲直度
             opacity:0.5,  //尾迹线条透明度
             type:"dotted"
           }
         },
-        // {
-        //   name: '线路',
-        //   type: 'lines',
-        //   polyline:true,   //多段线
-        //   coordinateSystem: 'amap',
-        //   zlevel: 2,
-        //   large: true,
-        //   effect: {
-        //     show: true,
-        //     constantSpeed: 30,
-        //     symbol: 'arrow', //箭头图标，pin 圆点
-        //     symbolSize: 3, //图标大小
-        //     trailLength: 0, //特效尾迹长度[0,1]值越大，尾迹越长重
-        //   },
-        //   lineStyle: {
-        //     normal: {
-        //       color: new echarts.graphic.LinearGradient(
-        //         0,
-        //         0,
-        //         0,
-        //         1,
-        //         [
-        //           {
-        //             offset: 0,
-        //             color: '#58B3CC',
-        //           },
-        //           {
-        //             offset: 1,
-        //             color: '#F58158',
-        //           },
-        //         ],
-        //         false
-        //       ),
-        //       width: 1, //尾迹线条宽度
-        //       opacity: 0.2, //尾迹线条透明度
-        //       curveness: 0.2, //尾迹线条曲直度
-        //     },
-        //   },
-        //   data: linedata1,
-        // },
-        // {
-        //   data:data2,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[1]
-        //   },
-        // },
-        // {
-        //   data:data3,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[2]
-        //   },
-        // },
-        // {
-        //   data:data4,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[3]
-        //   },
-        // },
-        // {
-        //   data:data6,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[4]
-        //   },
-        // },
-        // {
-        //   data:data7,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[5]
-        //   },
-        // },
-        // {
-        //   data:data9,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[6]
-        //   },
-        // },
-        // {
-        //   data:data10,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[7]
-        //   },
-        // },
-        // {
-        //   data:data11,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[8]
-        //   },
-        // },
-        // {
-        //   data:data12,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[9]
-        //   },
-        // },
-        // {
-        //   data:data13,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[10]
-        //   },
-        // },
-        // {
-        //   data:data14,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[11]
-        //   },
-        // },
-        // {
-        //   data:data15,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[12]
-        //   },
-        // },
-        // {
-        //   data:data16,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[13]
-        //   },
-        // },
-        // {
-        //   data:data17,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbolSize:8,
-        //   label:{
-        //     show:true,
-        //     fontSize:6,
-        //     formatter: function (params) {
-        //       console.log(params)
-        //       return params.data.xm;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4
-        //   },
-        //   itemStyle:{
-        //     color:colors[14]
-        //   },
-        // },
+        {
+          data:data3,
+          type: 'effectScatter',
+          coordinateSystem:"amap",
+          // symbol: 'pin',
+          symbolSize: 10,
+          zlevel: 2,
+          rippleEffect: {  //涟漪特效
+            brushType: 'stroke',//波纹绘制方式 stroke，fill
+            period:5,//动画时间，值越小速度越快
+            scale:3,//波纹圆环最大显示，值越大波纹越大
+          },
+          itemStyle:{
+            color:colors[2]
+          },
+          label:{
+            show:true,
+            textStyle: {
+              // color: '#fff',
+              fontSize: 6,
+              // fontWeight: "bold"
+            },
+            formatter: function (params) {
+              console.log(params)
+              return params.data.xm;
+            },
+          },
+        },
+        {
+          coordinateSystem: 'amap',
+          type:"lines",
+          polyline:true,   //多段线
+          data:linedata3,
+          effect:{
+            show:true,
+            symbol:"arrow",
+            symbolSize:7,
+            period:20, //时间10秒
+            trailLength: 0.05, //特效尾迹长度[0,1]值越大，尾迹越长重
+          },
+          lineStyle:{
+            color:colors[2],
+            width:1.5,      //尾迹线条宽度
+            curveness:0.5,//尾迹线条曲直度
+            opacity:0.5,  //尾迹线条透明度
+            type:"dotted"
+          }
+        },
+        {
+          data:data4,
+          type: 'effectScatter',
+          coordinateSystem:"amap",
+          // symbol: 'pin',
+          symbolSize: 10,
+          zlevel: 2,
+          rippleEffect: {  //涟漪特效
+            brushType: 'stroke',//波纹绘制方式 stroke，fill
+            period:5,//动画时间，值越小速度越快
+            scale:3,//波纹圆环最大显示，值越大波纹越大
+          },
+          itemStyle:{
+            color:colors[3],
+          },
+          label:{
+            show:true,
+            textStyle: {
+              // color: '#fff',
+              fontSize: 6,
+              // fontWeight: "bold"
+            },
+            formatter: function (params) {
+              console.log(params)
+              return params.data.xm;
+            },
+          },
+        },
+        {
+          coordinateSystem: 'amap',
+          type:"lines",
+          polyline:true,   //多段线
+          data:linedata4,
+          effect:{
+            show:true,
+            symbol:"arrow",
+            symbolSize:7,
+            period:10, //时间10秒
+            trailLength: 0.05, //特效尾迹长度[0,1]值越大，尾迹越长重
+          },
+          lineStyle:{
+            color:colors[3],
+            width:1.5,      //尾迹线条宽度
+            curveness:0.5,//尾迹线条曲直度
+            opacity:0.5,  //尾迹线条透明度
+            type:"dotted"
+          }
+        },
+        {
+          data:data6,
+          type: 'effectScatter',
+          coordinateSystem:"amap",
+          // symbol: 'pin',
+          symbolSize: 10,
+          zlevel: 2,
+          rippleEffect: {  //涟漪特效
+            brushType: 'stroke',//波纹绘制方式 stroke，fill
+            period:5,//动画时间，值越小速度越快
+            scale:3,//波纹圆环最大显示，值越大波纹越大
+          },
+          itemStyle:{
+            color:colors[4],
+          },
+          label:{
+            show:true,
+            textStyle: {
+              // color: '#fff',
+              fontSize: 6,
+              // fontWeight: "bold"
+            },
+            formatter: function (params) {
+              console.log(params)
+              return params.data.xm;
+            },
+          },
+        },
+        {
+          coordinateSystem: 'amap',
+          type:"lines",
+          polyline:true,   //多段线
+          data:linedata6,
+          effect:{
+            show:true,
+            symbol:"arrow",
+            symbolSize:7,
+            period:10, //时间10秒
+            trailLength: 0.05, //特效尾迹长度[0,1]值越大，尾迹越长重
+          },
+          lineStyle:{
+            color:colors[4],
+            width:1.5,      //尾迹线条宽度
+            curveness:0.5,//尾迹线条曲直度
+            opacity:0.5,  //尾迹线条透明度
+            type:"dotted"
+          }
+        },
+        {
+          data:data7,
+          type: 'effectScatter',
+          coordinateSystem:"amap",
+          // symbol: 'pin',
+          symbolSize: 10,
+          zlevel: 2,
+          rippleEffect: {  //涟漪特效
+            brushType: 'stroke',//波纹绘制方式 stroke，fill
+            period:5,//动画时间，值越小速度越快
+            scale:3,//波纹圆环最大显示，值越大波纹越大
+          },
+          itemStyle:{
+            color:colors[5],
+          },
+          label:{
+            show:true,
+            textStyle: {
+              // color: '#fff',
+              fontSize: 6,
+              // fontWeight: "bold"
+            },
+            formatter: function (params) {
+              console.log(params)
+              return params.data.xm;
+            },
+          },
+        },
+        {
+          coordinateSystem: 'amap',
+          type:"lines",
+          polyline:true,   //多段线
+          data:linedata7,
+          effect:{
+            show:true,
+            symbol:"arrow",
+            symbolSize:7,
+            period:10, //时间10秒
+            trailLength: 0.05, //特效尾迹长度[0,1]值越大，尾迹越长重
+          },
+          lineStyle:{
+            color:colors[5],
+            width:1.5,      //尾迹线条宽度
+            curveness:0.5,//尾迹线条曲直度
+            opacity:0.5,  //尾迹线条透明度
+            type:"dotted"
+          }
+        },
+        {
+          data:data9,
+          type: 'effectScatter',
+          coordinateSystem:"amap",
+          // symbol: 'pin',
+          symbolSize: 10,
+          zlevel: 2,
+          rippleEffect: {  //涟漪特效
+            brushType: 'stroke',//波纹绘制方式 stroke，fill
+            period:5,//动画时间，值越小速度越快
+            scale:3,//波纹圆环最大显示，值越大波纹越大
+          },
+          itemStyle:{
+            color:colors[6],
+          },
+          label:{
+            show:true,
+            textStyle: {
+              // color: '#fff',
+              fontSize: 6,
+              // fontWeight: "bold"
+            },
+            formatter: function (params) {
+              console.log(params)
+              return params.data.xm;
+            },
+          },
+        },
+        {
+          coordinateSystem: 'amap',
+          type:"lines",
+          polyline:true,   //多段线
+          data:linedata9,
+          effect:{
+            show:true,
+            symbol:"arrow",
+            symbolSize:7,
+            period:10, //时间10秒
+            trailLength: 0.05, //特效尾迹长度[0,1]值越大，尾迹越长重
+          },
+          lineStyle:{
+            color:colors[6],
+            width:1.5,      //尾迹线条宽度
+            curveness:0.5,//尾迹线条曲直度
+            opacity:0.5,  //尾迹线条透明度
+            type:"dotted"
+          }
+        },
+        {
+          data:data13,
+          type: 'effectScatter',
+          coordinateSystem:"amap",
+          // symbol: 'pin',
+          symbolSize: 10,
+          zlevel: 2,
+          rippleEffect: {  //涟漪特效
+            brushType: 'stroke',//波纹绘制方式 stroke，fill
+            period:5,//动画时间，值越小速度越快
+            scale:3,//波纹圆环最大显示，值越大波纹越大
+          },
+          itemStyle:{
+            color:colors[7],
+          },
+          label:{
+            show:true,
+            textStyle: {
+              // color: '#fff',
+              fontSize: 6,
+              // fontWeight: "bold"
+            },
+            formatter: function (params) {
+              console.log(params)
+              return params.data.xm;
+            },
+          },
+        },
+        {
+          coordinateSystem: 'amap',
+          type:"lines",
+          polyline:true,   //多段线
+          data:linedata13,
+          effect:{
+            show:true,
+            symbol:"arrow",
+            symbolSize:7,
+            period:10, //时间10秒
+            trailLength: 0.05, //特效尾迹长度[0,1]值越大，尾迹越长重
+          },
+          lineStyle:{
+            color:colors[7],
+            width:1.5,      //尾迹线条宽度
+            curveness:0.5,//尾迹线条曲直度
+            opacity:0.5,  //尾迹线条透明度
+            type:"dotted"
+          }
+        },
+        {
+          data:data15,
+          type: 'effectScatter',
+          coordinateSystem:"amap",
+          // symbol: 'pin',
+          symbolSize: 10,
+          zlevel: 2,
+          rippleEffect: {  //涟漪特效
+            brushType: 'stroke',//波纹绘制方式 stroke，fill
+            period:5,//动画时间，值越小速度越快
+            scale:3,//波纹圆环最大显示，值越大波纹越大
+          },
+          itemStyle:{
+            color:colors[8],
+          },
+          label:{
+            show:true,
+            textStyle: {
+              // color: '#fff',
+              fontSize: 6,
+              // fontWeight: "bold"
+            },
+            formatter: function (params) {
+              console.log(params)
+              return params.data.xm;
+            },
+          },
+        },
+        {
+          coordinateSystem: 'amap',
+          type:"lines",
+          polyline:true,   //多段线
+          data:linedata15,
+          effect:{
+            show:true,
+            symbol:"arrow",
+            symbolSize:7,
+            period:10, //时间10秒
+            trailLength: 0.05, //特效尾迹长度[0,1]值越大，尾迹越长重
+          },
+          lineStyle:{
+            color:colors[8],
+            width:1.5,      //尾迹线条宽度
+            curveness:0.5,//尾迹线条曲直度
+            opacity:0.5,  //尾迹线条透明度
+            type:"dotted"
+          }
+        },
 
-
-        // {
-        //   data:scatterdata1,
-        //   type:"effectScatter",
-        //   coordinateSystem:"amap",
-        //   symbol:"pin",    //形状
-        //   symbolSize:15,
-        //   label:{
-        //     show:true,
-        //     formatter: function (params) {
-        //       return params.name;
-        //     },
-        //   },
-        //   rippleEffect:{
-        //     scale:4,
-        //     period:10    //动画时长
-        //   },
-        //   itemStyle:{
-        //     color:"blue"
-        //   }
-        // },
       ]
     };
     myChart.setOption(option)
 </script>
 </body>
 </html>
+
 
