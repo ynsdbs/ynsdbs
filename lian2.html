@@ -315,6 +315,16 @@
           return params.data.id+":"+params.data.xm;
         },
       },
+      legend: {
+        orient: 'vertical',
+        right: '3%',
+        bottom: '10%',
+        // data:['北京 Top10', '上海 Top10', '广州 Top10'],
+        textStyle: {
+          color: '#fff'
+        },
+        selectedMode: 'multiple',
+      },
       series: [
         {
           data:data1,
@@ -344,7 +354,7 @@
           },
         },
         {
-          name:"第一链",
+          name:"第一传播链",
           coordinateSystem: 'amap',
           type:"lines",
           polyline:true,   //多段线
@@ -399,6 +409,7 @@
           },
         },
         {
+          name:"第二传播链",
           coordinateSystem: 'amap',
           type:"lines",
           polyline:true,   //多段线
@@ -447,6 +458,7 @@
           },
         },
         {
+          name:"第三传播链",
           coordinateSystem: 'amap',
           type:"lines",
           polyline:true,   //多段线
@@ -495,6 +507,7 @@
           },
         },
         {
+          name:"第四传播链",
           coordinateSystem: 'amap',
           type:"lines",
           polyline:true,   //多段线
@@ -543,6 +556,7 @@
           },
         },
         {
+          name:"第六传播链",
           coordinateSystem: 'amap',
           type:"lines",
           polyline:true,   //多段线
@@ -591,6 +605,7 @@
           },
         },
         {
+          name:"第七传播链",
           coordinateSystem: 'amap',
           type:"lines",
           polyline:true,   //多段线
@@ -639,6 +654,7 @@
           },
         },
         {
+          name:"第九传播链",
           coordinateSystem: 'amap',
           type:"lines",
           polyline:true,   //多段线
@@ -687,6 +703,7 @@
           },
         },
         {
+          name:"第十三传播链",
           coordinateSystem: 'amap',
           type:"lines",
           polyline:true,   //多段线
@@ -735,6 +752,7 @@
           },
         },
         {
+          name:"第十五传播链",
           coordinateSystem: 'amap',
           type:"lines",
           polyline:true,   //多段线
@@ -761,5 +779,6 @@
 </script>
 </body>
 </html>
+
 
 
