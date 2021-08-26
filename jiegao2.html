@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="height: 130%">
+<html style="height: 100%">
 <head>
   <meta charset="utf-8">
   <title>近期病例示意图</title>
@@ -11,14 +11,11 @@
   <!-- 引入最新版的echarts-extension-amap 高德地图扩展库 CDN -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-extension-amap/dist/echarts-extension-amap.min.js"></script>
 </head>
-<body style="height: 130%; margin: 0">
+<body style="height: 100%; margin: 0">
 
-<div id="container" style=" height: 130%;" ></div>
+<div id="container" style=" height: 100%;" ></div>
 <script type="text/javascript">
-  var map = new AMap.Map('container', {
-    zoom:14,//级别
-    center: [97.879701,24.016235],//中心点坐标
-  });
+ 
   var scatterdata1=[
     //7-3
     // {name:"1",value:[97.890312981471,23.9776848576498]},
