@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+  <meta charset="utf-8">
+  <title>丽江风险点</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=7f0d646ea8a6b7b94bdaa2396be26eb1"></script>
+  <!-- 引入最新版的echarts CDN -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+  <!-- 引入最新版的echarts-extension-amap 高德地图扩展库 CDN -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-extension-amap/dist/echarts-extension-amap.min.js"></script>
+</head>
+<body style="height: 100%; margin: 0">
+
+<div id="container" style="height:100%" ></div>
+<script type="text/javascript">
+  var scatterdata=[
+    {value:[100.233668088913,26.868638540491],name:'自由生活驿站'},
+    {value:[100.231873691082,26.867648774623],name:"白龙广场"},
+    {value:[100.230867862701,26.864464893639],name:"粥饭世家"},
+    {value:[100.224033594132,26.887776696441],name:"象山市场"},
+    {value:[100.225955396891,26.877361169847],name:'元利小吃'},
+    {value:[100.235652923584,26.866203019061],name:'忠义市场'},
+    {value:[100.224835574627,26.874260625225],name:'滔搏运动店'},
+    {value:[100.204684138298,26.923174909677],name:'棉花客栈'},
+    {value:[100.20713031292,26.920594544311],name:'云肴石锅店'},
+    {value:[100.203605890274,26.923241966989],name:'斐多咖啡馆'},
+    {value:[100.226715803146,26.889978858489],name:'福临居餐厅'},
+    {value:[100.218282938004,26.881933081209],name:'华首上岭福慧佳苑'},
+    {value:[100.228695273399,26.884134040097],name:'花马街智纳段'},
+    {value:[100.225955396891,26.877361169847],name:'元利小吃'},
+    {value:[100.229768157005,26.883599354569],name:'三文彩虹鳟鱼庄'},
+    {value:[100.235905051231,26.865953313246],name:'大理风味小吃'},
+    {value:[100.220155119896,26.868262252955],name:'通天灵驴肉馆'},
+    {value:[100.204936265945,26.921327347405],name:'伽宇便利店'},
+    {value:[100.202225893736,26.917152844982],name:'束河采样点'},
+    {value:[100.202326476574,26.914220675906],name:'束河街道办事处米线店'},
+    {value:[100.218577980995,26.857887206793],name:'白华路砂锅王'},
+  ]
+
+
+  var myChart=echarts.init(document.getElementById("container"))
+
+  var option = {
+    title:{
+      show:true,
+      text:"丽江风险点",
+      textAlign:'auto',
+       textStyle:{
+         color:'white',
+         align:'center',
+         fontSize:30
+       }
+    },
+    tooltip: {
+      formatter: function (params) {
+        return params.name;
+      },
+    },
+
+    // 加载 amap 组件
+    amap: {
+      // 高德地图中心经纬度
+      center: [100.23,26.89],
+      // 高德地图缩放
+      zoom: 13,
+      // 启用resize
+      resizeEnable: true,
+      // 移动过程中实时渲染 默认为true 如数据量较大 建议置为false
+      renderOnMoving: true,
+      mapStyle: 'amap://styles/dark'    //地图风格
+    },
+
+    series: [
+      {
+        name:'风险点',
+        data:scatterdata,
+        type:"effectScatter",
+        coordinateSystem:"amap",
+        rippleEffect:{
+          scale:3
+        },
+        itemStyle:{
+          color:"red"
+        },
+      },
+    ]
+  };
+  myChart.setOption(option)
+</script>
+</body>
+</html>
