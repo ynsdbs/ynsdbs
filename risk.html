@@ -78,9 +78,11 @@
         data:scatterdata,
         type:"effectScatter",
         coordinateSystem:"amap",
-        rippleEffect:{
-          scale:8
-        },
+        rippleEffect: {  //涟漪特效
+            brushType: 'stroke',//波纹绘制方式 stroke，fill
+            period:5,//动画时间，值越小速度越快
+            scale:3,//波纹圆环最大显示，值越大波纹越大
+          },
         itemStyle:{
           color:"red"
         },
