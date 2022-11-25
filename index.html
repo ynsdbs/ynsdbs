@@ -1,488 +1,2143 @@
-
 <!DOCTYPE html>
-<html style="height: 100%">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>ECharts</title>
-    <!-- 引入 echarts.js -->
-    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+  <meta charset="UTF-8">
+  <title>昆明疫情</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script src="https://wurenzhi.com/script/inputCookie.js"></script>
 </head>
-  <body style="height: 100%; margin: 0">
-        <div id="container" style="height: 100%"></div>
+<body>
 
-        <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var dom = document.getElementById("container");
-        var myChart = echarts.init(dom);
-	var app = {};
+<div left="50%"><h2 align="center">昆明“11•13”新冠疫情分析</h2></div>
+<div >
+  <input style="width:10%;border-style:none";>
+  <input style="width:80%; font-size:20px;border-style:none"; value="报病迟滞，后期病例报告需消化前期残留"type="text" name="" id="i0" >
+  <input style="width:10%;border-style:none";>
+</div>
+<div id="container" style="width: 100%;height:450px"></div>
 
-        // 指定图表的配置项和数据
-       option = {
-    title: {
-        text: '',
+<div >
+  <input style="width:10%;border-style:none";>
+  <input style="width:80%; font-size:20px;border-style:none"; value="阳性病例主要分布于青壮年期，男性略多于女性"type="text" name="" id="i2" >
+  <input style="width:10%;border-style:none";>
+</div>
+<div id="container2" style="width: 100%;height:500px"></div>
+
+
+<div >
+  <input style="width:10%;border-style:none";>
+  <input style="width:80%; font-size:20px;border-style:none"; value="病例职业以工人、农民、商业服务、家务及待业人员为主"type="text" name="" id="i3" >
+  <input style="width:10%;border-style:none";>
+</div>
+<div id="container3" style="width: 100%;height:500px"></div>
+
+<div >
+  <input style="width:10%;border-style:none";>
+  <input style="width:80%; font-size:20px;border-style:none"; value="非管控地区检出阳性占比在30%-40%"type="text" name="" id="i4" >
+  <input style="width:10%;border-style:none";>
+</div>
+<div id="container5" style="width: 100%;height:500px"></div>
+
+<div >
+  <input style="width:10%;border-style:none";>
+  <input style="width:80%; font-size:20px;border-style:none"; value="每日新发病例集中在官渡、经开、呈贡、西山、五华"type="text" name="" id="i6" >
+  <input style="width:10%;border-style:none";>
+</div>
+<div id="container7" style="width: 100%;height:500px"></div>
+
+<div >
+  <input style="width:10%;border-style:none";>
+  <input style="width:80%; font-size:20px;border-style:none"; value="每日新发病例集中在官渡、经开、呈贡、西山、五华"type="text" name="" id="i5" >
+  <input style="width:10%;border-style:none";>
+</div>
+<div id="container8" style="width: 100%;height:500px"></div>
+
+
+<div style="width: 70%;float: left; overflow: hidden">
+  <div id="container4" style="width: 100%; height: 600px"></div>
+</div>
+<div style="width: 30%; float: left; overflow: hidden">
+  <div id="container6" style="width: 100%; height: 600px"></div>
+</div>
+
+
+
+<script>
+  $('input[type="text"],input[type="number"],input[type="date"]').bind('input propertychange', function () {
+    let id = $(this).attr('id');
+    let val = $('#' + id).val();
+    setCookie(id, val, 365);
+  });
+
+    $('input[type="text"],input[type="number"],input[type="date"]').each(function (i) {
+      let id = $(this).attr('id');
+      let val = getCookie(id);
+      if (null != val && '' != val) $('#' + id).val(val);
+    });
+
+</script>
+
+<script type="text/javascript">
+
+  //一、趋势图数据
+  var date=['11月8日', '11月9日', '11月10日', '11月11日', '11月12日', '11月13日', '11月14日', '11月15日',
+    '11月16日', '11月17日', '11月18日', '11月19日', '11月20日', '11月21日', '11月22日', '11月23日', '11月24日']
+  //初筛阳性（使用采样时间）
+  var csdata=[9, 5, 4, 8, 3, 13, 78, 62, 96, 60, 58, 101, 77, 155, 228, 252, 105]
+  //初筛上报时间
+  var csdata2=[9, 3, 4, 10, 3, 6, 32, 81, 41, 83, 93, 89, 84, 117, 160, 222, 277]
+  //网报时间
+  var wbdata=[6, 5, 4, 2, 10, 3, 15, 18, 38, 34, 53, 33, 33, 192, 168, 93, 166]
+
+
+  //二、年龄性别图数据
+  var nlydate=['婴幼儿期（0-6岁）', '少儿期（7-12岁）', '青少年期（13-17岁）', '青年期（18-45岁）', '中年期（46-69岁）', '老年期（70岁以上）']
+  var man=[35, 26, 17, 366, 232, 11]
+  var woman=[20, 25, 14, 357, 191, 20]
+  var total=1314
+
+  //三、职业及分型
+  var zy=[
+    {name: '商业服务', value: 174},
+    {name: '家务及待业', value: 166},
+    {name: '农民', value: 131},
+    {name: '工人', value: 127},
+    {name: '学生', value: 51},
+    {name: '民工', value: 46},
+    {name: '散居儿童', value: 31},
+    {name: '干部职员', value: 28},
+    {name: '离退人员', value: 22},
+    {name: '餐饮食品业', value: 14},
+    {name: '医务人员', value: 9},
+    {name: '教师', value: 8},
+    {name: '海员及长途驾驶员', value: 5},
+    {name: '幼托儿童', value: 4},
+    {name: '不详', value: 4},
+    {name: '其他', value: 53}
+  ]
+
+  var fx=[
+    {name: '确诊', value: 420},
+    {name: '无症状感染者', value: 453}
+  ]
+  var qt=[
+    {name: '确诊', value: 9},
+    {name: '无症状感染者', value: 84}
+  ]
+  var ztt=[
+    {name: '确诊', value: 40},
+    {name: '无症状感染者', value: 126}
+  ]
+
+  //五、地图数据
+  var mapsj=[
+    {name: '官渡区', value: 371},
+    {name: '经开区', value: 268},
+    {name: '呈贡区', value: 228},
+    {name: '西山区', value: 127},
+    {name: '五华区', value: 69},
+    {name: '安宁市', value: 60},
+    {name: '阳宗海', value: 51},
+    {name: '盘龙区', value: 46},
+    {name: '东川区', value: 26},
+    {name: '晋宁区', value: 17},
+    {name: '嵩明县', value: 14},
+    {name: '石林县', value: 14},
+    {name: '寻甸县', value: 7},
+    {name: '富民县', value: 6},
+    {name: '禄劝县', value: 6},
+    {name: '宜良县', value: 4}
+  ]
+  //管控
+  var fgk = [2, 1, 1, 2, 3, 5, 9, 65, 22, 22, 21, 42, 28, 44, 71, 69, 115] //非管控
+  var gk = [7, 2, 1, 8, '-', 1, 19, 13, 17, 59, 70, 44, 51, 57, 79, 142, 136] //管控
+  var bx = ['-', '-', '-', '-', '-', '-', 1, 1, 1, 2, 2, 2, 3, 11, 3, 4, 1] //不祥
+  var swrk = ['-', '-', 2, '-', '-', '-', 3, 2, 1, '-', '-', 1, 2, 5, 7, 7, 25] //省外入昆
+  var bfb=[0.22, 0.33, 0.25, 0.2, 1, 0.83, 0.28, 0.8, 0.54, 0.27, 0.23, 0.47, 0.33, 0.38, 0.44, 0.31, 0.42]
+
+  //地区
+  var dqdata=[[1,1,2,4,'-',1,1,30,25,19,15,40,30,14,40,57,67],[2,'-','-','-','-','-',10,12,9,2,7,17,7,18,14,61,109],['-',1,'-',2,1,3,19,19,'-',25,16,13,8,46,35,26,8],['-',1,1,2,'-','-','-',3,'-',13,22,7,15,11,20,18,8],[1,'-','-',1,1,'-',1,5,'-',3,15,3,3,8,8,9,10],['-','-','-','-','-','-',1,6,'-',2,6,3,4,2,17,7,6],['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-',5,46],['-','-','-',1,'-','-','-',2,1,6,3,'-',1,'-',4,16,8],['-','-','-','-','-','-','-','-','-',1,'-','-',14,1,5,2,1],[1,'-','-','-','-','-','-','-',2,4,2,'-','-',2,2,4,'-'],['-','-','-','-','-','-','-',3,'-','-','-',1,'-',1,'-',2,7],['-','-','-','-','-','-','-','-',1,4,'-','-','-','-',1,7,1],['-','-','-','-','-',1,'-','-','-',1,'-','-','-','-',2,'-',2],['-','-','-','-','-','-','-','-','-','-',5,'-','-','-','-',1,'-'],['-','-','-','-','-','-','-','-',1,'-','-','-','-','-',3,1,'-'],['-','-','-','-','-','-','-','-','-','-','-','-','-','-',1,1,1]]
+  var lgdata=['官渡区','经开区','呈贡区','西山区','五华区','安宁市','',
+    '阳宗海','盘龙区','东川区','晋宁区','嵩明县','石林县','',
+    '寻甸县','富民县','禄劝县','宜良县']
+
+
+  var myChart=echarts.init(document.getElementById("container"))
+  var xdata=date
+  var ydata=csdata
+  var wldata=wbdata
+  var option = {
+
+
+    // title:{
+    //   text:"昆明“11•13”新冠疫情病例变化",
+    //   textStyle:{
+    //     fontSize:25
+    //   },
+    //   left:"28%"
+    // },
+    legend:{
+      left:"15%",
+      top:"13%",
+      textStyle:{
+        fontSize:17
+      }
     },
-    tooltip: {},
-    animationDurationUpdate: 1500,
-    animationEasingUpdate: 'quinticInOut',
-    label: {
-        normal: {
-            show: true,
-            textStyle: {
-                fontSize: 12,
-            },
+    tooltip:{
+      trigger:'item',
+      backgroundColor: "DimGray",
+      textStyle : {
+        color: 'white',
+        decoration: 'none',
+        // fontFamily: 'Verdana, sans-serif',
+        fontSize: 16,
+        fontWeight: 'bold'
+      },
+      formatter:"{a} {b} 新增病例{c}例",
+    },
+    toolbox:{
+      feature:{
+        saveAsImage:{}
+      }
+    },
+    xAxis:{
+      data:xdata,
+      nameTextStyle:{
+        fontSize: 20
+      },
+      axisLabel:{
+
+        textStyle:{
+          fontWeight: 'bold'
         },
+        interval:1,
+      },
+      splitLine:{
+        show:true
+      }
+    },
+    yAxis:{
+      axisLabel:{
+        formatter: "{value}(例)",
+        textStyle:{
+          fontWeight: 'bold',
+        }
+      },
+    },
+    series:[
+      {
+        name:"初筛阳性数",
+        color:"red",
+        data:ydata,
+        type:"line",
+        smooth:true,
+        symbolSize:10,
+        label:{
+          show:true,
+          fontSize:16
+        },
+        lineStyle: {
+          shadowColor: 'rgba(0, 0, 0, .4)',    //阴影颜色
+          shadowBlur: 5,                       //虚化程度
+          shadowOffsetY: 15,
+          shadowOffsetX: 5,
+          width: 5,
+        },
+      },
+      {
+        name:"初筛上报数",
+        color:"orange",
+        data:csdata2,
+        type:"line",
+        smooth:true,
+        symbolSize:10,
+        label:{
+          show:true,
+          fontSize:16
+        },
+        lineStyle: {
+          shadowColor: 'rgba(0, 0, 0, .4)',    //阴影颜色
+          shadowBlur: 5,                       //虚化程度
+          shadowOffsetY: 15,
+          shadowOffsetX: 5,
+          width: 5,
+        },
+      },
+      {
+        name:"网络直报数",
+        color:"blue",
+        data:wldata,
+        type:"line",
+        smooth:true,
+        symbolSize:10,
+        label:{
+          show:true,
+          fontSize:16
+        },
+        lineStyle: {
+          shadowColor: 'rgba(0, 0, 0, .4)',    //阴影颜色
+          shadowBlur: 5,                       //虚化程度
+          shadowOffsetY: 15,
+          shadowOffsetX: 5,
+          width: 5,
+        },
+      },
+    ]
+  }
+  myChart.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart.resize();
+  });
+
+  ///第二绘图区
+  var myChart2=echarts.init(document.getElementById("container2"))
+  var ydata=nlydate
+  var manData = man;
+  var womanData =woman;
+  var option={
+    title:{
+      text:"年龄及性别分布",
+      textStyle:{
+        fontSize:25
+      },
+      left:"20%"
+    },
+    tooltip: {
+      show: true,
+      trigger: "axis",
+      axisPointer: {
+        type: "shadow",
+      },
+      formatter: function (params) {
+        return (
+          '<span style="font-size: 20px;font-weight: bold;font-family: SourceHanSansCN;">' +
+          params[0].seriesName +
+          "</span>" +
+          "<br/>" +
+          params[0].marker +
+          '<span style="color:' +
+          params[0].color +
+          ';font-size: 20px;font-weight: bold;font-family: SourceHanSansCN;">' +
+          "\n" +
+          params[0].name +
+          ": " +
+          params[0].value +
+          "人" +
+          "</span>"
+        );
+      },
+    },
+    toolbox:{
+      feature:{
+        saveAsImage:{}
+      }
     },
     legend: {
-        x: 'center',
-        show: false,
-        //data: ['第一支', '第二支', '儿子','雇用关系','邻居'],
-    },
-  
-    series: [
+      left: "45.2%", //图例距离左边的距离
+      top: 0,
+      textStyle: {
+        // 图例文字样式  隐藏文字
+        color: "transparent",
+      },
+      selectedMode: false,
+      itemWidth: 25,
+      itemHeight: 55, //图例宽高
+      itemGap: 40, //图例的间隔
+      data: [
         {
-            type: 'graph',
-            layout: 'force',
-            symbolSize: 55,
-            focusNodeAdjacency: true,
-            roam: true,
-            categories: [
-                {
-                    name: '0',
-                    itemStyle: {
-                        normal: {
-                            color: '#4592FF',
-                        },
-                    },
-                },
-                {
-                    name: '1',
-                    itemStyle: {
-                        normal: {
-                            color: '#4592FF',
-                        },
-                    },
-                },
-                {
-                    name: '2',
-                    itemStyle: {
-                        normal: {
-                            color: '#3592F',
-                        },
-	                  },
-                },
-				{
-                    name: '3',
-                    itemStyle: {
-                        normal: {
-                            color: '#46A3FF',
-                        },
-	                  },
-				},
-				{  name: '4',
-                    itemStyle: {
-                        normal: {
-                            color: '#97CBFF',
-                        },
-	                  },
-                },
-				{  name: '5',
-                    itemStyle: {
-                        normal: {
-                            color: '#AE0000',
-                        },
-	                  },
-                },
-             {  name: '6',
-                    itemStyle: {
-                        normal: {
-                            color: '#FF5151',
-                        },
-	                  },
-                },
-              {  name: '7',
-                    itemStyle: {
-                        normal: {
-                            color: ' #FF9797 ',
-                        },
-	                  },
-                },           
-                 {  name: '8',
-                    itemStyle: {
-                        normal: {
-                            color: ' #FFDC35',
-                        },
-	                  },
-                },                
-                       
-                 {  name: '9',
-                    itemStyle: {
-                        normal: {
-                            color: '#FF2D2D',
-                        },
-	                  },
-                },           
-	                  
-                
-            ],
-            label: {
-                normal: {
-                    show: true,
-                    textStyle: {
-                        fontSize: 12,
-                    },
-                },
-            },
-
-            force: {
-                repulsion: 1000,
-            },
-            edgeSymbolSize: [4, 50],
-            edgeLabel: {
-                normal: {
-                    show: true,
-                    textStyle: {
-                        fontSize: 10,
-                    },
-                    formatter: '{c}',
-                },
-            },
-        data: [
-                {  name: '第一代A', //0
-                    draggable: true,
-				 },
-                {name: '1王连生',category: 1,draggable: true, }, //1
-                    
-                {
-                    name: '3梁礼贤', //2
-                    category: 4,
-                    draggable: true,
-                },
-                {
-                    name: '4杜琴丹伍', //3
-                    category: 1,
-                    draggable: true,
-                },
-			    {
-                    name: '10徐博韬',//4
-                    category: 4,
-                    draggable: true,
-                },
-                {
-                    name: '14貌代本伍',//5
-                    category: 1,
-                    draggable: true,
-                },
-                {
-                    name: '21恒麻推',//6
-                    category: 1,
-                    draggable: true,
-                },
-                {
-				    name: '23荷玛奥\n（+1突变C5693T)',//7
-                    category: 3,
-                    draggable: true,
-                },
-                {
-                    name: '24柳君鹏',//8
-                    category: 4,
-                    draggable: true,
-                },
-                {
-                    name: '25林龙',//9
-                    category: 4,
-                    draggable: true,
-                },
-                {
-                    name: '28玛宁努努耐',//10
-                    category: 1,
-                    draggable: true,
-                },
-				     {
-                    name: '29玛伦麻薇',//11
-                    category: 1,
-                    draggable: true,
-                },
-				{
-                    name: '31卖恩静',//12
-                    category: 1,
-                    draggable: true,
-                },
-				{
-                    name: '34字蓉\n+1突变G13126T',//13
-                    category: 7,
-                    draggable: true,
-                },
-				{
-                    name: '35貌昂谬铁',//14
-                    category: 1,
-                    draggable: true,
-                },
-				{
-                    name: '36AwngSanmin\n+1突变T17400c',//15
-                    category: 3,
-                    draggable: true,
-                },
-				{
-                    name: '38貌波亚',//16
-                    category: 1,
-                    draggable: true,
-                },
-						{
-                    name: '39梁晨',//17
-                    category: 4,
-                    draggable: true,
-                },
-             	{
-                    name: '41占喊',//18
-                    category: 8,
-                    draggable: true,
-                },
-					{
-                    name: '44玛宁贝漂\n+1突变A26528T',//19
-                    category: 3,
-                    draggable: true,
-                },
-				{
-                    name: '51何光珍\n+2突变G22199T\nc29250T',//20
-                    category: 3,
-                    draggable: true,
-                },
-				{
-                   name:'第二代A', //21
-                    category: 2,
-                    draggable: true,
-                },
-				{
-                    name:'第二代B',//22
-                    category: 2,
-                    draggable: true,
-                },
-			{
-                    name:'第三代B',//23
-                    category: 3,
-                    draggable: true,
-                },
-				{ name:'50杜漂特',category: 8,draggable: true,},//24	
-				{ name:'42李自勇',category: 8,draggable: true,},//25
-				{ name:'52楠瑞',category: 8,draggable: true,},//26
-				{
-                    name:'B第一代',//27
-					category: 5,
-                    draggable: true,
-                },
-			{ name:'2貌丁林索',category: 6,draggable: true,},//28
-            { name:'5昂吞磊\n+1突变T9843A',category: 7,draggable: true,},//29  
-			{ name:'6梦丁',category: 6,draggable: true,},//30	
-            { name:'7特苗吞',category: 6,draggable: true,},//31	  
-            { name:'8吉漂达\n+1突变T9843A',category: 7,draggable: true,},//32	
-			{ name:'9也门',category: 6,draggable: true,},//33	
-			{ name:'11吴谬明',category: 6,draggable: true,},//34	
-			{ name:'12玛卫\n+1突变C29250T',category: 7,draggable: true,},//35	
-			{ name:'13吞路',category: 6,draggable: true,},//36	
-			{ name:'15貌凯明伍\n+1突变C3692T',category: 7,draggable: true,},//37	
-			{ name:'16顶波',category: 6,draggable: true,},//38	
-			{ name:'17杜莱',category: 6,draggable: true,},//39	
-			{ name:'18杜敏敏',category: 6,draggable: true,},//40	
-			{ name:'19行腿奥',category: 6,draggable: true,},//41
-			{ name:'20貌索林',category: 6,draggable: true,},//42	
-			{ name:'22龙彩华',category: 6,draggable: true,},//43	
-			{ name:'26貌伟漂昂',category: 6,draggable: true,},//44	
-			{ name:'27玛朵朵五',category: 6,draggable: true,},//45	
-			{ name:'30马伍',category: 6,draggable: true,},//46	
-			{ name:'32岩良',category: 6,draggable: true,},//47	
-			{ name:'33梦腊',category: 6,draggable: true,},//48	
-			{ name:'37玛丁萨温',category: 6,draggable: true,},//49	
-			{ name:'40貌缪明',category: 6,draggable: true,},//50	
-			{ name:'43也焕',category: 6,draggable: true,},//51	
-			{ name:'45玛弟达敏',category: 6,draggable: true,},//52	
-			{ name:'46当奈',category: 6,draggable: true,},//53	
-			{ name:'47多亚迪',category: 6,draggable: true,},//54	
-			{ name:'48貌索莫觉',category: 6,draggable: true,},//55	
-			{ name:'49琴美',category: 6,draggable: true,},//56	
-			{ name:'53梅迪达',category: 6,draggable: true,},//57
-			{ name:'B第二代',category: 9,draggable: true,},//58
-			{ name:'C第二代',category: 9,draggable: true,},//59
-			{ name:'D第二代',category: 9,draggable: true,},//60
-			{ name:'E第二代',category: 9,draggable: true,},//61
-
-			{ name:'第二代C',category: 1,draggable: true,},//62
-			{ name:'何利伟',category: 3,draggable: true,},//63
-			{ name:'明希',category: 3,draggable: true,},//64
-
-							
-			{ name:'54玛米南',category: 8,draggable: true,},//57
-			{ name:'55貌索温迈',category: 8,draggable: true,},//57
-			{ name:'56貌丹温',category: 8,draggable: true,},//57
-			{ name:'57管国志',category: 8,draggable: true,},//57
-			{ name:'58貌孟杰昂',category: 8,draggable: true,},//57	
-            ],
-            links: [
-             {
-                    source: 0,
-                    target: 1,
-                    category: 0,
-                    value: '',
-                },
-                {
-                    source: 63,
-                    target: 2,
-                    value: '',
-                },
-                {
-                    source: 0,
-                    target: 3,
-                    value: '',
-                },
-                {
-                    source: 2,
-                    target: 4,
-                    value: '',
-                },
-                {
-                    source: 0,
-                    target: 5,
-                    value: '',
-                },
-                {
-                    source: 0,
-                    target: 6,
-                    value: '',
-                },
-                {
-                    source: 23,
-                    target: 7,
-                    value: '',
-                },
-                {
-                    source: 63,
-                    target: 8,
-                    value: '',
-                },
-              
-                {
-                    source: 0,
-                    target: 10,
-                    value: '',
-                },
-                {
-                    source: 0,
-                    target: 11,
-                    value: '',
-                },
-                {
-                    source: 0,
-                    target: 12,
-                    value: '',
-                },
-               
-                {
-                    source: 0,
-                    target: 14,
-                    value: '',
-                },
-				{
-                    source: 23,
-                    target: 15,
-                    value: '',
-                },
-                {
-                    source: 0,
-                    target: 16,
-                    value: '',
-                },
-                {
-                    source: 2,
-                    target: 17,
-                    value: '',
-                },
-             
-				{
-                    source: 21,
-                    target: 19,
-                    value: '',
-                },
-                
-				{
-                    source: 0,
-                    target: 21,
-                    value: '',
-                },
-				{
-                    source: 0,
-                    target: 22,
-                    value: '',
-                },
-				
-				{
-                    source: 22,
-                    target: 23,
-                    value: '',
-                },
-			
-		    { source: 9,target: 63, value: '', },  
-            { source: 27,target: 28, value: '', },  
-         
-            { source: 27,target: 30, value: '', },     
-            { source: 27,target: 31, value: '', },    
-             
-            { source: 27,target: 33, value: '', },    
-            { source: 27,target: 34, value: '', },  
-			
-			{ source: 27,target: 36, value: '', },  
-			
-			{ source: 27,target: 38, value: '', },  
-			{ source: 27,target: 39, value: '', },  
-			{ source: 27,target: 40, value: '', },  
-			{ source: 27,target: 41, value: '', },  
-			{ source: 27,target: 42, value: '', },  
-			{ source: 27,target: 43, value: '', },  
-			{ source: 27,target: 44, value: '', },  
-			{ source: 27,target: 45, value: '', },  
-			{ source: 27,target: 46, value: '', },  
-			{ source: 27,target: 47, value: '', },  
-			{ source: 27,target: 48, value: '', },  
-			{ source: 27,target: 49, value: '', },  
-			{ source: 27,target: 50, value: '', },  
-			{ source: 27,target: 51, value: '', },  
-			{ source: 27,target: 52, value: '', },  
-			{ source: 27,target: 53, value: '', },  
-			{ source: 27,target: 54, value: '', },  
-			{ source: 27,target: 55, value: '', },  
-			{ source: 27,target: 56, value: '', },  
-			{ source: 27,target: 57, value: '', }, 
-			{ source: 27,target: 58, value: '', }, 
-			{ source: 13,target: 58, value: '', }, 
-			{ source: 27,target: 59, value: '', }, 
-			{ source: 35,target: 59, value: '', }, 
-			{ source: 27,target: 60, value: '', }, 
-			{ source: 37,target: 60, value: '', },  
-			{ source: 27,target: 61, value: '', },  
-			{ source: 29,target: 61, value: '', }, 
-			{ source: 32,target: 61, value: '', }, 
-			
-			{ source: 0,target: 62, value: '', }, 
-			{ source: 62,target: 20, value: '', }, 
-			
-			{ source: 19,target: 64, value: '', }, 
-			{ source: 19,target: 63, value: '', }, 
-            ],
-            lineStyle: {
-                normal: {
-                    opacity: 0.9,
-                    width: 1,
-                    curveness: 0,
-                },
-            },
+          name: "男",
+          // icon: `image://${man}`,
+          icon:
+            "image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAfCAMAAAAP3mfjAAAAvVBMVEUAAABAgP9Vqv9Jkv9Vqv9Gov9Onf9JpP9Om/9Mof9SnP9Nm/9Mn/9Onf9Rm/9Rnf9Nn/9OnP9On/tRnvxNnvxQnfxQnvxQnvxOnvxOnf1Pnv1Pnv1Qnv1Pnv1Pnf1Pnv1Pnv1On/1Qnv1Pnv1Onv1On/1Qnv5Qnv5Pnv5Pn/5Qnv5PnvxOnvxPnvxPnvxPnv1Pnv1Pnv1Onv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv1Pnv3hJDdrAAAAPnRSTlMABAYHCQsNDhceHyElJykvOD5ITE9WWVxfaHF0g4SFi46PkJGWnKqwuLm9wsPHy87S1d3g4+ju7/T19vf4+zNjKZEAAACXSURBVBjTxdBFEgJBEETRxN3d3Rtr3P79j8WGaeYARPBX9Ta5KEmSMp1+Qd/yD6D59RrgHnE+A5B1ngOcQ87pAzwrvsForZF0d3trrbXW7icJSeENrlNKauFrKi39vko7LpePjiDtMObj8T9smHnucZNyw4yB4xaI90qSJANmDHgf+LVXYEbw8jyAbhkWnoP1akDFRkyS3hKPQR3ayj/hAAAAAElFTkSuQmCC",
         },
+        {
+          name: "女",
+          // icon: `image://${woman}`,
+          icon:
+            "image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAiCAMAAABhn6n1AAABGlBMVEUAAAD/AAD/VVX/VVX/SUn/YGD/Zmb/YmL/VVX/Wlr/Xl7/WVn/VVX/Xl7/WFj/V1f/W1v5WVn6XFz6Wlr6W1v6WFj7WVn7WVn7WVn7WVn7W1v7WVn8Wlr8Wlr8W1v8Wlr8W1v8W1v8W1v9W1v9WVn9Wlr9Wlr9W1v9W1v9WVn9Wlr9WVn9Wlr7Wlr7W1v7Wlr7W1v7WVn7Wlr8W1v8Wlr8W1v8WVn8Wlr8WVn8W1v8Wlr8Wlr8Wlr8Wlr8Wlr8W1v8Wlr8Wlr8WVn8Wlr8W1v8Wlr9Wlr9Wlr9Wlr9Wlr7W1v7Wlr8Wlr8Wlr8Wlr8W1v8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8Wlr8WlrVqYT9AAAAXXRSTlMAAQMGBwgKDQ8RExQVGyAjKi4yMzU3OTxCRUZIT1VaXl9iZWttbm9wc3V6e32AhIWKjJGVlpidn6Cjpaiqr7C0u72/w8XHzc/S1Nba2+Hl5+jp6+3w8/b3+Pn6/P2iRbbvAAAA7UlEQVQoz8XQV1ICARBF0auYs44BAybEnMUcQDErCGJA5e5/G37AyOzA9/dOVVd3NQDQGp+MEUnvsz50R2BfdTsCl6oXEVhXTUUgdlj52mtu9LbxxPRMIt4S9nhJVQujtd5Vtp6XdgCW/cs8AFdev6oW780AdHy7VFWtrPjRAiT8WawNJHUCOPDmpAbpR3ehqeBGfU1+xycY0oVwSVL7WbO0GcLquymOPboNIXvuAf2bw9UQKsFWHzDbuHQKgNMGpAGayw3IA4wZyQDQEwSB5u58D4Kgs/4izeR8i/z0n+DTs6zFCCSzgyNXcwD8AmVGYKFUgvUsAAAAAElFTkSuQmCC",
+        },
+      ],
+    },
+    grid: [
+      // 左
+      {
+        top: "10%",
+        bottom: "2%",
+        left: "8%",
+        width: "38%",
+        height: "85%",
+        containLabel: true,
+      },
+      // 中
+      {
+        top: "1%",
+        bottom: "2%",
+        left: "55%",
+        width: "24%",
+        height: "100%",
+      },
+      // 右
+      {
+        top: "10%",
+        bottom: "2%",
+        right: "8%",
+        width: "38%",
+        height: "85%",
+        containLabel: true,
+      },
     ],
-};
+    xAxis: [
+      {
+        type: "value",
+        inverse: true,
+        show: true,
+        axisLabel: {
+          color: "#7e8daa",
+          fontSize: "20",
+          fontWeight: "bold",
+          textStyle: {
+            fontFamily: "BoldCondensed",
+          },
+        },
+        splitLine: {
+          // 网格线
+          show: true,
+          lineStyle: {
+            color: ["rgba(22, 39, 60, 1)"],
+            width: 1,
+            type: "dotted",
+          },
+        },
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        axisLine: {
+          //轴线
+          // show: false,
+          lineStyle: {
+            color: "rgba(25, 35, 57,0.2)",
+          },
+        },
+      },
+      {
+        gridIndex: 1,
+        show: true,
+        axisLabel: {
+          color: "#7e8daa",
+          fontSize: "26",
+          fontWeight: "bold",
+          textStyle: {
+            fontFamily: "BoldCondensed",
+          },
+        },
+        splitLine: {
+          // 网格线
+          show: false,
+          lineStyle: {
+            color: ["rgba(22, 39, 60, 1)"],
+            width: 1,
+            type: "dotted",
+          },
+        },
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        axisLine: {
+          //轴线
+          show: false,
+        },
+      },
+      {
+        gridIndex: 2,
+        type: "value",
+        show: true,
+        axisLabel: {
+          color: "#7e8daa",
+          fontSize: "20",
+          fontWeight: "bold",
+          textStyle: {
+            fontFamily: "BoldCondensed",
+          },
+        },
+        splitLine: {
+          // 网格线
+          show: true,
+          lineStyle: {
+            color: ["rgba(22, 39, 60, 1)"],
+            width: 1,
+            type: "dotted",
+          },
+        },
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        axisLine: {
+          //轴线
+          // show: false,
+          lineStyle: {
+            color: "rgba(25, 35, 57,0.2)",
+          },
+        },
+      },
+    ],
+    yAxis: [
+      {
+        axisLabel: {
+          show: false,
+        },
+        align: "center",
+        type: "category",
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        data: ydata,
+        axisLine: {
+          //轴线
+          // show: false,
+          lineStyle: {
+            color: "rgba(25, 35, 57,0.2)",
+          },
+        },
+      },
+      {
+        axisLabel: {
+          color: "#7e8daa",
+          fontSize: "10",
+          fontWeight: "bold",
+          textStyle: {
+            fontFamily: "BoldCondensed",
+          },
+        },
+        gridIndex: 1,
+        position: "center",
+        axisLine: {
+          show: false,
+        },
+        type: "category",
+        inverse: false,
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        data: [
+          "            ",
+          '婴幼儿期（0-6岁）',
+          '少儿期（7-12岁）',
+          '青少年期（13-17岁）',
+          '青年期（18-45岁）',
+          '中年期（46-69岁）',
+          '老年期（70岁以上）',
+          "           ",
+        ], //使用空格使文字居中
+      },
+      {
+        gridIndex: 2,
+        position: "left",
+        axisLabel: {
+          show: false,
+        },
+        type: "category",
+        inverse: false,
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        axisLine: {
+          //轴线
+          // show: false,
+          lineStyle: {
+            color: "rgba(25, 35, 57,0.2)",
+          },
+        },
+        data: ydata,
+      },
+    ],
+    series: [
+      {
+        type: "bar",
+        barWidth: 35,
+        name: "男",
+        itemStyle: {
+          emphasis: {
+            barBorderRadius: 30
+          },
+          normal: {
+            //柱形图圆角，初始化效果
+            color: "#4f9efd",
+            barBorderRadius:[10, 0, 0, 10],
+            label: {
+              show: true,//是否展示
+              textStyle: {
+                color:"white",
+                fontWeight:'bolder',
+                fontSize : '14',
+                fontFamily : '微软雅黑',
+              },
+              formatter: function(params){
+                if (params.value>50){return params.value+'人（'+(params.value/total*100).toFixed(2) + '%）'}
+              }
+            }
+          }
+        },
+        data: manData,
+      },
+      {
+        type: "bar",
+        barWidth: 30,
+        xAxisIndex: 2,
+        yAxisIndex: 2,
+        name: "女",
+        itemStyle: {
+          emphasis: {
+            barBorderRadius: 30
+          },
+          normal: {
+            //柱形图圆角，初始化效果
+            color: "#fc5a5a",
+            barBorderRadius:[0, 10, 10, 0],
+            label: {
+              show: true,//是否展示
+              textStyle: {
+                color:"white",
+                fontWeight:'bolder',
+                fontSize : '14',
+                fontFamily : '微软雅黑',
+              },
+              formatter: function(params){
+                if (params.value>50){return params.value+'人（'+(params.value/total*100).toFixed(2) + '%）'}
+              }
+            }
+          }
+        },
+        data: womanData,
+      },
+    ],
+  };
+  myChart2.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart2.resize();
+  });
+  //第三绘图区
+  var myChart3=echarts.init(document.getElementById("container3"))
+  var data1=zy
+  var data2=fx
+  var qt=qt
+  var ztt=ztt
+
+
+  var option={title:{
+      text:"职业分布                                                                    临床分型",
+      textStyle:{
+        fontSize:25
+      },
+      left:"22%",top:"5%"
+    },
+    tooltip:{
+      show:true,
+      formatter:"{b}{c}例，占{d}%"
+    },
+    toolbox:{
+      feature:{
+        saveAsImage:{}
+      }
+    },
+
+    series:[
+      {
+        type:"pie",
+        data:data1,
+        center: ["25%", "45%"],
+        radius:"50%",
+        selectedMode: "multiple",
+        selectedOffset: 30,
+        itemStyle: {
+          normal:{
+            label:{
+              show: true,
+              formatter: '{b} : {c} ' //带当前图例名 + 数值
+              //formatter: '{b} : {c} ({d}%)' //带当前图例名 + 百分比
+            },
+            // labelLine :{show:true}
+          }
+        }
+      },
+      {
+        type:"pie",
+        data:data1,
+        center: ["25%", "45%"],
+        radius:"50%",
+        selectedMode: "multiple",
+        selectedOffset: 30,
+        itemStyle: {
+          normal:{
+            label:{
+              position:"inside",
+              show: true,
+              formatter: '{d}%' //只要百分比
+            },
+            // labelLine :{show:true}
+          }
+        }
+      },
+      // {
+      //   type:"pie",
+      //   data:data2,
+      //   center: ["75%", "45%"],
+      //   radius:"50%",
+      //   selectedMode: "multiple",
+      //   selectedOffset: 30,
+      //   itemStyle: {
+      //     normal:{
+      //       label:{
+      //         show: true,
+      //         formatter: '{b} : {c} '
+      //       },
+      //       // labelLine :{show:true}
+      //     }
+      //   }
+      //
+      // },
+      {
+        type:"pie",
+        data:data2,
+        center: ["75%", "45%"],
+        radius:"50%",
+        selectedMode: "multiple",
+        selectedOffset: 30,
+        itemStyle: {
+          normal:{
+            label:{
+              position:"inside",
+              show: true,
+              formatter: '累计{b}{c}例\n\n占比{d}%',
+              fontSize: 12,
+              color:"white"
+            },
+            // labelLine :{show:true}
+          }
+        }
+      },
+      {
+        type:"pie",
+        data:qt,
+        center: ["90%", "30%"],
+        radius: ['20%', '8%'],
+        // radius:"20%",
+        selectedMode: "multiple",
+        selectedOffset: 30,
+        itemStyle: {
+          normal:{
+            label:{
+              position:"center",
+              show: true,
+              formatter: '昨日无症状感染者\n占比{d}%'
+            },
+            // labelLine :{show:true}
+          }
+        }
+      },
+      {
+        type:"pie",
+        data:ztt,
+        center: ["90%", "60%"],
+        radius: ['20%', '8%'],
+        // radius:"20%",
+        selectedMode: "multiple",
+        selectedOffset: 30,
+        itemStyle: {
+          normal:{
+            label:{
+              position:"center",
+              show: true,
+              formatter: '今日无症状感染者\n占比{d}%'
+            },
+
+            // labelLine :{show:true}
+          }
+        }
+      },
+    ]
+  }
+  myChart3.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart3.resize();
+  });
+
+
+  //第四绘图区  地图
+  var myChart4=echarts.init(document.getElementById("container4"))
+  $.getJSON("map/kunming.json", function (geoJson) {
+    echarts.registerMap('nanyang', geoJson);
+    myChart4.hideLoading();
+    var mapdata=mapsj
+
+    option = {
+      visualMap: {
+        min: 0,
+        max: 500,
+        left: 26,
+        bottom: 40,
+        showLabel: !0,
+        text: ["高", "低"],
+        pieces: [{
+          gt: 199.99,
+          label: "> 200 人",
+          color: "#7f1100"
+        }, {
+          gte: 99.99,
+          lte: 199.9,
+          label: "100 - 200 人",
+          color: "#CC0033"
+        }, {
+          gte: 49.99,
+          lt: 99.9,
+          label: "50- 99人",
+          color: "#FF0033"
+        }, {
+          gt: 9.999,
+          lt: 49.9,
+          label: "10-49",
+          color: "#FF6666"
+        }, {
+          gte: 1,
+          lt: 9.99,
+          label: "1 - 9 人",
+          color: "#FFCCCC"
+        }],
+        show: !0
+      },
+      backgroundColor: {
+        type: 'linear',
+        x: 0,
+        y: 0,
+        x2: 1,
+        y2: 1,
+        colorStops: [
+          {
+            offset: 0,
+            color: '#eee', // 0% 处的颜色
+          },
+          {
+            offset: 1,
+            color: '#fff', // 100% 处的颜色
+          },
+        ],
+        globalCoord: false, // 缺省为 false
+      },
+      toolbox:{
+        feature:{
+          saveAsImage:{}
+        }
+      },
+      tooltip: {
+        formatter: function (params) {
+          var html = '';
+          html =
+            '<div>' +
+            '<div >' +
+            params.name +
+            '</div>' +
+            '<div>' +
+            '<span style="font-size:16px;font-weight:bold;">' +
+            '确诊病例' +
+            params.value+
+            '例' +
+            '</span>' +
+            '</div>' +
+            '</div>';
+          return html;
+        },
+      },
+      // color:['#34c6bb'],
+      legend: {
+        orient: 'vertical',
+        id: 1,
+        y: 'bottom',
+        x: 'left',
+        itemWidth: 20,
+        data: [
+          {
+            name: 'QQ',
+            // icon: iconWZ
+          },
+          {
+            name: '微信',
+            // icon: iconJC
+          },
+        ],
+      },
+
+      geo: {
+        map: 'nanyang',
+        type: 'map',
+        zoom: 1,
+        showLegendSymbol: true,
+        label: {
+          normal: {
+            fontSize: 10,
+            fontWeight:"bold",
+            show: true,
+            color: '#fff',
+          },
+          emphasis: {
+            show: true,
+            color: 'red',
+          },
+        },
+        itemStyle: {
+          normal: {
+            areaColor: '#FFCCCC',
+            borderColor: '#FFCCCC', //线
+            shadowColor: '#FF6666', //外发光
+            shadowBlur: 20,
+          },
+          emphasis: {
+            areaColor: '#FFFFCC', //悬浮区背景
+          },
+        },
+      },
+      series: [
+        {
+          name: "确诊病例",
+          type: "map",
+          geoIndex: 0,
+          data: mapdata
+        },
+      ],
+    };
+    myChart4.setOption(option);
+  });
+
+
+  //第五绘图区 管控
+  var myChart5=echarts.init(document.getElementById("container5"))
+  var xdata =date
+
+  var data1 = gk  //非管控
+  var data2 = fgk//管控
+  var data3 = bx//不祥
+  var data4 = swrk //省外入昆
+
+  var option = {
+    title:{
+      text:"管控情况",
+      textStyle:{
+        fontSize:25
+      },
+      left:"19%",top:"10%"},
+    color: ['#3398DB'],
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    toolbox:{
+      feature:{
+        saveAsImage:{}
+      }
+    },
+    legend:{
+      show:true,
+      left:"7%",
+      top:"17%",
+      textStyle:{fontSize:16}
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [{
+      type: 'category',
+      data: xdata,
+      // inverse:true,
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        "textStyle": {
+          "color": "black",
+          fontSize:'11',
+        },
+      },
+    }],
+    yAxis: [{
+      // show:false,
+      type: 'value'
+    },{
+      show:false,
+      type: 'value',
+      min:0,
+      max:1
+    },],
+    series: [
+      {
+        name: '非管控',
+        type: 'bar',
+        stack: 'a',
+        barGap: '-100%',
+        barWidth: '50%',
+        data: data2,
+        yAxisIndex:0,
+        label: {
+          show: true,
+        },
+        itemStyle: {
+          color: 'red'
+        }
+      },
+      {
+        name: '管控',
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: data1,
+        yAxisIndex:0,
+      },
+      {
+        name: '不祥',
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: data3,
+        yAxisIndex:0,
+        itemStyle: {
+          color: 'orange'
+        }
+      },
+      {
+        name: '省外入昆',
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: data4,
+        yAxisIndex:0,
+        itemStyle: {
+          color: 'green'
+        },
+      },
+      {
+        name:"非管控占比",
+        color:"#FF6666",
+        data:bfb,
+        yAxisIndex:1,
+        type:"line",
+        smooth:true,
+        symbolSize:10,
+        label:{
+          show:true,
+          fontSize:16,
+          formatter: function(params) {
+            return (params.value*100).toFixed(0)+'%';
+          },
+        },
+        lineStyle: {
+          shadowColor: 'rgba(0, 0, 0, .4)',    //阴影颜色
+          shadowBlur: 5,                       //虚化程度
+          shadowOffsetY: 10,
+          shadowOffsetX: 5,
+          width: 3,
+        },
+      },
+    ]
+  };
+
+  myChart5.setOption(option);
+
+  ////第七绘图区  每日地区
+  var myChart7=echarts.init(document.getElementById("container7"))
+  var xdata =date
+  var dq=dqdata
+
+  var option = {
+    title:{
+      text:"地区每日病例变化",
+      textStyle:{
+        fontSize:25
+      },
+      left:"15%",top:"12%"},
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    toolbox:{
+      feature:{
+        saveAsImage:{}
+      }
+    },
+    legend: {
+      data:lgdata,
+      left: '7%',
+      right: '4%',
+      top: '22%',
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    xAxis: [{
+      type: 'category',
+      data: xdata,
+      // inverse:true,
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        "textStyle": {
+          "color": "black",
+          fontSize:'11',
+        },
+      },
+    }],
+    yAxis: [{
+      show:true,
+      type: 'value',
+    }],
+    series: [
+      {
+        name: "官渡区",
+        type: 'bar',
+        stack: 'a',
+        // barGap: '-100%',
+        barWidth: '100%',
+        data: dq[0],
+        label: {
+          show: true,
+        },
+        itemStyle: {
+          color: "#ED213A"
+        }
+      },
+      {
+        name: "经开区",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[1]
+      },
+      {
+        name: "呈贡区",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[2],
+        itemStyle: {
+          color: "#ffcc00"
+        }
+      },
+      {
+        name: "西山区",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[3],
+        itemStyle: {
+          color: "#CCFF99"
+        }
+      },
+      {
+        name: "五华区",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[4],
+        itemStyle: {
+          color: "#45b649"
+        }
+      },
+      {
+        name: "安宁市",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[5],
+        itemStyle: {
+          color: "#990099"
+        }
+      },
+      {
+        name: "阳宗海",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[6],
+        itemStyle: {
+          color: "#ccc"
+        }
+      },
+      {
+        name: "盘龙区",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[7],
+        itemStyle: {
+          color: "#6633cc"
+        }
+      },
+      {
+        name: "东川区",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[8],
+        itemStyle: {
+          color: "#FF00FF"
+        }
+      },
+      {
+        name: "晋宁区",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[9],
+        itemStyle: {
+          color: "#e67300"
+        }
+      },
+      {
+        name: "嵩明县",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[10],
+        itemStyle: {
+          color: "#CCCC00"
+        }
+      },
+      {
+        name: "石林县",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[11],
+        itemStyle: {
+          color: "#003300"
+        }
+      },
+      {
+        name: "寻甸县",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[12],
+        itemStyle: {
+          color: "#336699"
+        }
+      },
+      {
+        name: "富民县",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[13],
+        itemStyle: {
+          color:" #CCCC33"
+        }
+      },
+      {
+        name: "禄劝县",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[14],
+        itemStyle: {
+          color: "#FF9900"
+        }
+      },
+      {
+        name: "宜良县",
+        label: {
+          show: true,
+          color:'white'
+        },
+        stack: 'a',
+        barGap: '-100%',
+        type: 'bar',
+        barWidth: '50%',
+        data: dq[15],
+        itemStyle: {
+          color: "#999999"
+        }
+      },
+    ]
+  };
+
+  myChart7.setOption(option);
 
 
 
-if (option && typeof option === 'object') {
-    myChart.setOption(option);
-    //window.onresize = myChart.resize;  // 适应屏幕放大缩小	
-}
-    </script>
+  //第六绘图区 地图
+  var myChart6=echarts.init(document.getElementById("container6"))
+
+  var yData = [];
+  var barData = [];
+
+  for (var i = 0; i < 16; i++) {
+    barData.push(mapsj[i]);
+    yData.push((i+1) + mapsj[i].name);
+  }
+
+  var option = {
+    title: [{
+      show: true,
+      text: '病例地区分布',
+      textStyle: {
+        color: '#2D3E53',
+        fontSize: 18
+      },
+      right: 180,
+      top: 100
+    }],
+    tooltip: {
+      show: true,
+      formatter: function(params) {
+        return params.name + '：' + params.data['value']
+      },
+    },
+    grid: {
+      right: 20,
+      top: 135,
+      bottom: 100,
+      width: '70%'
+    },
+    xAxis: {
+      show: false
+    },
+    yAxis: {
+      type: 'category',
+      inverse: true,
+      nameGap: 16,
+      axisLine: {
+        show: false,
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisTick: {
+        show: false,
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisLabel: {
+        interval: 0,
+        margin: 85,
+        textStyle: {
+          color: '#455A74',
+          align: 'left',
+          fontSize: 14
+        },
+        rich: {
+          a: {
+            color: '#fff',
+            backgroundColor: '#FAAA39',
+            width: 20,
+            height: 20,
+            align: 'center',
+            borderRadius: 2
+          },
+          b: {
+            color: '#fff',
+            backgroundColor: '#4197FD',
+            width: 20,
+            height: 20,
+            align: 'center',
+            borderRadius: 2
+          }
+        },
+        formatter: function(params) {
+          if (parseInt(params.slice(0, 2)) < 4) {
+            return [
+              '{a|' + (parseInt(params.slice(0, 1)) ) + '}' + '  ' + params.slice(1)
+            ].join('\n')
+          } else if(parseInt(params.slice(0, 2)) < 10){
+            return[
+              '{b|' + (parseInt(params.slice(0, 1)) ) + '}' + '  ' + params.slice(1)
+            ].join('\n')
+          }else{
+            return[
+              '{b|' + (parseInt(params.slice(0, 2)) ) + '}' + '  ' + params.slice(2)
+            ].join('\n')
+          }
+        }
+      },
+      data: yData
+    },
+    series: [{
+      name: 'barSer',
+      type: 'bar',
+      roam: false,
+      visualMap: false,
+      zlevel: 2,
+      barMaxWidth: 8,
+      barGap: 0,
+      itemStyle: {
+        normal: {
+          color: function(params) {
+            var colorList = [{
+              colorStops: [{
+                offset: 0,
+                color: '#FFD119' // 0% 处的颜色
+              }, {
+                offset: 1,
+                color: '#FFAC4C' // 100% 处的颜色
+              }]
+            },
+              {
+                colorStops: [{
+                  offset: 0,
+                  color: '#00C0FA' // 0% 处的颜色
+                }, {
+                  offset: 1,
+                  color: '#2F95FA' // 100% 处的颜色
+                }]
+              }
+            ];
+            if (params.dataIndex < 3) {
+              return colorList[0]
+            } else {
+              return colorList[1]
+            }
+          },
+          barBorderRadius: 15
+        }
+      },
+      data: mapsj
+    }],
+  };
+
+  myChart6.setOption(option);
+
+  var myChart8=echarts.init(document.getElementById("container8"))
+
+  var xdata =date
+  var dq=dqdata
+
+  option = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross'
+      },
+      formatter:"{a}\n{b}\n新增病例{c}例",
+    },
+
+    xAxis: [{
+      gridIndex: 0,
+      show: false,
+      type: 'category',
+      boundaryGap: false,
+      data: xdata
+    },
+      {
+        gridIndex: 1,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data: xdata
+      },
+      {
+        gridIndex: 2,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data: xdata
+      },
+      {
+        gridIndex: 3,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data: xdata
+      },
+      {
+        gridIndex: 4,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 5,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 6,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 7,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 8,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 9,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 10,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 11,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 12,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 13,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 14,
+        show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      },
+      {
+        gridIndex: 15,
+        // show: false,
+        type: 'category',
+        boundaryGap: false,
+        data:xdata
+      }
+    ],
+    yAxis: [{
+      gridIndex: 0,
+      min:0,
+      max:80,
+      axisLabel: {
+        show: false
+      },
+      axisTick: {
+        show: false
+      },
+      splitLine: {
+        show: false
+      },
+      splitNumber: 1,
+      name: '官渡区',
+      nameLocation: 'center',
+      nameRotate: 360
+    },
+      {
+        gridIndex: 1,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '经开区',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 2,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '呈贡区',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 3,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '西山区',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 4,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '五华区',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 5,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '阳宗海',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 6,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '安宁市',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 7,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '盘龙区',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 8,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '东川区',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 9,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '晋宁区',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 10,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '嵩明县',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 11,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '石林县',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 12,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '富民县',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 13,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '寻甸县',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 14,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '禄劝县',
+        nameLocation: 'center',
+        nameRotate: 360
+      },
+      {
+        gridIndex: 15,
+        min:0,
+        max:80,
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        },
+        splitLine: {
+          show: false
+        },
+        splitNumber: 1,
+        name: '宜良县',
+        nameLocation: 'center',
+        nameRotate: 360
+      }
+    ],
+    grid: [{
+      top: '4%',
+      height: '6%'
+    },
+      {
+        top: '10%',
+        height: '6%'
+      },
+      {
+        top: '16%',
+        height: '6%'
+      },
+      {
+        top: '22%',
+        height: '6%'
+      },
+      {
+        top: '28%',
+        height: '6%'
+      },
+      {
+        top: '34%',
+        height: '6%'
+      },
+      {
+        top: '40%',
+        height: '6%'
+      },
+      {
+        top: '46%',
+        height: '6%'
+      },
+      {
+        top: '54%',
+        height: '6%'
+      },
+      {
+        top: '60%',
+        height: '6%'
+      },
+      {
+        top: '66%',
+        height: '6%'
+      },
+      {
+        top: '71%',
+        height: '5%'
+      },
+      {
+        top: '76%',
+        height: '5%'
+      },
+      {
+        top: '81%',
+        height: '5%'
+      },
+      {
+        top: '86%',
+        height: '5%'
+      },
+      {
+        top: '91%',
+        height: '5%'
+      }
+    ],
+    series: [{
+      name:"官渡区",
+      type: 'line',
+      data: dq[0],
+      xAxisIndex: 0,
+      yAxisIndex: 0,
+      smooth: true,
+      areaStyle: {}
+    },
+      {
+        name:"经开区",
+        type: 'line',
+        data: dq[1],
+        xAxisIndex: 1,
+        yAxisIndex: 1,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"呈贡区",
+        type: 'line',
+        data: dq[2],
+        xAxisIndex: 2,
+        yAxisIndex: 2,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"西山区",
+        type: 'line',
+        data: dq[3],
+        xAxisIndex: 3,
+        yAxisIndex: 3,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"五华区",
+        type: 'line',
+        data:dq[4],
+        xAxisIndex: 4,
+        yAxisIndex: 4,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"安宁市",
+        type: 'line',
+        data:dq[5],
+        xAxisIndex: 5,
+        yAxisIndex: 5,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"阳宗海",
+        type: 'line',
+        data:dq[6],
+        xAxisIndex: 6,
+        yAxisIndex: 6,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"盘龙区",
+        type: 'line',
+        data:dq[7],
+        xAxisIndex: 7,
+        yAxisIndex: 7,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"东川区",
+        type: 'line',
+        data:dq[8],
+        xAxisIndex: 8,
+        yAxisIndex: 8,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"晋宁区",
+        type: 'line',
+        data:dq[9],
+        xAxisIndex: 9,
+        yAxisIndex: 9,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"嵩明区",
+        type: 'line',
+        data:dq[10],
+        xAxisIndex: 10,
+        yAxisIndex: 10,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"石林县",
+        type: 'line',
+        data:dq[11],
+        xAxisIndex: 11,
+        yAxisIndex: 11,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"寻甸县",
+        type: 'line',
+        data:dq[12],
+        xAxisIndex: 12,
+        yAxisIndex: 12,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"富民县",
+        type: 'line',
+        data:dq[13],
+        xAxisIndex: 13,
+        yAxisIndex: 13,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"禄劝县",
+        type: 'line',
+        data:dq[14],
+        xAxisIndex: 14,
+        yAxisIndex: 14,
+        smooth: true,
+        areaStyle: {}
+      },
+      {
+        name:"宜良县",
+        type: 'line',
+        data:dq[15],
+        xAxisIndex: 15,
+        yAxisIndex: 15,
+        smooth: true,
+        areaStyle: {}
+      }
+    ]
+  };
+
+  myChart8.setOption(option);
+
+
+
+</script>
+
 </body>
 </html>
