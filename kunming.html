@@ -134,7 +134,7 @@
 
   var fx=[
     {name: '确诊', value: 420},
-    {name: '无症状感染', value: 453}
+    {name: '无症状', value: 453}
   ]
 
 
@@ -2130,7 +2130,7 @@
     ],
     series: [
       {
-        name: '无症状感染',
+        name: '无症状',
         type: 'bar',
         stack: 'Ad',
         barWidth: 30,
@@ -2204,7 +2204,7 @@
               position:"inside",
               color:"white",
               show: true,
-              formatter: '{b} : \n{c}人 ',
+              formatter: '{b} : \n{c}人 \n{d}%',
               //formatter: '{b} : {c} ({d}%)' //带当前图例名 + 百分比
             },
             // labelLine :{show:true}
