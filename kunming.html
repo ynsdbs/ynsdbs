@@ -134,22 +134,15 @@
 
   var fx=[
     {name: '确诊', value: 420},
-    {name: '无症状感染者', value: 453}
+    {name: '无症状感染', value: 453}
   ]
-  var qt=[
-    {name: '确诊', value: 9},
-    {name: '无症状感染者', value: 84}
-  ]
-  var ztt=[
-    {name: '确诊', value: 40},
-    {name: '无症状感染者', value: 126}
-  ]
+
 
   //分型数据
   var wz=[3, 2, 2, 1, 5, 3, 7, 6, 8, 11, 11, 14, 11, 56, 103, 84, 126, 141]
   var quez=[3, 3, 2, 1, 5, 0, 8, 12, 30, 23, 42, 19, 22, 136, 65, 9, 40, 34]
   var sum=[6, 5, 4, 2, 10, 3, 15, 18, 38, 34, 53, 33, 33, 192, 168, 93, 166, 175]
-  var zb=[0.5, 0.4, 0.5, 0.5, 0.5, 1, 0.47, 0.33, 0.21, 0.32, 0.21, 0.42, 0.33, 0.29, 0.61, 0.9, 0.76, 0.81]
+  var zb=[0.5, 0.6, 0.5, 0.5, 0.5, 0, 0.53, 0.67, 0.79, 0.68, 0.79, 0.58, 0.67, 0.71, 0.39, 0.1, 0.24, 0.19]
 
   //五、地图数据
   var mapsj=[
@@ -1145,6 +1138,7 @@
     var mapdata=mapsj
 
     option = {
+
       visualMap: {
         min: 0,
         max: 500,
@@ -2096,6 +2090,8 @@
 
   var myChart10=echarts.init(document.getElementById("container10"))
 
+
+  //分型
   option = {
     title:{
     text:"病例临床分型",
@@ -2185,7 +2181,7 @@
         yAxisIndex:1,
         type:"line",
         smooth:true,
-        color:"blue",
+        color:"green",
         data:zb,
         label:{
           show:true,
@@ -2194,7 +2190,27 @@
             return (params.value*100).toFixed(0)+'%';
           },
         },
-      }
+      },
+      {
+        type:"pie",
+        data:fx.reverse(),
+        center: ["15%", "65%"],
+        radius:"38%",
+        selectedMode: "multiple",
+        selectedOffset: 30,
+        itemStyle: {
+          normal:{
+            label:{
+              position:"inside",
+              color:"white",
+              show: true,
+              formatter: '{b} : \n{c}人 ',
+              //formatter: '{b} : {c} ({d}%)' //带当前图例名 + 百分比
+            },
+            // labelLine :{show:true}
+          }
+        }
+      },
     ]
   };
 
