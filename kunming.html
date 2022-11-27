@@ -19,7 +19,7 @@
 
 <div >
   <input style="width:10%;border-style:none";>
-  <input style="width:80%; font-size:20px;border-style:none"; value="阳性病例主要分布于青壮年期，男性略多于女性"type="text" name="" id="i2" >
+  <input style="width:80%; font-size:20px;border-style:none"; value="阳性病例主要分布于青壮年期"type="text" name="" id="i2" >
   <input style="width:10%;border-style:none";>
 </div>
 <div id="container2" style="width: 100%;height:500px"></div>
@@ -66,13 +66,11 @@
 <div id="container8" style="width: 100%;height:500px"></div>
 
 
-<div style="width: 70%;float: left; overflow: hidden">
-  <div id="container4" style="width: 100%; height: 600px"></div>
-</div>
-<div style="width: 30%; float: left; overflow: hidden">
-  <div id="container6" style="width: 100%; height: 600px"></div>
-</div>
 
+<div id="container4" style="width: 100%; height: 600px"></div>
+<!--<div style="width: 30%; float: left; overflow: hidden">-->
+<!--  <div id="container6" style="width: 100%; height: 600px"></div>-->
+<!--</div>-->
 
 
 <script>
@@ -95,19 +93,19 @@
   //一、趋势数据
   var date=['11月8日', '11月9日', '11月10日', '11月11日', '11月12日', '11月13日', '11月14日', '11月15日',
     '11月16日', '11月17日', '11月18日', '11月19日', '11月20日', '11月21日', '11月22日', '11月23日', '11月24日',
-    '11月25日',]
+    '11月25日','11月26日']
   //初筛阳性（使用采样时间）
-  var csdata=[9, 5, 4, 8, 4, 13, 78, 64, 93, 58, 58, 99, 88, 171, 221, 251, 299, 88]
+  var csdata=[9, 5, 4, 8, 4, 13, 78, 64, 93, 58, 58, 99, 89, 171, 223, 251, 304, 280, 164]
   //初筛上报时间
-  var csdata2=[9, 3, 4, 10, 3, 6, 32, 83, 38, 80, 92, 88, 95, 132, 159, 226, 255, 296]
+  var csdata2=[9, 3, 4, 10, 3, 6, 32, 83, 38, 80, 92, 88, 95, 132, 159, 226, 255, 296,361]
   //网报时间
-  var wbdata=[6, 5, 4, 2, 10, 3, 15, 18, 38, 34, 53, 33, 33, 192, 168, 93, 166,175]
+  var wbdata=[6, 5, 4, 2, 10, 3, 15, 18, 38, 34, 53, 33, 33, 192, 168, 93, 166,175,216]
 
 
   //二、年龄性别数据
   var nlydate=['婴幼儿期（0-6岁）', '少儿期（7-12岁）', '青少年期（13-17岁）', '青年期（18-45岁）', '中年期（46-69岁）', '老年期（70岁以上）']
-  var man=[54, 41, 23, 423, 276, 15]
-  var woman=[27, 35, 28, 422, 241, 26]
+  var man=[61, 53, 29, 506, 322, 20]
+  var woman=[36, 48, 41, 516, 308, 34]
   var total=1611
 
   //三、职业数据
@@ -116,77 +114,403 @@
     {name: '保育员及保姆', value: 2},
     {name: '不详', value: 4},
     {name: '海员及长途驾驶员', value: 5},
-    {name: '幼托儿童', value: 5},
-    {name: '教师', value: 11},
-    {name: '医务人员', value: 13},
-    {name: '餐饮食品业', value: 23},
-    {name: '离退人员', value: 31},
-    {name: '散居儿童', value: 36},
-    {name: '干部职员', value: 41},
-    {name: '民工', value: 48},
-    {name: '其他', value: 57},
-    {name: '学生', value: 77},
-    {name: '工人', value: 132},
-    {name: '农民', value: 143},
-    {name: '商业服务', value: 209},
-    {name: '家务及待业', value: 210}
+    {name: '幼托儿童', value: 10},
+    {name: '教师', value: 12},
+    {name: '医务人员', value: 14},
+    {name: '餐饮食品业', value: 31},
+    {name: '离退人员', value: 38},
+    {name: '散居儿童', value: 47},
+    {name: '干部职员', value: 52},
+    {name: '民工', value: 52},
+    {name: '其他:办公室文员', value: 74},
+    {name: '学生', value: 95},
+    {name: '工人', value: 136},
+    {name: '农民', value: 159},
+    {name: '商业服务', value: 236},
+    {name: '家务及待业', value: 296}
   ]
 
   var fx=[
-    {name: '确诊', value: 420},
-    {name: '无症状', value: 453}
+    {name: '确诊', value: 498},
+    {name: '无症状', value: 766}
   ]
 
 
   //分型数据
-  var wz=[3, 2, 2, 1, 5, 3, 7, 6, 8, 11, 11, 14, 11, 56, 103, 84, 126, 141]
-  var quez=[3, 3, 2, 1, 5, 0, 8, 12, 30, 23, 42, 19, 22, 136, 65, 9, 40, 34]
-  var sum=[6, 5, 4, 2, 10, 3, 15, 18, 38, 34, 53, 33, 33, 192, 168, 93, 166, 175]
-  var zb=[0.5, 0.6, 0.5, 0.5, 0.5, 0, 0.53, 0.67, 0.79, 0.68, 0.79, 0.58, 0.67, 0.71, 0.39, 0.1, 0.24, 0.19]
+  var wz=[3, 2, 2, 1, 5, 3, 7, 6, 8, 11, 11, 14, 11, 56, 103, 84, 126, 141,172]
+  var quez=[3, 3, 2, 1, 5, 0, 8, 12, 30, 23, 42, 19, 22, 136, 65, 9, 40, 34,44]
+  var sum=[6, 5, 4, 2, 10, 3, 15, 18, 38, 34, 53, 33, 33, 192, 168, 93, 166, 175,216]
+  var zb=[0.5, 0.6, 0.5, 0.5, 0.5, 0, 0.53, 0.67, 0.79, 0.68, 0.79, 0.58, 0.67, 0.71, 0.39, 0.1, 0.24, 0.19,0.2]
 
   //五、地图数据
   var mapsj=[
-    {name: '官渡区', value: 433},
-    {name: '经开区', value: 285},
-    {name: '呈贡区', value: 274},
-    {name: '西山区', value: 165},
-    {name: '五华区', value: 83},
-    {name: '盘龙区', value: 82},
-    {name: '安宁市', value: 82},
-    {name: '阳宗海', value: 51},
-    {name: '富民县', value: 39},
-    {name: '东川区', value: 32},
-    {name: '晋宁区', value: 27},
-    {name: '嵩明县', value: 20},
-    {name: '寻甸县', value: 14},
-    {name: '石林县', value: 14},
-    {name: '禄劝县', value: 6},
-    {name: '宜良县', value: 4}
+      [
+        {name: '官渡区', value: 1},
+        {name: '经开区', value: '-'},
+        {name: '呈贡区', value: 6},
+        {name: '西山区', value: '-'},
+        {name: '五华区', value: 2},
+        {name: '盘龙区', value: '-'},
+        {name: '安宁市', value: '-'},
+        {name: '阳宗海', value: '-'},
+        {name: '富民县', value: '-'},
+        {name: '东川区', value: '-'},
+        {name: '晋宁区', value: '-'},
+        {name: '嵩明县', value: '-'},
+        {name: '寻甸县', value: '-'},
+        {name: '石林县', value: '-'},
+        {name: '禄劝县', value: '-'},
+        {name: '宜良县', value: '-'}
+      ], //11月8日
+    [
+      {name: '官渡区', value: 1},
+      {name: '经开区', value: '-'},
+      {name: '呈贡区', value: 6},
+      {name: '西山区', value: '-'},
+      {name: '五华区', value: 2},
+      {name: '盘龙区', value: '-'},
+      {name: '安宁市', value: '-'},
+      {name: '阳宗海', value: '-'},
+      {name: '富民县', value: '-'},
+      {name: '东川区', value: '-'},
+      {name: '晋宁区', value: '-'},
+      {name: '嵩明县', value: '-'},
+      {name: '寻甸县', value: '-'},
+      {name: '石林县', value: '-'},
+      {name: '禄劝县', value: '-'},
+      {name: '宜良县', value: '-'}
+    ], //11月9日
+    [
+      {name: '官渡区', value: 4},
+      {name: '经开区', value: '-'},
+      {name: '呈贡区', value: 7},
+      {name: '西山区', value: 3},
+      {name: '五华区', value: 2},
+      {name: '盘龙区', value: '-'},
+      {name: '安宁市', value: '-'},
+      {name: '阳宗海', value: '-'},
+      {name: '富民县', value: '-'},
+      {name: '东川区', value: '-'},
+      {name: '晋宁区', value: '-'},
+      {name: '嵩明县', value: '-'},
+      {name: '寻甸县', value: '-'},
+      {name: '石林县', value: '-'},
+      {name: '禄劝县', value: '-'},
+      {name: '宜良县', value: '-'}
+    ], //11月10日
+    [
+      {name: '官渡区', value: 11},
+      {name: '经开区', value: '-'},
+      {name: '呈贡区', value: 8},
+      {name: '西山区', value: 3},
+      {name: '五华区', value: 4},
+      {name: '盘龙区', value: '-'},
+      {name: '安宁市', value: '-'},
+      {name: '阳宗海', value: '-'},
+      {name: '富民县', value: '-'},
+      {name: '东川区', value: '-'},
+      {name: '晋宁区', value: '-'},
+      {name: '嵩明县', value: '-'},
+      {name: '寻甸县', value: '-'},
+      {name: '石林县', value: '-'},
+      {name: '禄劝县', value: '-'},
+      {name: '宜良县', value: '-'}
+    ], //11月11日
+    [
+      {name: '官渡区', value: 12},
+      {name: '经开区', value: '-'},
+      {name: '呈贡区', value: 8},
+      {name: '西山区', value: 3},
+      {name: '五华区', value: 5},
+      {name: '盘龙区', value: '-'},
+      {name: '安宁市', value: '-'},
+      {name: '阳宗海', value: '-'},
+      {name: '富民县', value: '-'},
+      {name: '东川区', value: '-'},
+      {name: '晋宁区', value: '-'},
+      {name: '嵩明县', value: '-'},
+      {name: '寻甸县', value: 1},
+      {name: '石林县', value: '-'},
+      {name: '禄劝县', value: '-'},
+      {name: '宜良县', value: '-'}
+    ], //11月12日
+    [
+      {name: '官渡区', value: 14},
+      {name: '经开区', value: '-'},
+      {name: '呈贡区', value: 8},
+      {name: '西山区', value: 5},
+      {name: '五华区', value: 6},
+      {name: '盘龙区', value: '-'},
+      {name: '安宁市', value: '-'},
+      {name: '阳宗海', value: '-'},
+      {name: '富民县', value: '-'},
+      {name: '东川区', value: '-'},
+      {name: '晋宁区', value: '-'},
+      {name: '嵩明县', value: '-'},
+      {name: '寻甸县', value: 2},
+      {name: '石林县', value: '-'},
+      {name: '禄劝县', value: '-'},
+      {name: '宜良县', value: '-'}
+    ], //11月13日
+    [
+      {name: '官渡区', value: 20},
+      {name: '经开区', value: 8},
+      {name: '呈贡区', value: 11},
+      {name: '西山区', value: '-'},
+      {name: '五华区', value: 7},
+      {name: '盘龙区', value: '-'},
+      {name: '安宁市', value: '-'},
+      {name: '阳宗海', value: 14},
+      {name: '富民县', value: '-'},
+      {name: '东川区', value: '-'},
+      {name: '晋宁区', value: '-'},
+      {name: '嵩明县', value: '-'},
+      {name: '寻甸县', value: 2},
+      {name: '石林县', value: '-'},
+      {name: '禄劝县', value: '-'},
+      {name: '宜良县', value: '-'}
+    ], //11月14日
+    [
+      {name: '官渡区', value: 30},
+      {name: '经开区', value: 63},
+      {name: '呈贡区', value: 11},
+      {name: '西山区', value: 3},
+      {name: '五华区', value: 9},
+      {name: '盘龙区', value: 3},
+      {name: '安宁市', value: '-'},
+      {name: '阳宗海', value: 20},
+      {name: '富民县', value: '-'},
+      {name: '东川区', value: '-'},
+      {name: '晋宁区', value: '-'},
+      {name: '嵩明县', value: 3},
+      {name: '寻甸县', value: 3},
+      {name: '石林县', value: '-'},
+      {name: '禄劝县', value: '-'},
+      {name: '宜良县', value: '-'}
+    ], //11月15日
+    [
+      {name: '官渡区', value: 30},
+      {name: '经开区', value: 63},
+      {name: '呈贡区', value: 11},
+      {name: '西山区', value: 3},
+      {name: '五华区', value: 9},
+      {name: '盘龙区', value: 3},
+      {name: '安宁市', value: '-'},
+      {name: '阳宗海', value: 20},
+      {name: '富民县', value: '-'},
+      {name: '东川区', value: '-'},
+      {name: '晋宁区', value: '-'},
+      {name: '嵩明县', value: 3},
+      {name: '寻甸县', value: 3},
+      {name: '石林县', value: '-'},
+      {name: '禄劝县', value: '-'},
+      {name: '宜良县', value: '-'}
+    ], //11月16日
+    [
+      {name: '官渡区', value: 68},
+      {name: '经开区', value: 96},
+      {name: '呈贡区', value: 12},
+      {name: '西山区', value: 5},
+      {name: '五华区', value: '-'},
+      {name: '盘龙区', value: '-'},
+      {name: '安宁市', value: 5},
+      {name: '阳宗海', value: 46},
+      {name: '富民县', value: '-'},
+      {name: '东川区', value: 1},
+      {name: '晋宁区', value: '-'},
+      {name: '嵩明县', value: 7},
+      {name: '寻甸县', value: 3},
+      {name: '石林县', value: 1},
+      {name: '禄劝县', value: '-'},
+      {name: '宜良县', value: 1}
+    ], //11月17日
+    [
+      {name: '官渡区', value: 91},
+      {name: '经开区', value: 140},
+      {name: '呈贡区', value: 14},
+      {name: '西山区', value: 8},
+      {name: '五华区', value: 3},
+      {name: '盘龙区', value: 4},
+      {name: '安宁市', value: 7},
+      {name: '阳宗海', value: 47},
+      {name: '富民县', value: '-'},
+      {name: '东川区', value: 1},
+      {name: '晋宁区', value: 3},
+      {name: '嵩明县', value: 7},
+      {name: '寻甸县', value: 3},
+      {name: '石林县', value: 7},
+      {name: '禄劝县', value: 1},
+      {name: '宜良县', value: 1}
+    ], //11月18日
+    [
+      {name: '官渡区', value: 115},
+      {name: '经开区', value: 161},
+      {name: '呈贡区', value: 25},
+      {name: '西山区', value: 18},
+      {name: '五华区', value: 7},
+      {name: '盘龙区', value: 14},
+      {name: '安宁市', value: 9},
+      {name: '阳宗海', value: 49},
+      {name: '富民县', value: 1},
+      {name: '东川区', value: 1},
+      {name: '晋宁区', value: 3},
+      {name: '嵩明县', value: 9},
+      {name: '寻甸县', value: 3},
+      {name: '石林县', value: 7},
+      {name: '禄劝县', value: 1},
+      {name: '宜良县', value: 2}
+    ], //11月19日
+    [
+      {name: '官渡区', value: 144},
+      {name: '经开区', value: 170},
+      {name: '呈贡区', value: 38},
+      {name: '西山区', value: 28},
+      {name: '五华区', value: 11},
+      {name: '盘龙区', value: 17},
+      {name: '安宁市', value: 29},
+      {name: '阳宗海', value: 51},
+      {name: '富民县', value: 1},
+      {name: '东川区', value: 2},
+      {name: '晋宁区', value: 4},
+      {name: '嵩明县', value: 9},
+      {name: '寻甸县', value: 3},
+      {name: '石林县', value: 8},
+      {name: '禄劝县', value: 3},
+      {name: '宜良县', value: 2}
+    ], //11月20日
+    [
+      {name: '官渡区', value: 187},
+      {name: '经开区', value: 182},
+      {name: '呈贡区', value: 73},
+      {name: '西山区', value: 42},
+      {name: '五华区', value: 18},
+      {name: '盘龙区', value: 21},
+      {name: '安宁市', value: 34},
+      {name: '阳宗海', value: 51},
+      {name: '富民县', value: 1},
+      {name: '东川区', value: 7},
+      {name: '晋宁区', value: 6},
+      {name: '嵩明县', value: 9},
+      {name: '寻甸县', value: 5},
+      {name: '石林县', value: 9},
+      {name: '禄劝县', value: 4},
+      {name: '宜良县', value: 3}
+    ], //11月21日
+    [
+      {name: '官渡区', value: 216},
+      {name: '经开区', value: 206},
+      {name: '呈贡区', value: 126},
+      {name: '西山区', value: 64},
+      {name: '五华区', value: 25},
+      {name: '盘龙区', value: 30},
+      {name: '安宁市', value: 41},
+      {name: '阳宗海', value: 51},
+      {name: '富民县', value: 1},
+      {name: '东川区', value: 8},
+      {name: '晋宁区', value: 11},
+      {name: '嵩明县', value: 10},
+      {name: '寻甸县', value: 5},
+      {name: '石林县', value: 9},
+      {name: '禄劝县', value: 4},
+      {name: '宜良县', value: 3}
+    ], //11月22日
+    [
+      {name: '官渡区', value: 285},
+      {name: '经开区', value: 231},
+      {name: '呈贡区', value: 157},
+      {name: '西山区', value: 100},
+      {name: '五华区', value: 43},
+      {name: '盘龙区', value: 39},
+      {name: '安宁市', value: 50},
+      {name: '阳宗海', value: 51},
+      {name: '富民县', value: 6},
+      {name: '东川区', value: 27},
+      {name: '晋宁区', value: 12},
+      {name: '嵩明县', value: 12},
+      {name: '寻甸县', value: 5},
+      {name: '石林县', value: 9},
+      {name: '禄劝县', value: 5},
+      {name: '宜良县', value: 4}
+    ], //11月23日
+    [
+      {name: '官渡区', value: 364},
+      {name: '经开区', value: 259},
+      {name: '呈贡区', value: 208},
+      {name: '西山区', value: 129},
+      {name: '五华区', value: 58},
+      {name: '盘龙区', value: 59},
+      {name: '安宁市', value: 63},
+      {name: '阳宗海', value: 51},
+      {name: '富民县', value: 8},
+      {name: '东川区', value: 28},
+      {name: '晋宁区', value: 18},
+      {name: '嵩明县', value: 15},
+      {name: '寻甸县', value: 8},
+      {name: '石林县', value: 13},
+      {name: '禄劝县', value: 6},
+      {name: '宜良县', value: 4}
+    ], //11月24日
+    [
+      {name: '官渡区', value: 433},
+      {name: '经开区', value: 285},
+      {name: '呈贡区', value: 274},
+      {name: '西山区', value: 165},
+      {name: '五华区', value: 83},
+      {name: '盘龙区', value: 82},
+      {name: '安宁市', value: 82},
+      {name: '阳宗海', value: 51},
+      {name: '富民县', value: 39},
+      {name: '东川区', value: 32},
+      {name: '晋宁区', value: 27},
+      {name: '嵩明县', value: 20},
+      {name: '寻甸县', value: 14},
+      {name: '石林县', value: 14},
+      {name: '禄劝县', value: 6},
+      {name: '宜良县', value: 4}
+    ], //11月25日
+    [
+      {name: '官渡区', value: 520},
+      {name: '呈贡区', value: 354},
+      {name: '经开区', value: 306},
+      {name: '西山区', value: 198},
+      {name: '五华区', value: 117},
+      {name: '盘龙区', value: 115},
+      {name: '安宁市', value: 97},
+      {name: '富民县', value: 57},
+      {name: '阳宗海', value: 51},
+      {name: '寻甸县', value: 37},
+      {name: '东川区', value: 33},
+      {name: '晋宁区', value: 33},
+      {name: '嵩明县', value: 33},
+      {name: '石林县', value: 14},
+      {name: '禄劝县', value: 6},
+      {name: '宜良县', value: 4}
+    ], //11月26日
   ]
-  //管控
-  var fgk = [1, '-', '-', 2, 2, 3, 9, 66, 21, 22, 22, 41, 33, 47, 68, 72, 115, 127]//非管控
-  var gk = [7, 1, 1, 8, '-', 1, 19, 10, 11, 57, 69, 45, 57, 69, 82, 144, 133, 149]//管控
-  var bx = ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 1, 13, 5, 7, 7, 19]//不祥
-  var swrk = [1, 2, 3, '-', 1, 2, 4, 7, 6, 1, 1, 2, 4, 3, 4, 3, '-', 1] //省外入昆
-  var bfb=[0.11, 0, 0, 0.2, 0.67, 0.5, 0.28, 0.8, 0.55, 0.28, 0.24, 0.47, 0.35, 0.36, 0.43, 0.32, 0.45,0.43]
+
+  var bx = ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 1, 8, 5, 6, 4, 8, 25]//不祥
+  var fgk = [1, '-', '-', 2, 2, 3, 9, 66, 21, 22, 22, 41, 34, 48, 70, 71, 118, 111, 108]//非管控
+  var gk = [7, 1, 1, 8, '-', 1, 19, 10, 11, 57, 69, 45, 57, 73, 82, 145, 134, 175, 221]//管控
+  var swrk = [1, 2, 3, '-', 1, 2, 4, 7, 6, 1, 1, 2, 4, 3, 4, 3, '-', 2, 7] //省外入昆
+  var bfb= [0.11, 0, 0, 0.2, 0.67, 0.5, 0.28, 0.8, 0.55, 0.28, 0.24, 0.47, 0.35, 0.36, 0.43, 0.32, 0.46, 0.38, 0.3]
   //每日数据
   var dqdata=[
-    [1, 1, 2, 7, 1, 2, 6, 10, 13, 25, 23, 24, 29, 43, 29, 69, 79, 69],       //官渡
-    ['-', '-', '-', '-', '-', '-', 8, 55, 16, 17, 44, 21, 9, 12, 24, 25, 28, 26],    //经开
-    [6, 1, '-', 1, '-', '-', 3, '-', '-', 1, 2, 11, 13, 35, 53, 31, 51, 66],     //呈贡
-    ['-', 1, 2, '-', '-', 2, '-', 3, '-', 2, 3, 10, 10, 14, 22, 36, 29, 31],   //西山
-    [2, '-', '-', 2, 1, 1, 1, 2, 1, '-', 3, 4, 4, 7, 7, 18, 15, 15],        //五华
-    ['-', '-', '-', '-', '-', '-', '-', '-', '-', 5, 2, 2, 20, 5, 8, 9, 13, 18],     //安宁
-    ['-', '-', '-', '-', '-', '-', 14, 6, 1, 25, 1, 2, 2, '-', '-', '-', '-', '-'],   //阳宗海
-    ['-', '-', '-', '-', '-', '-', '-', 3, 5, '-', 4, 10, 3, 4, 9, 9, 20, 15],     //盘龙区
-    ['-', '-', '-', '-', '-', '-', '-', '-', '-', 1, '-', '-', 1, 5, 1, 19, 1, 4],     //东川区
-    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 3, '-', 1, 2, 5, 1, 6, 9],     //晋宁区
-    ['-', '-', '-', '-', '-', '-', '-', 3, 1, 3, '-', 2, '-', '-', 1, 2, 3, 5],    //嵩明县
+    [1, 1, 2, 7, 1, 2, 6, 10, 13, 25, 23, 24, 29, 43, 30, 69, 79, 69, 86],       //官渡
+    ['-', '-', '-', '-', '-', '-', 8, 55, 16, 17, 44, 21, 10, 12, 25, 25, 28, 26, 19],    //经开
+    [6, 1, '-', 1, '-', '-', 3, '-', '-', 1, 2, 11, 13, 35, 54, 31, 51, 66, 79],     //呈贡
+    ['-', 1, 2, '-', '-', 2, '-', 3, '-', 2, 3, 10, 10, 14, 21, 36, 29, 31, 34],   //西山
+    [2, '-', '-', 2, 1, 1, 1, 2, 1, '-', 3, 4, 4, 7, 7, 18, 15, 15, 34],        //五华
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', 5, 2, 2, 20, 5, 8, 9, 13, 18, 15],     //安宁
+    ['-', '-', '-', '-', '-', '-', 14, 6, 1, 25, 1, 2, 2],   //阳宗海
+    ['-', '-', '-', '-', '-', '-', '-', 3, 5, '-', 4, 10, 3, 4, 9, 9, 20, 15, 33],     //盘龙区
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', 1, '-', '-', 1, 5, 1, 18, 2, 4, 1],     //东川区
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 3, '-', 1, 2, 5, 1, 6, 9, 6],     //晋宁区
+    ['-', '-', '-', '-', '-', '-', '-', 3, 1, 3, '-', 2, '-', '-', 1, 2, 3, 5, 13],    //嵩明县
     ['-', '-', '-', '-', '-', '-', '-', '-', 1, '-', 6, '-', 1, 1, '-', '-', 4, 1],    //石林县
-    ['-', '-', '-', '-', 1, 1, '-', 1, '-', '-', '-', '-', '-', 2, '-', '-', 3, 6],   //寻甸县
-    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 1, '-', '-', '-', 5, 2, 31],   //富民县
-    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 1, '-', 2, 1, '-', 1, 1, '-'],    //禄劝县
-    ['-', '-', '-', '-', '-', '-', '-', '-', '-', 1, '-', 1, '-', 1, '-', 1, '-', '-']   //宜良县
+    ['-', '-', '-', '-', 1, 1, '-', 1, '-', '-', '-', '-', '-', 2, '-', '-', 3, 6, 23],   //寻甸县
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 1, '-', '-', '-', 5, 2, 31, 18],   //富民县
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 1, '-', 2, 1, '-', 1, 1],    //禄劝县
+    ['-', '-', '-', '-', '-', '-', '-', '-', '-', 1, '-', 1, '-', 1, '-', 1]  //宜良县
   ]
   var lgdata=['官渡区','经开区','呈贡区','西山区','五华区','安宁市','',
     '阳宗海','盘龙区','东川区','晋宁区','嵩明县','石林县','',
@@ -196,30 +520,30 @@
   var scaleData = [
     {
       'name': '6人及以上',
-      'value': 7
+      'value': 10
     },
     {
       'name': '5人',
-      'value': 7
+      'value': 10
     },
     {
       'name': '4人',
-      'value': 15
+      'value': 20
     },
     {
       'name': '3人',
-      'value': 50
+      'value': 60
     },
     {
       'name': '2人',
-      'value': 79
+      'value': 105
     }
 
   ];
-  var jtjj=['158']
-  var jtzb=["34.04%"]
-  var qjgr1=["76"]
-  var qjgr2=["52.35%"]
+  var jtjj=['205']
+  var jtzb=["37.60%"]
+  var qjgr1=["97"]
+  var qjgr2=["50.69%"]
   var placeHolderStyle = {
     normal: {
       label: {
@@ -236,7 +560,7 @@
 
 
   //表格热力图数据
-  var rldq =['宜良县', '禄劝县', '寻甸县', '石林县', '嵩明县', '晋宁区', '东川区', '富民县', '阳宗海', '盘龙区', '安宁市', '五华区', '西山区', '呈贡区', '经开区', '官渡区']
+  var rldq =['宜良县', '禄劝县', '石林县', '晋宁区', '嵩明县', '东川区', '寻甸县', '阳宗海', '富民县', '安宁市', '盘龙区', '五华区', '西山区', '经开区', '呈贡区', '官渡区']
   var rldata =[[0, 0, 0],
     [0, 1, 0],
     [0, 2, 0],
@@ -250,8 +574,8 @@
     [0, 10, 0],
     [0, 11, 2],
     [0, 12, 0],
-    [0, 13, 6],
-    [0, 14, 0],
+    [0, 13, 0],
+    [0, 14, 6],
     [0, 15, 1],
     [1, 0, 0],
     [1, 1, 0],
@@ -266,8 +590,8 @@
     [1, 10, 0],
     [1, 11, 0],
     [1, 12, 1],
-    [1, 13, 1],
-    [1, 14, 0],
+    [1, 13, 0],
+    [1, 14, 1],
     [1, 15, 1],
     [2, 0, 0],
     [2, 1, 0],
@@ -298,16 +622,16 @@
     [3, 10, 0],
     [3, 11, 2],
     [3, 12, 0],
-    [3, 13, 1],
-    [3, 14, 0],
+    [3, 13, 0],
+    [3, 14, 1],
     [3, 15, 7],
     [4, 0, 0],
     [4, 1, 0],
-    [4, 2, 1],
+    [4, 2, 0],
     [4, 3, 0],
     [4, 4, 0],
     [4, 5, 0],
-    [4, 6, 0],
+    [4, 6, 1],
     [4, 7, 0],
     [4, 8, 0],
     [4, 9, 0],
@@ -319,11 +643,11 @@
     [4, 15, 1],
     [5, 0, 0],
     [5, 1, 0],
-    [5, 2, 1],
+    [5, 2, 0],
     [5, 3, 0],
     [5, 4, 0],
     [5, 5, 0],
-    [5, 6, 0],
+    [5, 6, 1],
     [5, 7, 0],
     [5, 8, 0],
     [5, 9, 0],
@@ -340,78 +664,78 @@
     [6, 4, 0],
     [6, 5, 0],
     [6, 6, 0],
-    [6, 7, 0],
-    [6, 8, 14],
+    [6, 7, 14],
+    [6, 8, 0],
     [6, 9, 0],
     [6, 10, 0],
     [6, 11, 1],
     [6, 12, 0],
-    [6, 13, 3],
-    [6, 14, 8],
+    [6, 13, 8],
+    [6, 14, 3],
     [6, 15, 6],
     [7, 0, 0],
     [7, 1, 0],
-    [7, 2, 1],
+    [7, 2, 0],
     [7, 3, 0],
     [7, 4, 3],
     [7, 5, 0],
-    [7, 6, 0],
-    [7, 7, 0],
-    [7, 8, 6],
-    [7, 9, 3],
-    [7, 10, 0],
+    [7, 6, 1],
+    [7, 7, 6],
+    [7, 8, 0],
+    [7, 9, 0],
+    [7, 10, 3],
     [7, 11, 2],
     [7, 12, 3],
-    [7, 13, 0],
-    [7, 14, 55],
+    [7, 13, 55],
+    [7, 14, 0],
     [7, 15, 10],
     [8, 0, 0],
     [8, 1, 0],
-    [8, 2, 0],
-    [8, 3, 1],
+    [8, 2, 1],
+    [8, 3, 0],
     [8, 4, 1],
     [8, 5, 0],
     [8, 6, 0],
-    [8, 7, 0],
-    [8, 8, 1],
-    [8, 9, 5],
-    [8, 10, 0],
+    [8, 7, 1],
+    [8, 8, 0],
+    [8, 9, 0],
+    [8, 10, 5],
     [8, 11, 1],
     [8, 12, 0],
-    [8, 13, 0],
-    [8, 14, 16],
+    [8, 13, 16],
+    [8, 14, 0],
     [8, 15, 13],
     [9, 0, 1],
     [9, 1, 0],
     [9, 2, 0],
     [9, 3, 0],
     [9, 4, 3],
-    [9, 5, 0],
-    [9, 6, 1],
-    [9, 7, 0],
-    [9, 8, 25],
-    [9, 9, 0],
-    [9, 10, 5],
+    [9, 5, 1],
+    [9, 6, 0],
+    [9, 7, 25],
+    [9, 8, 0],
+    [9, 9, 5],
+    [9, 10, 0],
     [9, 11, 0],
     [9, 12, 2],
-    [9, 13, 1],
-    [9, 14, 17],
+    [9, 13, 17],
+    [9, 14, 1],
     [9, 15, 25],
     [10, 0, 0],
     [10, 1, 1],
-    [10, 2, 0],
-    [10, 3, 6],
+    [10, 2, 6],
+    [10, 3, 3],
     [10, 4, 0],
-    [10, 5, 3],
+    [10, 5, 0],
     [10, 6, 0],
-    [10, 7, 0],
-    [10, 8, 1],
-    [10, 9, 4],
-    [10, 10, 2],
+    [10, 7, 1],
+    [10, 8, 0],
+    [10, 9, 2],
+    [10, 10, 4],
     [10, 11, 3],
     [10, 12, 3],
-    [10, 13, 2],
-    [10, 14, 44],
+    [10, 13, 44],
+    [10, 14, 2],
     [10, 15, 23],
     [11, 0, 1],
     [11, 1, 0],
@@ -420,111 +744,127 @@
     [11, 4, 2],
     [11, 5, 0],
     [11, 6, 0],
-    [11, 7, 1],
-    [11, 8, 2],
-    [11, 9, 10],
-    [11, 10, 2],
+    [11, 7, 2],
+    [11, 8, 1],
+    [11, 9, 2],
+    [11, 10, 10],
     [11, 11, 4],
     [11, 12, 10],
-    [11, 13, 11],
-    [11, 14, 21],
+    [11, 13, 21],
+    [11, 14, 11],
     [11, 15, 24],
     [12, 0, 0],
     [12, 1, 2],
-    [12, 2, 0],
+    [12, 2, 1],
     [12, 3, 1],
     [12, 4, 0],
     [12, 5, 1],
-    [12, 6, 1],
-    [12, 7, 0],
-    [12, 8, 2],
-    [12, 9, 3],
-    [12, 10, 20],
+    [12, 6, 0],
+    [12, 7, 2],
+    [12, 8, 0],
+    [12, 9, 20],
+    [12, 10, 3],
     [12, 11, 4],
     [12, 12, 10],
-    [12, 13, 13],
-    [12, 14, 9],
+    [12, 13, 10],
+    [12, 14, 13],
     [12, 15, 29],
     [13, 0, 1],
     [13, 1, 1],
-    [13, 2, 2],
-    [13, 3, 1],
+    [13, 2, 1],
+    [13, 3, 2],
     [13, 4, 0],
-    [13, 5, 2],
-    [13, 6, 5],
+    [13, 5, 5],
+    [13, 6, 2],
     [13, 7, 0],
     [13, 8, 0],
-    [13, 9, 4],
-    [13, 10, 5],
+    [13, 9, 5],
+    [13, 10, 4],
     [13, 11, 7],
     [13, 12, 14],
-    [13, 13, 35],
-    [13, 14, 12],
+    [13, 13, 12],
+    [13, 14, 35],
     [13, 15, 43],
     [14, 0, 0],
     [14, 1, 0],
     [14, 2, 0],
-    [14, 3, 0],
+    [14, 3, 5],
     [14, 4, 1],
-    [14, 5, 5],
-    [14, 6, 1],
+    [14, 5, 1],
+    [14, 6, 0],
     [14, 7, 0],
     [14, 8, 0],
-    [14, 9, 9],
-    [14, 10, 8],
+    [14, 9, 8],
+    [14, 10, 9],
     [14, 11, 7],
-    [14, 12, 22],
-    [14, 13, 53],
-    [14, 14, 24],
-    [14, 15, 29],
+    [14, 12, 21],
+    [14, 13, 25],
+    [14, 14, 54],
+    [14, 15, 30],
     [15, 0, 1],
     [15, 1, 1],
     [15, 2, 0],
-    [15, 3, 0],
+    [15, 3, 1],
     [15, 4, 2],
-    [15, 5, 1],
-    [15, 6, 19],
-    [15, 7, 5],
-    [15, 8, 0],
+    [15, 5, 18],
+    [15, 6, 0],
+    [15, 7, 0],
+    [15, 8, 5],
     [15, 9, 9],
     [15, 10, 9],
     [15, 11, 18],
     [15, 12, 36],
-    [15, 13, 31],
-    [15, 14, 25],
+    [15, 13, 25],
+    [15, 14, 31],
     [15, 15, 69],
     [16, 0, 0],
     [16, 1, 1],
-    [16, 2, 3],
-    [16, 3, 4],
+    [16, 2, 4],
+    [16, 3, 6],
     [16, 4, 3],
-    [16, 5, 6],
-    [16, 6, 1],
-    [16, 7, 2],
-    [16, 8, 0],
-    [16, 9, 20],
-    [16, 10, 13],
+    [16, 5, 2],
+    [16, 6, 3],
+    [16, 7, 0],
+    [16, 8, 2],
+    [16, 9, 13],
+    [16, 10, 20],
     [16, 11, 15],
     [16, 12, 29],
-    [16, 13, 51],
-    [16, 14, 28],
+    [16, 13, 28],
+    [16, 14, 51],
     [16, 15, 79],
     [17, 0, 0],
     [17, 1, 0],
-    [17, 2, 6],
-    [17, 3, 1],
+    [17, 2, 1],
+    [17, 3, 9],
     [17, 4, 5],
-    [17, 5, 9],
-    [17, 6, 4],
-    [17, 7, 31],
-    [17, 8, 0],
-    [17, 9, 15],
-    [17, 10, 18],
+    [17, 5, 4],
+    [17, 6, 6],
+    [17, 7, 0],
+    [17, 8, 31],
+    [17, 9, 18],
+    [17, 10, 15],
     [17, 11, 15],
     [17, 12, 31],
-    [17, 13, 66],
-    [17, 14, 26],
-    [17, 15, 69]]
+    [17, 13, 26],
+    [17, 14, 66],
+    [17, 15, 69],
+    [18, 0, 0],
+    [18, 1, 0],
+    [18, 2, 0],
+    [18, 3, 6],
+    [18, 4, 13],
+    [18, 5, 1],
+    [18, 6, 23],
+    [18, 7, 0],
+    [18, 8, 18],
+    [18, 9, 15],
+    [18, 10, 33],
+    [18, 11, 34],
+    [18, 12, 34],
+    [18, 13, 19],
+    [18, 14, 79],
+    [18, 15, 86]]
 
 
 
@@ -543,12 +883,42 @@
     //   left:"28%"
     // },
     legend:{
-      left:"15%",
-      top:"13%",
+      left:"9.5%",
+      top:"5%",
       textStyle:{
         fontSize:17
-      }
+      },
     },
+    // graphic: [{
+    //   type: 'group',
+    //   children: [{
+    //     type: 'text',
+    //     z: 100,
+    //     left: '10%',
+    //     top: '7%',
+    //     style: {
+    //       fill: '#333',
+    //       text: [
+    //         ''+"例"
+    //       ],
+    //       font: '20px Microsoft YaHei'
+    //     }
+    //   },
+    //     {
+    //       type: 'text',
+    //       z: 100,
+    //       left: 'center',
+    //       top: '7%',
+    //       style: {
+    //         fill: '#333',
+    //         text: [
+    //           ''+"例"
+    //         ],
+    //         font: '20px Microsoft YaHei'
+    //       }
+    //     },
+    //   ]
+    // }],
     tooltip:{
       trigger:'item',
       backgroundColor: "DimGray",
@@ -1040,87 +1410,9 @@
               show: true,
               formatter: '{d}%' //只要百分比
             },
-            // labelLine :{show:true}
           }
         }
       },
-      // {
-      //   type:"pie",
-      //   data:data2,
-      //   center: ["75%", "45%"],
-      //   radius:"50%",
-      //   selectedMode: "multiple",
-      //   selectedOffset: 30,
-      //   itemStyle: {
-      //     normal:{
-      //       label:{
-      //         show: true,
-      //         formatter: '{b} : {c} '
-      //       },
-      //       // labelLine :{show:true}
-      //     }
-      //   }
-      //
-      // },
-      // {
-      //   type:"pie",
-      //   data:data2,
-      //   center: ["75%", "45%"],
-      //   radius:"50%",
-      //   selectedMode: "multiple",
-      //   selectedOffset: 30,
-      //   itemStyle: {
-      //     normal:{
-      //       label:{
-      //         position:"inside",
-      //         show: true,
-      //         formatter: '累计{b}{c}例\n\n占比{d}%',
-      //         fontSize: 12,
-      //         color:"white"
-      //       },
-      //       // labelLine :{show:true}
-      //     }
-      //   }
-      // },
-      // {
-      //   type:"pie",
-      //   data:qt,
-      //   center: ["90%", "30%"],
-      //   radius: ['20%', '8%'],
-      //   // radius:"20%",
-      //   selectedMode: "multiple",
-      //   selectedOffset: 30,
-      //   itemStyle: {
-      //     normal:{
-      //       label:{
-      //         position:"center",
-      //         show: true,
-      //         formatter: '昨日无症状感染者\n占比{d}%'
-      //       },
-      //       // labelLine :{show:true}
-      //     }
-      //   }
-      // },
-      // {
-      //   type:"pie",
-      //   data:ztt,
-      //   center: ["90%", "60%"],
-      //   radius: ['20%', '8%'],
-      //   // radius:"20%",
-      //   selectedMode: "multiple",
-      //   selectedOffset: 30,
-      //   itemStyle: {
-      //     normal:{
-      //       label:{
-      //         position:"center",
-      //         show: true,
-      //         formatter: '今日无症状感染者\n占比{d}%'
-      //       },
-      //
-      //       // labelLine :{show:true}
-      //     }
-      //   }
-      // },
     ]
   }
   myChart3.setOption(option);
@@ -1135,143 +1427,241 @@
   $.getJSON("map/kunming.json", function (geoJson) {
     echarts.registerMap('nanyang', geoJson);
     myChart4.hideLoading();
-    var mapdata=mapsj
 
-    option = {
+    var option = {
+      baseOption: {
+        timeline: {
+          //loop: false,
+          axisType: 'category',
+          show: true,
+          autoPlay: true,
+          playInterval: 1000,
+          data: date
+        },
+        visualMap: {
+          min: 0,
+          max: 500,
+          left: 26,
+          bottom: 40,
+          showLabel: !0,
+          text: ["高", "低"],
+          pieces: [{
+            gt: 199.99,
+            label: "> 200 人",
+            color: "#7f1100"
+          }, {
+            gte: 99.99,
+            lte: 199.9,
+            label: "100 - 200 人",
+            color: "#CC0033"
+          }, {
+            gte: 49.99,
+            lt: 99.9,
+            label: "50- 99人",
+            color: "#FF0033"
+          }, {
+            gt: 9.999,
+            lt: 49.9,
+            label: "10-49",
+            color: "#FF6666"
+          }, {
+            gte: 1,
+            lt: 9.99,
+            label: "1 - 9 人",
+            color: "#FFCCCC"
+          }],
+          show: !0
+        },
+        //右部柱状图的显示范围
+        grid: {
+          right: '5%',
+          top: '15%',
+          width: '18%',
+          height:"70%"
+        },
 
-      visualMap: {
-        min: 0,
-        max: 500,
-        left: 26,
-        bottom: 40,
-        showLabel: !0,
-        text: ["高", "低"],
-        pieces: [{
-          gt: 199.99,
-          label: "> 200 人",
-          color: "#7f1100"
-        }, {
-          gte: 99.99,
-          lte: 199.9,
-          label: "100 - 200 人",
-          color: "#CC0033"
-        }, {
-          gte: 49.99,
-          lt: 99.9,
-          label: "50- 99人",
-          color: "#FF0033"
-        }, {
-          gt: 9.999,
-          lt: 49.9,
-          label: "10-49",
-          color: "#FF6666"
-        }, {
-          gte: 1,
-          lt: 9.99,
-          label: "1 - 9 人",
-          color: "#FFCCCC"
+        xAxis: {
+          show: false
+        },
+        yAxis: [{
+          inverse: false,
+          offset: '2',
+          'type': 'category',
+          data: '',
+          nameTextStyle: {
+            color: '#fff'
+          },
+          axisTick: {
+            show: false,
+          },
+          axisLabel: {
+            //rotate:45,
+            textStyle: {
+              fontSize: 14,
+              color: '#000000',
+            },
+            interval: 0
+          },
+          axisLine: {
+            show: false,
+            lineStyle: {
+              color: '#333'
+            },
+          },
+          splitLine: {
+            show: false,
+            lineStyle: {
+              color: '#333'
+            }
+          },
         }],
-        show: !0
-      },
-      backgroundColor: {
-        type: 'linear',
-        x: 0,
-        y: 0,
-        x2: 1,
-        y2: 1,
-        colorStops: [
-          {
-            offset: 0,
-            color: '#eee', // 0% 处的颜色
+        backgroundColor: {
+          type: 'linear',
+          x: 0,
+          y: 0,
+          x2: 1,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: '#eee', // 0% 处的颜色
+            },
+            {
+              offset: 1,
+              color: '#fff', // 100% 处的颜色
+            },
+          ],
+          globalCoord: false, // 缺省为 false
+        },
+        toolbox:{
+          feature:{
+            saveAsImage:{}
+          }
+        },
+        tooltip: {
+          formatter: function (params) {
+            var html = '';
+            html =
+              '<div>' +
+              '<div >' +
+              params.name +
+              '</div>' +
+              '<div>' +
+              '<span style="font-size:16px;font-weight:bold;">' +
+              '确诊病例' +
+              params.value+
+              '例' +
+              '</span>' +
+              '</div>' +
+              '</div>';
+            return html;
           },
-          {
-            offset: 1,
-            color: '#fff', // 100% 处的颜色
+        },
+        legend: {
+          orient: 'vertical',
+          id: 1,
+          y: 'bottom',
+          x: 'left',
+          itemWidth: 20,
+          data: [],
+        },
+        geo: {
+          map: 'nanyang',
+          type: 'map',
+          zoom: 1.1,
+          showLegendSymbol: true,
+          left:"30%",
+          label: {
+            normal: {
+              fontSize: 10,
+              fontWeight:"bold",
+              show: true,
+              color: '#fff',
+            },
+            emphasis: {
+              show: true,
+              color: 'red',
+            },
           },
-        ],
-        globalCoord: false, // 缺省为 false
-      },
-      toolbox:{
-        feature:{
-          saveAsImage:{}
-        }
-      },
-      tooltip: {
-        formatter: function (params) {
-          var html = '';
-          html =
-            '<div>' +
-            '<div >' +
-            params.name +
-            '</div>' +
-            '<div>' +
-            '<span style="font-size:16px;font-weight:bold;">' +
-            '确诊病例' +
-            params.value+
-            '例' +
-            '</span>' +
-            '</div>' +
-            '</div>';
-          return html;
+          itemStyle: {
+            normal: {
+              areaColor: '#FFCCCC',
+              borderColor: '#FFCCCC', //线
+              shadowColor: '#FF6666', //外发光
+              shadowBlur: 20,
+            },
+            emphasis: {
+              areaColor: '#FFFFCC', //悬浮区背景
+            },
+          },
         },
       },
-      // color:['#34c6bb'],
-      legend: {
-        orient: 'vertical',
-        id: 1,
-        y: 'bottom',
-        x: 'left',
-        itemWidth: 20,
-        data: [
-          {
-            name: 'QQ',
-            // icon: iconWZ
-          },
-          {
-            name: '微信',
-            // icon: iconJC
-          },
-        ],
-      },
+      animationDurationUpdate: 3000,
+      animationEasingUpdate: 'quinticInOut',
+      options: []
 
-      geo: {
-        map: 'nanyang',
-        type: 'map',
-        zoom: 1,
-        showLegendSymbol: true,
-        label: {
-          normal: {
-            fontSize: 10,
-            fontWeight:"bold",
-            show: true,
-            color: '#fff',
-          },
-          emphasis: {
-            show: true,
-            color: 'red',
-          },
-        },
-        itemStyle: {
-          normal: {
-            areaColor: '#FFCCCC',
-            borderColor: '#FFCCCC', //线
-            shadowColor: '#FF6666', //外发光
-            shadowBlur: 20,
-          },
-          emphasis: {
-            areaColor: '#FFFFCC', //悬浮区背景
-          },
-        },
-      },
-      series: [
-        {
-          name: "确诊病例",
-          type: "map",
-          geoIndex: 0,
-          data: mapdata
-        },
-      ],
     };
+
+
+    for (i=0;i<mapsj.length;i++){
+      res=[];
+      for (j=0;j<mapsj[i].length;j++){
+        res.push({
+          name: mapsj[i][j].name,
+          value: mapsj[i][j].value
+        });
+      }
+      res.sort(function(a, b) {
+        return b.value - a.value;
+      });    //降序
+
+      // res.sort(function(a, b) {
+      //   return a.value - b.value;
+      // });   //升序
+      var res1 = [];
+      var res2 = [];
+      for (t = 0; t < 16; t++) {
+        res1[t] = res[res.length - 1 - t].name;
+        res2[t] = res[res.length - 1 - t].value;
+      }
+      option.options.push(
+        {
+          yAxis: {
+            data: res1,
+          },
+          series: [
+            {
+              name: "确诊病例",
+              type: "map",
+              data:res,
+              geoIndex: 0,
+            },
+            {
+              type: 'bar',
+              barWidth: '40%',
+              data:res2,
+              label: {
+                normal: {
+                  show: true,
+                  fontSize: 14,
+                  position: 'right',
+                  formatter: '{c}'
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: '#BB0000'
+                }
+              }
+            }
+          ],
+        }
+      )
+
+    }
+
+
+
     myChart4.setOption(option);
   });
 
@@ -1636,7 +2026,7 @@
         barWidth: '50%',
         data: dq[10],
         itemStyle: {
-          color: "#CCCC00"
+          color: "blue"
         }
       },
       {
@@ -1721,160 +2111,172 @@
 
 
 
-  //第六绘图区 地图
-  var myChart6=echarts.init(document.getElementById("container6"))
-
-  var yData = [];
-  var barData = [];
-
-  for (var i = 0; i < 16; i++) {
-    barData.push(mapsj[i]);
-    yData.push((i+1) + mapsj[i].name);
-  }
-
-
-  //地图排名
-  var option = {
-    title: [{
-      show: true,
-      text: '病例地区分布',
-      textStyle: {
-        color: '#2D3E53',
-        fontSize: 18
-      },
-      right: 180,
-      top: 100
-    }],
-    tooltip: {
-      show: true,
-      formatter: function(params) {
-        return params.name + '：' + params.data['value']
-      },
-    },
-    grid: {
-      right: 20,
-      top: 135,
-      bottom: 100,
-      width: '70%'
-    },
-    xAxis: {
-      show: false
-    },
-    yAxis: {
-      type: 'category',
-      inverse: true,
-      nameGap: 16,
-      axisLine: {
-        show: false,
-        lineStyle: {
-          color: '#ddd'
-        }
-      },
-      axisTick: {
-        show: false,
-        lineStyle: {
-          color: '#ddd'
-        }
-      },
-      axisLabel: {
-        interval: 0,
-        margin: 85,
-        textStyle: {
-          color: '#455A74',
-          align: 'left',
-          fontSize: 14
-        },
-        rich: {
-          a: {
-            color: '#fff',
-            backgroundColor: '#FAAA39',
-            width: 20,
-            height: 20,
-            align: 'center',
-            borderRadius: 2
-          },
-          b: {
-            color: '#fff',
-            backgroundColor: '#4197FD',
-            width: 20,
-            height: 20,
-            align: 'center',
-            borderRadius: 2
-          }
-        },
-        formatter: function(params) {
-          if (parseInt(params.slice(0, 2)) < 4) {
-            return [
-              '{a|' + (parseInt(params.slice(0, 1)) ) + '}' + '  ' + params.slice(1)
-            ].join('\n')
-          } else if(parseInt(params.slice(0, 2)) < 10){
-            return[
-              '{b|' + (parseInt(params.slice(0, 1)) ) + '}' + '  ' + params.slice(1)
-            ].join('\n')
-          }else{
-            return[
-              '{b|' + (parseInt(params.slice(0, 2)) ) + '}' + '  ' + params.slice(2)
-            ].join('\n')
-          }
-        }
-      },
-      data: yData
-    },
-    series: [{
-      name: 'barSer',
-      type: 'bar',
-      roam: false,
-      visualMap: false,
-      zlevel: 2,
-      barMaxWidth: 8,
-      barGap: 0,
-      itemStyle: {
-        normal: {
-          color: function(params) {
-            var colorList = [{
-              colorStops: [{
-                offset: 0,
-                color: '#FFD119' // 0% 处的颜色
-              }, {
-                offset: 1,
-                color: '#FFAC4C' // 100% 处的颜色
-              }]
-            },
-              {
-                colorStops: [{
-                  offset: 0,
-                  color: '#00C0FA' // 0% 处的颜色
-                }, {
-                  offset: 1,
-                  color: '#2F95FA' // 100% 处的颜色
-                }]
-              }
-            ];
-            if (params.dataIndex < 3) {
-              return colorList[0]
-            } else {
-              return colorList[1]
-            }
-          },
-          barBorderRadius: 15
-        }
-      },
-      data: mapsj
-    }],
-  };
-
-  myChart6.setOption(option);
+  //第六绘图区 地图排名
+  // var myChart6=echarts.init(document.getElementById("container6"))
+  //
+  // var yData = [];
+  // var barData = [];
+  //
+  // for (var i = 0; i < 16; i++) {
+  //   barData.push(mapsj[i]);
+  //   yData.push((i+1) + mapsj[i].name);
+  // }
+  // var option = {
+  //   title: [{
+  //     show: true,
+  //     text: '病例地区分布',
+  //     textStyle: {
+  //       color: '#2D3E53',
+  //       fontSize: 18
+  //     },
+  //     right: 180,
+  //     top: 100
+  //   }],
+  //   tooltip: {
+  //     show: true,
+  //     formatter: function(params) {
+  //       return params.name + '：' + params.data['value']
+  //     },
+  //   },
+  //   grid: {
+  //     right: 20,
+  //     top: 135,
+  //     bottom: 100,
+  //     width: '70%'
+  //   },
+  //   xAxis: {
+  //     show: false
+  //   },
+  //   yAxis: {
+  //     type: 'category',
+  //     inverse: true,
+  //     nameGap: 16,
+  //     axisLine: {
+  //       show: false,
+  //       lineStyle: {
+  //         color: '#ddd'
+  //       }
+  //     },
+  //     axisTick: {
+  //       show: false,
+  //       lineStyle: {
+  //         color: '#ddd'
+  //       }
+  //     },
+  //     axisLabel: {
+  //       interval: 0,
+  //       margin: 85,
+  //       textStyle: {
+  //         color: '#455A74',
+  //         align: 'left',
+  //         fontSize: 14
+  //       },
+  //       rich: {
+  //         a: {
+  //           color: '#fff',
+  //           backgroundColor: '#FAAA39',
+  //           width: 20,
+  //           height: 20,
+  //           align: 'center',
+  //           borderRadius: 2
+  //         },
+  //         b: {
+  //           color: '#fff',
+  //           backgroundColor: '#4197FD',
+  //           width: 20,
+  //           height: 20,
+  //           align: 'center',
+  //           borderRadius: 2
+  //         }
+  //       },
+  //       formatter: function(params) {
+  //         if (parseInt(params.slice(0, 2)) < 4) {
+  //           return [
+  //             '{a|' + (parseInt(params.slice(0, 1)) ) + '}' + '  ' + params.slice(1)
+  //           ].join('\n')
+  //         } else if(parseInt(params.slice(0, 2)) < 10){
+  //           return[
+  //             '{b|' + (parseInt(params.slice(0, 1)) ) + '}' + '  ' + params.slice(1)
+  //           ].join('\n')
+  //         }else{
+  //           return[
+  //             '{b|' + (parseInt(params.slice(0, 2)) ) + '}' + '  ' + params.slice(2)
+  //           ].join('\n')
+  //         }
+  //       }
+  //     },
+  //     data: yData
+  //   },
+  //   series: [{
+  //     name: 'barSer',
+  //     type: 'bar',
+  //     roam: false,
+  //     visualMap: false,
+  //     zlevel: 2,
+  //     barMaxWidth: 8,
+  //     barGap: 0,
+  //     itemStyle: {
+  //       normal: {
+  //         color: function(params) {
+  //           var colorList = [{
+  //             colorStops: [{
+  //               offset: 0,
+  //               color: '#FFD119' // 0% 处的颜色
+  //             }, {
+  //               offset: 1,
+  //               color: '#FFAC4C' // 100% 处的颜色
+  //             }]
+  //           },
+  //             {
+  //               colorStops: [{
+  //                 offset: 0,
+  //                 color: '#00C0FA' // 0% 处的颜色
+  //               }, {
+  //                 offset: 1,
+  //                 color: '#2F95FA' // 100% 处的颜色
+  //               }]
+  //             }
+  //           ];
+  //           if (params.dataIndex < 3) {
+  //             return colorList[0]
+  //           } else {
+  //             return colorList[1]
+  //           }
+  //         },
+  //         barBorderRadius: 15
+  //       }
+  //     },
+  //     data: mapsj
+  //   }],
+  // };
+  //
+  // myChart6.setOption(option);
 
 
 //表格热力图
   var myChart8=echarts.init(document.getElementById("container8"))
 
-
   rldata = rldata.map(function (item) {
     return [item[0], item[1], item[2] || '-'];
   });
-
   option = {
+    title:{
+      text:"地区每日病例热力图",
+      textStyle: {
+        color: '#2D3E53',
+        fontSize: 22
+      },
+      left: "center",
+      top: 0
+    },
+    toolbox:{
+      feature:{
+        saveAsImage:{}
+      }
+    },
+    tooltip: {
+      position: 'top',
+    },
     tooltip: {
       axisPointer: {
         type: 'shadow'
@@ -1882,8 +2284,10 @@
     },
     animation: false,
     grid: {
-      height: '75%',
-      y: '10%'
+      left: '3%',
+      right: '4%',
+      bottom: '15%',
+      containLabel: true
     },
     xAxis: {
       type: 'category',
@@ -1899,25 +2303,26 @@
       calculable: true,
       orient: 'horizontal',
       left: 'center',
-      bottom: '0%'
+      bottom: '0%',
+      show:false
     },
     series: [{
       type: 'heatmap',
       data: rldata,
       label: {
         normal: {
+          fontSize:14,
           show: true
         }
       },
       itemStyle: {
         emphasis: {
           shadowBlur: 10,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: 'rgba(0, 0, 0, 0.5)',
         }
       }
     }]
   };
-
   myChart8.setOption(option);
 
 
@@ -2022,8 +2427,10 @@
     legend: {
       show: false
     },
-    toolbox: {
-      show: false
+    toolbox:{
+      feature:{
+        saveAsImage:{}
+      }
     },
     series: seriesObj,
     graphic: [{
@@ -2088,10 +2495,9 @@
   myChart9.setOption(option);
 
 
-  var myChart10=echarts.init(document.getElementById("container10"))
-
 
   //分型
+  var myChart10=echarts.init(document.getElementById("container10"))
   option = {
     title:{
     text:"病例临床分型",
@@ -2100,6 +2506,11 @@
     },
     left:"5%",top:"2%"
   },
+    toolbox:{
+      feature:{
+        saveAsImage:{}
+      }
+    },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -2213,7 +2624,6 @@
       },
     ]
   };
-
   myChart10.setOption(option);
 
 
