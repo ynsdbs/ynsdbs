@@ -93,14 +93,15 @@
   //一、趋势数据
   var date=['11月8日', '11月9日', '11月10日', '11月11日', '11月12日', '11月13日', '11月14日', '11月15日',
     '11月16日', '11月17日', '11月18日', '11月19日', '11月20日', '11月21日', '11月22日', '11月23日', '11月24日',
-    '11月25日','11月26日']
+    '11月25日','11月26日','11月27日']
   //初筛阳性（使用采样时间）
   var csdata=[9, 5, 4, 8, 4, 13, 78, 64, 93, 58, 58, 99, 89, 171, 223, 251, 304, 280, 164]
   //初筛上报时间
   var csdata2=[9, 3, 4, 10, 3, 6, 32, 83, 38, 80, 92, 88, 95, 132, 159, 226, 255, 296,361]
   //网报时间
-  var wbdata=[6, 5, 4, 2, 10, 3, 15, 18, 38, 34, 53, 33, 33, 192, 168, 93, 166,175,216]
-
+  var wbdata=[6, 5, 4, 2, 10, 3, 15, 18, 38, 34, 53, 33, 33, 192, 168, 93, 166,175,216,244]
+  //总数
+  var sumdata=[1975,1508]  //阳采数 及网报总数
 
   //二、年龄性别数据
   var nlydate=['婴幼儿期（0-6岁）', '少儿期（7-12岁）', '青少年期（13-17岁）', '青年期（18-45岁）', '中年期（46-69岁）', '老年期（70岁以上）']
@@ -114,33 +115,35 @@
     {name: '保育员及保姆', value: 2},
     {name: '不详', value: 4},
     {name: '海员及长途驾驶员', value: 5},
-    {name: '幼托儿童', value: 10},
-    {name: '教师', value: 12},
-    {name: '医务人员', value: 14},
-    {name: '餐饮食品业', value: 31},
-    {name: '离退人员', value: 38},
-    {name: '散居儿童', value: 47},
-    {name: '干部职员', value: 52},
+    {name: '幼托儿童', value: 12},
+    {name: '教师', value: 14},
+    {name: '医务人员', value: 15},
+    {name: '餐饮食品业', value: 40},
+    {name: '离退人员', value: 45},
     {name: '民工', value: 52},
-    {name: '其他:办公室文员', value: 74},
-    {name: '学生', value: 95},
-    {name: '工人', value: 136},
-    {name: '农民', value: 159},
-    {name: '商业服务', value: 236},
-    {name: '家务及待业', value: 296}
+    {name: '散居儿童', value: 58},
+    {name: '干部职员', value: 62},
+    {name: '其他', value: 87},
+    {name: '学生', value: 129},
+    {name: '工人', value: 138},
+    {name: '农民', value: 171},
+    {name: '商业服务', value: 274},
+    {name: '家务及待业', value: 399}
   ]
 
   var fx=[
-    {name: '确诊', value: 498},
-    {name: '无症状', value: 766}
+    {name: '确诊', value: 536},
+    {name: '无症状', value: 972}
   ]
 
-
   //分型数据
-  var wz=[3, 2, 2, 1, 5, 3, 7, 6, 8, 11, 11, 14, 11, 56, 103, 84, 126, 141,172]
-  var quez=[3, 3, 2, 1, 5, 0, 8, 12, 30, 23, 42, 19, 22, 136, 65, 9, 40, 34,44]
-  var sum=[6, 5, 4, 2, 10, 3, 15, 18, 38, 34, 53, 33, 33, 192, 168, 93, 166, 175,216]
-  var zb=[0.5, 0.6, 0.5, 0.5, 0.5, 0, 0.53, 0.67, 0.79, 0.68, 0.79, 0.58, 0.67, 0.71, 0.39, 0.1, 0.24, 0.19,0.2]
+  var wz=[3, 2, 2, 1, 5, 3, 7, 8, 6, 11, 11, 14, 11, 59, 100, 84, 125, 141, 173, 206]
+  var quez=[3, 3, 2, 1, 5, '-', 8, 17, 24, 23, 42, 19, 22, 137, 65, 5, 9, 69, 44, 38]
+  var sum=[6, 5, 4, 2, 10, 3, 15, 25, 30, 34, 53, 33, 33, 196, 165, 89, 134, 210, 217, 244]
+  var zb=[0.5, 0.6, 0.5, 0.5, 0.5, 0, 0.53, 0.68, 0.8, 0.68, 0.79, 0.58, 0.67, 0.7, 0.39, 0.06, 0.07, 0.33, 0.2, 0.16]
+
+
+
 
   //五、地图数据
   var mapsj=[
@@ -493,6 +496,15 @@
   var gk = [7, 1, 1, 8, '-', 1, 19, 10, 11, 57, 69, 45, 57, 73, 82, 145, 134, 175, 221]//管控
   var swrk = [1, 2, 3, '-', 1, 2, 4, 7, 6, 1, 1, 2, 4, 3, 4, 3, '-', 2, 7] //省外入昆
   var bfb= [0.11, 0, 0, 0.2, 0.67, 0.5, 0.28, 0.8, 0.55, 0.28, 0.24, 0.47, 0.35, 0.36, 0.43, 0.32, 0.46, 0.38, 0.3]
+  var gksum=[9, 3, 4, 10, 3, 6, 32, 83, 38, 80, 92, 88, 96, 132, 161, 225, 256, 296, 361]
+  var gkpie=[
+    {name: '不祥', value: 57},
+    {name: '非管控', value: 749},
+    {name: '管控', value: 1116},
+    {name: '入昆', value: 53}
+  ]
+
+
   //每日数据
   var dqdata=[
     [1, 1, 2, 7, 1, 2, 6, 10, 13, 25, 23, 24, 29, 43, 30, 69, 79, 69, 86],       //官渡
@@ -883,42 +895,23 @@
     //   left:"28%"
     // },
     legend:{
+
       left:"9.5%",
       top:"5%",
       textStyle:{
         fontSize:17
       },
+
+      formatter: function(name) {
+        if(name == '初筛阳采数') {
+          return name + "：>"+sumdata[0]+"人";
+        } else if(name == '初筛上报数')
+        {return name + "："+sumdata[0]+"人";}
+        else if(name == '网络直报数'){return name + "："+sumdata[1]+"人     初筛阳性数与网络直报数相差 "+(sumdata[0]-sumdata[1])+"人";}
+        else {return  name  }
+      }
+
     },
-    // graphic: [{
-    //   type: 'group',
-    //   children: [{
-    //     type: 'text',
-    //     z: 100,
-    //     left: '10%',
-    //     top: '7%',
-    //     style: {
-    //       fill: '#333',
-    //       text: [
-    //         ''+"例"
-    //       ],
-    //       font: '20px Microsoft YaHei'
-    //     }
-    //   },
-    //     {
-    //       type: 'text',
-    //       z: 100,
-    //       left: 'center',
-    //       top: '7%',
-    //       style: {
-    //         fill: '#333',
-    //         text: [
-    //           ''+"例"
-    //         ],
-    //         font: '20px Microsoft YaHei'
-    //       }
-    //     },
-    //   ]
-    // }],
     tooltip:{
       trigger:'item',
       backgroundColor: "DimGray",
@@ -1018,6 +1011,7 @@
           width: 5,
         },
       },
+
     ]
   }
   myChart.setOption(option);
@@ -1436,7 +1430,7 @@
           show: true,
           autoPlay: true,
           playInterval: 1000,
-          data: date
+          data: date,
         },
         visualMap: {
           min: 0,
@@ -1446,31 +1440,31 @@
           showLabel: !0,
           text: ["高", "低"],
           pieces: [{
-            gt: 199.99,
-            label: "> 200 人",
-            color: "#7f1100"
+            gt: 500,
+            label: "> 500 人",
+            color: "#4B0082"
+          }, {
+            gte: 199.99,
+            lte: 499.9,
+            label: "200 - 499 人",
+            color: "#8B0000"
           }, {
             gte: 99.99,
-            lte: 199.9,
-            label: "100 - 200 人",
-            color: "#CC0033"
-          }, {
-            gte: 49.99,
-            lt: 99.9,
-            label: "50- 99人",
-            color: "#FF0033"
+            lt: 199.9,
+            label: "100- 199人",
+            color: "#FF0000"
           }, {
             gt: 9.999,
-            lt: 49.9,
-            label: "10-49",
-            color: "#FF6666"
+            lt: 99.9,
+            label: "10-99",
+            color: "#FA8072"
           }, {
             gte: 1,
             lt: 9.99,
             label: "1 - 9 人",
             color: "#FFCCCC"
           }],
-          show: !0
+          // show: !0
         },
         //右部柱状图的显示范围
         grid: {
@@ -1696,7 +1690,7 @@
     },
     legend:{
       show:true,
-      left:"31%",
+      left:"29%",
       top:"10%",
       textStyle:{fontSize:16}
     },
@@ -1738,6 +1732,9 @@
         barWidth: '50%',
         data: data2,
         yAxisIndex:0,
+        emphasis: {
+          focus: 'series'
+        },
         label: {
           show: true,
         },
@@ -1755,6 +1752,9 @@
         barGap: '-100%',
         type: 'bar',
         barWidth: '50%',
+        emphasis: {
+          focus: 'series'
+        },
         data: data1,
         yAxisIndex:0,
       },
@@ -1769,13 +1769,16 @@
         type: 'bar',
         barWidth: '50%',
         data: data3,
+        emphasis: {
+          focus: 'series'
+        },
         yAxisIndex:0,
         itemStyle: {
           color: 'orange'
         }
       },
       {
-        name: '省外入昆',
+        name: '入昆',
         label: {
           show: true,
           color:'white'
@@ -1785,6 +1788,9 @@
         type: 'bar',
         barWidth: '50%',
         data: data4,
+        emphasis: {
+          focus: 'series'
+        },
         yAxisIndex:0,
         itemStyle: {
           color: 'green'
@@ -1813,7 +1819,45 @@
           width: 3,
         },
       },
-
+      {
+        name: '总计',
+        type: 'bar',
+        stack: '',
+        barWidth: 28,
+        color: '#CC99CC',
+        label: {
+          normal: {
+            show: true,
+            position: 'top',
+            color: '#CC99CC',
+            fontSize:'15'
+          },
+        },
+        data:gksum,
+        z: -1,  //隐藏总柱
+        //不同系列的柱间距离，为百分比,如果想要两个系列的柱子重叠，可以设置 barGap 为 '-100%'。
+        barGap: '-100%',
+      },
+      {color:["#ffa732","red","#2892d7","#008822"],
+        type:"pie",
+        data:gkpie,
+        center: ["15%", "30%"],
+        radius:"38%",
+        selectedMode: "multiple",
+        selectedOffset: 30,
+        itemStyle: {
+          normal:{
+            label:{
+              position:"inside",
+              color:"white",
+              show: true,
+              formatter: '{b} : \n{c}人 \n{d}%',
+              //formatter: '{b} : {c} ({d}%)' //带当前图例名 + 百分比
+            },
+            // labelLine :{show:true}
+          }
+        }
+      },
     ]
   };
 
@@ -2275,11 +2319,16 @@
       }
     },
     tooltip: {
+      show:true,
       position: 'top',
-    },
-    tooltip: {
-      axisPointer: {
-        type: 'shadow'
+      // trigger: 'axis', // 触发类型  'item'图形触发：散点图，饼图等无类目轴的图表中使用； 'axis'坐标轴触发；'none'：什么都不触发。
+      axisPointer: { // 坐标轴指示器配置项。
+        type: 'shadow', // 'line' 直线指示器  'shadow' 阴影指示器  'none' 无指示器  'cross' 十字准星指示器。
+        // axis: 'auto', // 指示器的坐标轴。
+        // snap: true, // 坐标轴指示器是否自动吸附到点上
+      },
+      formatter: function(params) {
+        return '日期：'+params.name+ '<br/>'+'地区：' + rldq[params.value[1]] + '<br/>' + '人数：' + params.data[2]+"人";
       }
     },
     animation: false,
@@ -2517,7 +2566,9 @@
         type: 'shadow'
       }
     },
-    legend: {},
+    legend: {
+      textStyle:{fontSize:16}
+    },
     grid: {
       left: '3%',
       right: '4%',
