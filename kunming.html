@@ -6,31 +6,32 @@
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
   <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
   <script src="https://wurenzhi.com/script/inputCookie.js"></script>
-<!--  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=7f0d646ea8a6b7b94bdaa2396be26eb1"></script>-->
-<!--  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>-->
-<!--  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-extension-amap/dist/echarts-extension-amap.min.js"></script>-->
+  <!--  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=7f0d646ea8a6b7b94bdaa2396be26eb1"></script>-->
+  <!--  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>-->
+  <!--  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-extension-amap/dist/echarts-extension-amap.min.js"></script>-->
 </head>
 <body>
 
 <div left="50%"><h2 align="center">昆明“11•13”新冠疫情分析(数据截止至昨日24时）</h2></div>
-<div >
-  <input style="width:10%;border-style:none";>
-  <input style="width:80%; font-size:20px;border-style:none"; value="报病迟滞，后期病例报告需消化前期残留"type="text" name="" id="i0" >
-  <input style="width:10%;border-style:none";>
+<div>
+  <input style="width:10%;border-style:none" ;>
+  <input style="width:80%; font-size:20px;border-style:none" ; value="报病迟滞，后期病例报告需消化前期残留" type="text" name="" id="i0">
+  <input style="width:10%;border-style:none" ;>
 </div>
 <div id="container" style="width: 100%;height:450px"></div>
 
-<div >
-  <input style="width:10%;border-style:none";>
-  <input style="width:80%; font-size:20px;border-style:none"; value="阳性病例主要分布于青壮年期"type="text" name="" id="i2" >
-  <input style="width:10%;border-style:none";>
+<div>
+  <input style="width:10%;border-style:none" ;>
+  <input style="width:80%; font-size:20px;border-style:none" ; value="阳性病例主要分布于青壮年期" type="text" name="" id="i2">
+  <input style="width:10%;border-style:none" ;>
 </div>
 <div id="container2" style="width: 100%;height:500px"></div>
 
-<div >
-  <input style="width:10%;border-style:none";>
-  <input style="width:80%; font-size:20px;border-style:none"; value="病例职业以工人、农民、商业服务、家务及待业人员为主"type="text" name="" id="i3" >
-  <input style="width:10%;border-style:none";>
+<div>
+  <input style="width:10%;border-style:none" ;>
+  <input style="width:80%; font-size:20px;border-style:none" ; value="病例职业以工人、农民、商业服务、家务及待业人员为主" type="text" name=""
+         id="i3">
+  <input style="width:10%;border-style:none" ;>
 </div>
 
 <div style="width: 50%;float: left; overflow: hidden">
@@ -44,24 +45,26 @@
   <div id="container10" style="width: 100%; height: 550px"></div>
 </div>
 
-<div >
-  <input style="width:10%;border-style:none";>
-  <input style="width:80%; font-size:20px;border-style:none"; value="非管控地区检出阳性占比在30%-40%"type="text" name="" id="i4" >
-  <input style="width:10%;border-style:none";>
+<div>
+  <input style="width:10%;border-style:none" ;>
+  <input style="width:80%; font-size:20px;border-style:none" ; value="非管控地区检出阳性占比在30%-40%" type="text" name="" id="i4">
+  <input style="width:10%;border-style:none" ;>
 </div>
 <div id="container5" style="width: 100%;height:500px"></div>
 
-<div >
-  <input style="width:10%;border-style:none";>
-  <input style="width:80%; font-size:20px;border-style:none"; value="每日新发病例集中在官渡、经开、呈贡、西山、五华"type="text" name="" id="i6" >
-  <input style="width:10%;border-style:none";>
+<div>
+  <input style="width:10%;border-style:none" ;>
+  <input style="width:80%; font-size:20px;border-style:none" ; value="每日新发病例集中在官渡、经开、呈贡、西山、五华" type="text" name=""
+         id="i6">
+  <input style="width:10%;border-style:none" ;>
 </div>
 <div id="container7" style="width: 100%;height:500px"></div>
 
-<div >
-  <input style="width:10%;border-style:none";>
-  <input style="width:80%; font-size:20px;border-style:none"; value="每日新发病例集中在官渡、经开、呈贡、西山、五华"type="text" name="" id="i5" >
-  <input style="width:10%;border-style:none";>
+<div>
+  <input style="width:10%;border-style:none" ;>
+  <input style="width:80%; font-size:20px;border-style:none" ; value="每日新发病例集中在官渡、经开、呈贡、西山、五华" type="text" name=""
+         id="i5">
+  <input style="width:10%;border-style:none" ;>
 </div>
 <div id="container8" style="width: 100%;height:500px"></div>
 
@@ -71,95 +74,92 @@
 <script type="text/javascript">
 
   //一、趋势数据
-  var date=['11月8日', '11月9日', '11月10日', '11月11日', '11月12日', '11月13日', '11月14日', '11月15日',
+  var date = ['11月8日', '11月9日', '11月10日', '11月11日', '11月12日', '11月13日', '11月14日', '11月15日',
     '11月16日', '11月17日', '11月18日', '11月19日', '11月20日', '11月21日', '11月22日', '11月23日', '11月24日',
-    '11月25日','11月26日','11月27日','11月28日','11月29日']
+    '11月25日', '11月26日', '11月27日', '11月28日', '11月29日', '11月30日']
   //初筛阳性（使用采样时间）
-  var csdata=[9, 5, 4, 8, 4, 13, 78, 64, 93, 58, 58, 99, 89, 172,
+  var csdata = [9, 5, 4, 8, 4, 13, 78, 64, 93, 58, 58, 99, 89, 172,
     223, 251, 310, 290, 437, 517, 654, 251,]
   //初筛上报时间
-  var csdata2=[9, 3, 4, 10, 3, 6, 32, 83, 38, 80,
-    92, 88, 96, 132, 161, 225, 256, 296,360,494,512,707]
+  var csdata2 = [9, 3, 4, 10, 3, 6, 32, 83, 38, 80,
+    92, 88, 96, 132, 161, 225, 256, 296, 360, 494, 512, 707]
   //网报时间
-  var wbdata=[6, 5, 4, 2, 10, 3, 15, 25, 30, 34, 53, 33,
-    33, 196, 165, 89, 134, 210, 217, 244, 265, 260]
+  var wbdata = [6, 5, 4, 2, 10, 3, 15, 25, 30, 34, 53, 33,
+    33, 196, 165, 89, 134, 210, 217, 244, 265, 260, 377]
 
   //二、年龄性别数据
-  var man=[121, 102, 50, 892, 566, 56]
-  var woman=[87, 86, 81, 967, 613, 66]
+  var man = [121, 102, 50, 892, 566, 56]
+  var woman = [87, 86, 81, 967, 613, 66]
 
   //三、职业数据
-  var zy=[
+  var zy = [
     {name: '公共场所服务员', value: 1},
     {name: '保育员及保姆', value: 2},
     {name: '不详', value: 4},
     {name: '海员及长途驾驶员', value: 6},
-    {name: '教师', value: 15},
-    {name: '医务人员', value: 20},
-    {name: '幼托儿童', value: 25},
-    {name: '餐饮食品业', value: 49},
+    {name: '教师', value: 20},
+    {name: '医务人员', value: 23},
+    {name: '幼托儿童', value: 29},
     {name: '民工', value: 52},
-    {name: '离退人员', value: 61},
-    {name: '散居儿童', value: 72},
-    {name: '干部职员', value: 75},
-    {name: '其他', value: 95},
-    {name: '工人', value: 156},
-    {name: '农民', value: 192},
-    {name: '学生', value: 210},
-    {name: '商业服务', value: 361},
-    {name: '家务及待业', value: 637}
+    {name: '餐饮食品业', value: 55},
+    {name: '离退人员', value: 68},
+    {name: '散居儿童', value: 84},
+    {name: '干部职员', value: 90},
+    {name: '其他', value: 120},
+    {name: '工人', value: 163},
+    {name: '农民', value: 209},
+    {name: '学生', value: 263},
+    {name: '商业服务', value: 412},
+    {name: '家务及待业', value: 809}
   ]
 
   //分型数据
-  var wz=[3, 2, 2, 1, 5, 3, 7, 8, 6, 11, 11, 14, 11, 59, 100, 84, 125, 141, 173, 206,217,224]
-  var quez=[3, 3, 2, 1, 5, 0, 8, 17, 24, 23, 42, 19, 22, 137, 65, 5, 9, 69, 44, 38,48,36]
+  var wz = [3, 2, 2, 1, 5, 3, 7, 8, 6, 11, 11, 14, 11,
+    59, 100, 84, 125, 141, 173, 206, 217, 224, 332]
+  var quez = [3, 3, 2, 1, 5, 0, 8, 17, 24,
+    23, 42, 19, 22, 137, 65, 5, 9, 69, 44, 38, 48, 36, 45]
 
 
   //管控数据
-  //不祥
-  var bx =['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 1, 8, 5, 6, 4, 6, 8, 41, 30, 60]
-  //非管控
-  var fgk =[1, '-', '-', 2, 2, 3, 9, 66, 21, 22, 22, 41, 34, 48, 70, 71, 118, 112, 120, 132, 205, 225]
-  //管控
-  var gk =[7, 1, 1, 8, '-', 1, 19, 10, 11, 57, 69, 45, 57, 73, 82, 145, 134, 176, 223, 320, 274, 422]
-  //省外入昆
-  var swrk = [1, 2, 3, '-', 1, 2, 4, 7, 6, 1, 1, 2, 4, 3, 4, 3, '-', 2, 9, 1, 3, '-']
-
-
-  // var bxsum=0
-  // var fgksum=0
-  // var gksum=0
-  // var swrksum=0
-  // for (let i = 0; i <bx.length ; i++) {
-  //   bxsum+=bx[i];
-  //   fgksum+=fgk[i];
-  //   gksum+=gk[i];
-  //   swrksum+=swrk[i];
-  // }
-
-  // var gkpie=[]
-  // gkpie.push(
-  //   {name: '不祥', value: bxsum}
-  // )
-  // gkpie.push(
-  // {name: '非管控', value: fgksum}
-  // )
-  // gkpie.push(
-  // {name: '管控', value: gksum}
-  // )
-  // gkpie.push(
-  // {name: '入昆', value: swrksum}
-  // )
-
-  var gkpie=[
-    {name: '不祥', value: 169},
-    {name: '非管控', value: 1324},
-    {name: '管控', value: 2135},
-    {name: '入昆', value: 59}
+  var gkdata=[
+    ['-', 1, 7, 1],
+    ['-', '-', 1, 2],
+    ['-', '-', 1, 3],
+    ['-', 2, 8, '-'],
+    ['-', 2, '-', 1],
+    ['-', 3, 1, 2],
+    ['-', 9, 19, 4],
+    ['-', 66, 10, 7],
+    ['-', 21, 11, 6],
+    ['-', 22, 57, 1],
+    ['-', 22, 69, 1],
+    ['-', 41, 45, 2],
+    [1, 34, 57, 4],
+    [8, 48, 73, 3],
+    [5, 70, 82, 4],
+    [6, 71, 145, 3],
+    [4, 118, 134, '-'],
+    [6, 112, 176, 2],
+    [8, 120, 223, 9],
+    [41, 132, 320, 1],
+    [30, 205, 274, 3],
+    [60, 225, 422, '-']
   ]
 
-  //每日数据
-  var dqdata=[
+  var bx=[]
+  var fgk=[]
+  var gk=[]
+  var swrk=[]
+  for (let i = 0; i <gkdata.length ; i++) {
+    bx.push(gkdata[i][0]);
+    fgk.push(gkdata[i][1]);
+    gk.push(gkdata[i][2]);
+    swrk.push(gkdata[i][3]);
+  }
+
+
+  ////每日数据
+  var dqdata = [
     //官渡
     [1, '-', 2, 1, 1, 3, 6, 11, 14, 22, 24, 25, 30, 42, 29, 71, 97, 78, 94, 227, 174, 237],
     //经开
@@ -193,12 +193,12 @@
     //宜良县
     ['-', '-', '-', '-', '-', '-', '-', '-', '-', 1, '-', 1, 2, 1, '-', 1, '-', '-', '-', 2, 2, 1]
   ]
-  var lgdata=['官渡区','经开区','呈贡区','西山区','五华区','安宁市','',
-    '阳宗海','盘龙区','东川区','晋宁区','嵩明县','石林县','',
-    '寻甸县','富民县','禄劝县','宜良县']
+  var lgdata = ['官渡区', '经开区', '呈贡区', '西山区', '五华区', '安宁市', '',
+    '阳宗海', '盘龙区', '东川区', '晋宁区', '嵩明县', '石林县', '',
+    '寻甸县', '富民县', '禄劝县', '宜良县']
 
   //五、地图数据
-  var mapsj=[
+  var mapsj = [
     [
       {name: '官渡区', value: 1},
       {name: '呈贡区', value: 6},
@@ -598,35 +598,34 @@
   ]
 
 
-
   //家庭聚集数据
   var scaleData = [
     {
       'name': '6人及以上',
-      'value': 11
+      'value': 12
     },
     {
       'name': '5人',
-      'value': 21
+      'value': 22
     },
     {
       'name': '4人',
-      'value': 30
+      'value': 34
     },
     {
       'name': '3人',
-      'value':91
+      'value': 110
     },
     {
       'name': '2人',
-      'value': 190
+      'value': 227
     }
 
   ];
-  var jtjj=['343']
-  var jtzb=["34.50%"]
-  var qjgr1=["162"]
-  var qjgr2=["49.68%"]
+  var jtjj = ['405']
+  var jtzb = ["34.77%"]
+  var qjgr1 = ["187"]
+  var qjgr2 = ["49.46%"]
   var placeHolderStyle = {
     normal: {
       label: {
@@ -643,8 +642,8 @@
 
 
   //表格热力图数据
-  var rldq =['禄劝县', '宜良县', '石林县', '东川区', '寻甸县', '阳宗海', '晋宁区', '嵩明县', '安宁市', '富民县', '五华区', '盘龙区', '经开区', '呈贡区', '西山区', '官渡区']
-  var rldata =[[0, 0, 0],
+  var rldq = ['禄劝县', '宜良县', '石林县', '东川区', '寻甸县', '阳宗海', '晋宁区', '嵩明县', '安宁市', '富民县', '五华区', '盘龙区', '经开区', '呈贡区', '西山区', '官渡区']
+  var rldata = [[0, 0, 0],
     [0, 1, 0],
     [0, 2, 0],
     [0, 3, 0],
@@ -998,84 +997,89 @@
     [21, 15, 237]]
 
 
-
-  var myChart=echarts.init(document.getElementById("container"))
-  var sum1=0
-  var sum2=0
-  for(i=0;i<csdata.length;i++){
-    sum1+=csdata[i];
-    sum2+=wbdata[i]
+  var myChart = echarts.init(document.getElementById("container"))
+  var sum1 = 0
+  var sum2 = 0
+  for (i = 0; i < csdata.length; i++) {
+    sum1 += csdata[i];
+  }
+  for (i = 0; i < wbdata.length; i++) {
+    sum2 += wbdata[i]
   }
 
+
   var option = {
-    legend:{
-      left:"9.5%",
-      top:"5%",
-      textStyle:{
-        fontSize:17
+    legend: {
+      left: "9.5%",
+      top: "5%",
+      textStyle: {
+        fontSize: 17
       },
 
-      formatter: function(name) {
-        if(name == '初筛阳采数') {
-          return name + "：>"+sum1+"人";
-        } else if(name == '初筛上报数')
-        {return name + "："+sum1+"人";}
-        else if(name == '网络直报数'){return name + "："+sum2+"人   初筛阳性数与网络直报数相差 "+(sum1-sum2)+"人";}
-        else {return  name  }
+      formatter: function (name) {
+        if (name == '初筛阳采数') {
+          return name + "：>" + sum1 + "人";
+        } else if (name == '初筛上报数') {
+          return name + "：" + sum1 + "人";
+        } else if (name == '网络直报数') {
+          return name + "：" + sum2 + "人   初筛阳性数与网络直报数相差 " + (sum1 - sum2) + "人";
+        } else {
+          return name
+        }
       }
     },
-    tooltip:{
-      trigger:'item',
+    tooltip: {
+      trigger: 'item',
       backgroundColor: "DimGray",
-      textStyle : {
+      textStyle: {
         color: 'white',
         decoration: 'none',
         // fontFamily: 'Verdana, sans-serif',
         fontSize: 16,
         fontWeight: 'bold'
       },
-      formatter:"{a} {b} 新增病例{c}例",
+      formatter: "{a} {b} 新增病例{c}例",
     },
-    toolbox:{
-      feature:{
-        saveAsImage:{}
+    toolbox: {
+      feature: {
+        saveAsImage: {}
       }
     },
-    xAxis:{
-      data:date,
-      nameTextStyle:{
+    xAxis: {
+      data: date,
+      nameTextStyle: {
         fontSize: 20
       },
-      axisLabel:{
+      axisLabel: {
 
-        textStyle:{
+        textStyle: {
           fontWeight: 'bold'
         },
-        interval:1,
+        interval: 1,
       },
-      splitLine:{
-        show:true
+      splitLine: {
+        show: true
       }
     },
-    yAxis:{
-      axisLabel:{
+    yAxis: {
+      axisLabel: {
         formatter: "{value}(例)",
-        textStyle:{
+        textStyle: {
           fontWeight: 'bold',
         }
       },
     },
-    series:[
+    series: [
       {
-        name:"初筛阳采数",
-        color:"red",
-        data:csdata,
-        type:"line",
-        smooth:true,
-        symbolSize:10,
-        label:{
-          show:true,
-          fontSize:16
+        name: "初筛阳采数",
+        color: "red",
+        data: csdata,
+        type: "line",
+        smooth: true,
+        symbolSize: 10,
+        label: {
+          show: true,
+          fontSize: 16
         },
         lineStyle: {
           shadowColor: 'rgba(0, 0, 0, .4)',    //阴影颜色
@@ -1086,15 +1090,15 @@
         },
       },
       {
-        name:"初筛上报数",
-        color:"orange",
-        data:csdata2,
-        type:"line",
-        smooth:true,
-        symbolSize:10,
-        label:{
-          show:true,
-          fontSize:16
+        name: "初筛上报数",
+        color: "orange",
+        data: csdata2,
+        type: "line",
+        smooth: true,
+        symbolSize: 10,
+        label: {
+          show: true,
+          fontSize: 16
         },
         lineStyle: {
           shadowColor: 'rgba(0, 0, 0, .4)',    //阴影颜色
@@ -1105,15 +1109,15 @@
         },
       },
       {
-        name:"网络直报数",
-        color:"blue",
-        data:wbdata,
-        type:"line",
-        smooth:true,
-        symbolSize:10,
-        label:{
-          show:true,
-          fontSize:16
+        name: "网络直报数",
+        color: "blue",
+        data: wbdata,
+        type: "line",
+        smooth: true,
+        symbolSize: 10,
+        label: {
+          show: true,
+          fontSize: 16
         },
         lineStyle: {
           shadowColor: 'rgba(0, 0, 0, .4)',    //阴影颜色
@@ -1132,24 +1136,24 @@
   });
 
   ///第二绘图区
-  var myChart2=echarts.init(document.getElementById("container2"))
+  var myChart2 = echarts.init(document.getElementById("container2"))
 
-  var nlydate=['婴幼儿期（0-6岁）', '少儿期（7-12岁）', '青少年期（13-17岁）', '青年期（18-45岁）', '中年期（46-69岁）', '老年期（70岁以上）']
-  var total=0
-  for(i=0;i<man.length;i++){
-    total+=man[i]
+  var nlydate = ['婴幼儿期（0-6岁）', '少儿期（7-12岁）', '青少年期（13-17岁）', '青年期（18-45岁）', '中年期（46-69岁）', '老年期（70岁以上）']
+  var total = 0
+  for (i = 0; i < man.length; i++) {
+    total += man[i]
   }
-  for(j=0;j<woman.length;j++){
-    total+=woman[j]
+  for (j = 0; j < woman.length; j++) {
+    total += woman[j]
   }
 
-  var option={
-    title:{
-      text:"年龄及性别分布",
-      textStyle:{
-        fontSize:25
+  var option = {
+    title: {
+      text: "年龄及性别分布",
+      textStyle: {
+        fontSize: 25
       },
-      left:"20%"
+      left: "20%"
     },
     tooltip: {
       show: true,
@@ -1176,9 +1180,9 @@
         );
       },
     },
-    toolbox:{
-      feature:{
-        saveAsImage:{}
+    toolbox: {
+      feature: {
+        saveAsImage: {}
       }
     },
     legend: {
@@ -1417,17 +1421,19 @@
           normal: {
             //柱形图圆角，初始化效果
             color: "#4f9efd",
-            barBorderRadius:[10, 0, 0, 10],
+            barBorderRadius: [10, 0, 0, 10],
             label: {
               show: true,//是否展示
               textStyle: {
-                color:"white",
-                fontWeight:'bolder',
-                fontSize : '14',
-                fontFamily : '微软雅黑',
+                color: "white",
+                fontWeight: 'bolder',
+                fontSize: '14',
+                fontFamily: '微软雅黑',
               },
-              formatter: function(params){
-                if (params.value>200){return params.value+'人（'+(params.value/total*100).toFixed(2) + '%）'}
+              formatter: function (params) {
+                if (params.value > 200) {
+                  return params.value + '人（' + (params.value / total * 100).toFixed(2) + '%）'
+                }
               }
             }
           }
@@ -1447,17 +1453,19 @@
           normal: {
             //柱形图圆角，初始化效果
             color: "#fc5a5a",
-            barBorderRadius:[0, 10, 10, 0],
+            barBorderRadius: [0, 10, 10, 0],
             label: {
               show: true,//是否展示
               textStyle: {
-                color:"white",
-                fontWeight:'bolder',
-                fontSize : '14',
-                fontFamily : '微软雅黑',
+                color: "white",
+                fontWeight: 'bolder',
+                fontSize: '14',
+                fontFamily: '微软雅黑',
               },
-              formatter: function(params){
-                if (params.value>200){return params.value+'人（'+(params.value/total*100).toFixed(2) + '%）'}
+              formatter: function (params) {
+                if (params.value > 200) {
+                  return params.value + '人（' + (params.value / total * 100).toFixed(2) + '%）'
+                }
               }
             }
           }
@@ -1472,36 +1480,37 @@
   });
 
   //第三绘图区
-  var myChart3=echarts.init(document.getElementById("container3"))
+  var myChart3 = echarts.init(document.getElementById("container3"))
 
-  var option={title:{
-      text:"职业分布",
-      textStyle:{
-        fontSize:25
+  var option = {
+    title: {
+      text: "职业分布",
+      textStyle: {
+        fontSize: 25
       },
-      left:"40%",top:"5%"
+      left: "40%", top: "5%"
     },
-    tooltip:{
-      show:true,
-      formatter:"{b}{c}例，占{d}%"
+    tooltip: {
+      show: true,
+      formatter: "{b}{c}例，占{d}%"
     },
-    toolbox:{
-      feature:{
-        saveAsImage:{}
+    toolbox: {
+      feature: {
+        saveAsImage: {}
       }
     },
 
-    series:[
+    series: [
       {
-        type:"pie",
-        data:zy.reverse(),
+        type: "pie",
+        data: zy.reverse(),
         // center: ["25%", "45%"],
-        radius:"50%",
+        radius: "50%",
         selectedMode: "multiple",
         selectedOffset: 30,
         itemStyle: {
-          normal:{
-            label:{
+          normal: {
+            label: {
               show: true,
               formatter: '{b} : {c}人 ' //带当前图例名 + 数值
               //formatter: '{b} : {c} ({d}%)' //带当前图例名 + 百分比
@@ -1511,16 +1520,16 @@
         }
       },
       {
-        type:"pie",
-        data:zy,
+        type: "pie",
+        data: zy,
         // center: ["25%", "45%"],
-        radius:"50%",
+        radius: "50%",
         selectedMode: "multiple",
         selectedOffset: 30,
         itemStyle: {
-          normal:{
-            label:{
-              position:"inside",
+          normal: {
+            label: {
+              position: "inside",
               show: true,
               formatter: '{d}%' //只要百分比
             },
@@ -1561,15 +1570,15 @@
 
 
   //第四绘图区  地图
-  var myChart4=echarts.init(document.getElementById("container4"))
+  var myChart4 = echarts.init(document.getElementById("container4"))
   $.getJSON("map/kunming.json", function (geoJson) {
     echarts.registerMap('nanyang', geoJson);
     myChart4.hideLoading();
 
-    var mrsum=[]
-    var sum=0
-    for(var i=0;i<csdata2.length;i++){
-      sum+=csdata2[i];
+    var mrsum = []
+    var sum = 0
+    for (var i = 0; i < csdata2.length; i++) {
+      sum += csdata2[i];
       mrsum.push(sum)
     }
 
@@ -1623,7 +1632,7 @@
           right: '5%',
           top: '15%',
           width: '18%',
-          height:"70%"
+          height: "70%"
         },
 
         xAxis: {
@@ -1679,9 +1688,9 @@
           ],
           globalCoord: false, // 缺省为 false
         },
-        toolbox:{
-          feature:{
-            saveAsImage:{}
+        toolbox: {
+          feature: {
+            saveAsImage: {}
           }
         },
         tooltip: {
@@ -1695,7 +1704,7 @@
               '<div>' +
               '<span style="font-size:16px;font-weight:bold;">' +
               '确诊病例' +
-              params.value+
+              params.value +
               '例' +
               '</span>' +
               '</div>' +
@@ -1716,11 +1725,11 @@
           type: 'map',
           zoom: 1.1,
           showLegendSymbol: true,
-          left:"30%",
+          left: "30%",
           label: {
             normal: {
               fontSize: 10,
-              fontWeight:"bold",
+              fontWeight: "bold",
               show: true,
               color: '#fff',
             },
@@ -1749,15 +1758,15 @@
     };
 
 
-    for (i=0;i<mapsj.length;i++){
-      res=[];
-      for (j=0;j<mapsj[i].length;j++){
+    for (i = 0; i < mapsj.length; i++) {
+      res = [];
+      for (j = 0; j < mapsj[i].length; j++) {
         res.push({
           name: mapsj[i][j].name,
           value: mapsj[i][j].value
         });
       }
-      res.sort(function(a, b) {
+      res.sort(function (a, b) {
         return b.value - a.value;
       });    //降序
 
@@ -1785,16 +1794,16 @@
               }
             },
             {
-            type: 'text',
-            z: 100,
-            top: '20%',
-            left: '5%',
-            style: {
-              // fill: '#8A8A8A',
-              text: "累计病例数：",
-              font: '1em "Roboto", sans-serif',
-            }
-          },
+              type: 'text',
+              z: 100,
+              top: '20%',
+              left: '5%',
+              style: {
+                // fill: '#8A8A8A',
+                text: "累计病例数：",
+                font: '1em "Roboto", sans-serif',
+              }
+            },
             {
               type: 'text',
               z: 100,
@@ -1815,13 +1824,13 @@
             {
               name: "确诊病例",
               type: "map",
-              data:res,
+              data: res,
               geoIndex: 0,
             },
             {
               type: 'bar',
               barWidth: '40%',
-              data:res2,
+              data: res2,
               label: {
                 normal: {
                   show: true,
@@ -1843,26 +1852,48 @@
     }
 
 
-
     myChart4.setOption(option);
   });
 
 
   //第五绘图区 管控
-  var myChart5=echarts.init(document.getElementById("container5"))
+  var myChart5 = echarts.init(document.getElementById("container5"))
+  var bxsum = 0
+  var fgksum = 0
+  var gksum = 0
+  var swrksum = 0
+  for (let i = 0; i < date.length; i++) {
+    if( bx[i]=='-') {bx[i]=0}
+    bxsum += bx[i];
+    if( fgk[i]=='-') {fgk[i]=0}
+    fgksum += fgk[i];
+    if( gk[i]=='-') {gk[i]=0}
+    gksum += gk[i];
+    if( swrk[i]=='-') {swrk[i]=0}
+    swrksum += swrk[i];
+  }
 
-  var bfb=[]
-  for(i=0;i<fgk.length;i++){
-    bfb.push((fgk[i]/csdata2[i]).toFixed(2))
+  var gkpie = []
+  gkpie.push(
+    {name: '不祥', value: bxsum},
+    {name: '非管控', value: fgksum},
+    {name: '管控', value: gksum},
+    {name: '入昆', value: swrksum}
+  )
+
+  var bfb = []
+  for (i = 0; i < fgk.length; i++) {
+    bfb.push((fgk[i] / csdata2[i]).toFixed(2))
   }
 
   var option = {
-    title:{
-      text:"管控情况",
-      textStyle:{
-        fontSize:25
+    title: {
+      text: "管控情况",
+      textStyle: {
+        fontSize: 25
       },
-      left:"45%"},
+      left: "45%"
+    },
     color: ['#3398DB'],
     tooltip: {
       trigger: 'axis',
@@ -1870,16 +1901,16 @@
         type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
       }
     },
-    toolbox:{
-      feature:{
-        saveAsImage:{}
+    toolbox: {
+      feature: {
+        saveAsImage: {}
       }
     },
-    legend:{
-      show:true,
-      left:"29%",
-      top:"10%",
-      textStyle:{fontSize:16}
+    legend: {
+      show: true,
+      left: "29%",
+      top: "10%",
+      textStyle: {fontSize: 16}
     },
     grid: {
       left: '3%',
@@ -1897,18 +1928,18 @@
       axisLabel: {
         "textStyle": {
           "color": "black",
-          fontSize:'11',
+          fontSize: '11',
         },
       },
     }],
     yAxis: [{
       // show:false,
       type: 'value'
-    },{
-      show:false,
+    }, {
+      show: false,
       type: 'value',
-      min:0,
-      max:1
+      min: 0,
+      max: 1
     },],
     series: [
       {
@@ -1918,7 +1949,7 @@
         barGap: '-100%',
         barWidth: '50%',
         data: fgk,
-        yAxisIndex:0,
+        yAxisIndex: 0,
         emphasis: {
           focus: 'series'
         },
@@ -1933,7 +1964,7 @@
         name: '管控',
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -1943,13 +1974,13 @@
           focus: 'series'
         },
         data: gk,
-        yAxisIndex:0,
+        yAxisIndex: 0,
       },
       {
         name: '不祥',
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -1959,7 +1990,7 @@
         emphasis: {
           focus: 'series'
         },
-        yAxisIndex:0,
+        yAxisIndex: 0,
         itemStyle: {
           color: 'orange'
         }
@@ -1968,7 +1999,7 @@
         name: '入昆',
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -1978,24 +2009,24 @@
         emphasis: {
           focus: 'series'
         },
-        yAxisIndex:0,
+        yAxisIndex: 0,
         itemStyle: {
           color: 'green'
         },
       },
       {
-        name:"非管控占比",
-        color:"#FF6666",
-        data:bfb,
-        yAxisIndex:1,
-        type:"line",
-        smooth:true,
-        symbolSize:10,
-        label:{
-          show:true,
-          fontSize:16,
-          formatter: function(params) {
-            return (params.value*100).toFixed(0)+'%';
+        name: "非管控占比",
+        color: "#FF6666",
+        data: bfb,
+        yAxisIndex: 1,
+        type: "line",
+        smooth: true,
+        symbolSize: 10,
+        label: {
+          show: true,
+          fontSize: 16,
+          formatter: function (params) {
+            return (params.value * 100).toFixed(0) + '%';
           },
         },
         lineStyle: {
@@ -2017,26 +2048,27 @@
             show: true,
             position: 'top',
             color: '#CC99CC',
-            fontSize:'15'
+            fontSize: '15'
           },
         },
-        data:csdata2,
+        data: csdata2,
         z: -1,  //隐藏总柱
         //不同系列的柱间距离，为百分比,如果想要两个系列的柱子重叠，可以设置 barGap 为 '-100%'。
         barGap: '-100%',
       },
-      {color:["#ffa732","red","#2892d7","#008822"],
-        type:"pie",
-        data:gkpie,
+      {
+        color: ["#ffa732", "red", "#2892d7", "#008822"],
+        type: "pie",
+        data: gkpie,
         center: ["15%", "30%"],
-        radius:"38%",
+        radius: "38%",
         selectedMode: "multiple",
         selectedOffset: 30,
         itemStyle: {
-          normal:{
-            label:{
-              position:"inside",
-              color:"white",
+          normal: {
+            label: {
+              position: "inside",
+              color: "white",
               show: true,
               formatter: '{b} : \n{c}人 \n{d}%',
               //formatter: '{b} : {c} ({d}%)' //带当前图例名 + 百分比
@@ -2051,27 +2083,28 @@
   myChart5.setOption(option);
 
   ////第七绘图区  每日地区
-  var myChart7=echarts.init(document.getElementById("container7"))
+  var myChart7 = echarts.init(document.getElementById("container7"))
 
-  var dq=dqdata
+  var dq = dqdata
 
   var option = {
-    title:{
-      text:"地区每日病例变化",
-      textStyle:{
-        fontSize:25
+    title: {
+      text: "地区每日病例变化",
+      textStyle: {
+        fontSize: 25
       },
-      left:"15%",top:"12%"},
+      left: "15%", top: "12%"
+    },
     tooltip: {
       position: 'top'
     },
-    toolbox:{
-      feature:{
-        saveAsImage:{}
+    toolbox: {
+      feature: {
+        saveAsImage: {}
       }
     },
     legend: {
-      data:lgdata,
+      data: lgdata,
       left: '7%',
       right: '4%',
       top: '22%',
@@ -2092,12 +2125,12 @@
       axisLabel: {
         "textStyle": {
           "color": "black",
-          fontSize:'11',
+          fontSize: '11',
         },
       },
     }],
     yAxis: [{
-      show:true,
+      show: true,
       type: 'value',
     }],
     series: [
@@ -2107,7 +2140,7 @@
         stack: 'a',
         barGap: '-100%',
         barWidth: '100%',
-        data: dq[0],
+        data:dq[0],
         label: {
           show: true,
         },
@@ -2122,7 +2155,7 @@
         name: "经开区",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2137,7 +2170,7 @@
         name: "呈贡区",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2155,7 +2188,7 @@
         name: "西山区",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2173,7 +2206,7 @@
         name: "五华区",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2191,7 +2224,7 @@
         name: "安宁市",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2209,7 +2242,7 @@
         name: "阳宗海",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2227,7 +2260,7 @@
         name: "盘龙区",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2245,7 +2278,7 @@
         name: "东川区",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2263,7 +2296,7 @@
         name: "晋宁区",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2281,7 +2314,7 @@
         name: "嵩明县",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2299,7 +2332,7 @@
         name: "石林县",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2317,7 +2350,7 @@
         name: "寻甸县",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2335,7 +2368,7 @@
         name: "富民县",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2343,7 +2376,7 @@
         barWidth: '50%',
         data: dq[13],
         itemStyle: {
-          color:" #CCCC33"
+          color: " #CCCC33"
         },
         emphasis: {
           focus: 'series'
@@ -2353,7 +2386,7 @@
         name: "禄劝县",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2371,7 +2404,7 @@
         name: "宜良县",
         label: {
           show: true,
-          color:'white'
+          color: 'white'
         },
         stack: 'a',
         barGap: '-100%',
@@ -2391,15 +2424,15 @@
   myChart7.setOption(option);
 
 
-//表格热力图
-  var myChart8=echarts.init(document.getElementById("container8"))
+  //表格热力图
+  var myChart8 = echarts.init(document.getElementById("container8"))
 
   rldata = rldata.map(function (item) {
     return [item[0], item[1], item[2] || '-'];
   });
   option = {
-    title:{
-      text:"地区每日病例热力图",
+    title: {
+      text: "地区每日病例热力图",
       textStyle: {
         color: '#2D3E53',
         fontSize: 22
@@ -2407,13 +2440,13 @@
       left: "center",
       top: 0
     },
-    toolbox:{
-      feature:{
-        saveAsImage:{}
+    toolbox: {
+      feature: {
+        saveAsImage: {}
       }
     },
     tooltip: {
-      show:true,
+      show: true,
       position: 'top',
       // trigger: 'axis', // 触发类型  'item'图形触发：散点图，饼图等无类目轴的图表中使用； 'axis'坐标轴触发；'none'：什么都不触发。
       axisPointer: { // 坐标轴指示器配置项。
@@ -2421,8 +2454,8 @@
         // axis: 'auto', // 指示器的坐标轴。
         // snap: true, // 坐标轴指示器是否自动吸附到点上
       },
-      formatter: function(params) {
-        return '日期：'+params.name+ '<br/>'+'地区：' + rldq[params.value[1]] + '<br/>' + '人数：' + params.data[2]+"人";
+      formatter: function (params) {
+        return '日期：' + params.name + '<br/>' + '地区：' + rldq[params.value[1]] + '<br/>' + '人数：' + params.data[2] + "人";
       }
     },
     animation: false,
@@ -2447,14 +2480,14 @@
       orient: 'horizontal',
       left: 'center',
       bottom: '0%',
-      show:false
+      show: false
     },
     series: [{
       type: 'heatmap',
       data: rldata,
       label: {
         normal: {
-          fontSize:14,
+          fontSize: 14,
           show: true
         }
       },
@@ -2470,11 +2503,11 @@
 
 
   //第九绘图区 家庭聚集
-  var myChart9=echarts.init(document.getElementById("container9"))
+  var myChart9 = echarts.init(document.getElementById("container9"))
 
   var data = [];
-  var color = ['rgb(255, 153, 153)', 'rgb(255, 176, 63)', 'rgb(61, 186, 45)', 'rgb(43, 166, 254)',"#996699"];
-  var colorBorder = ['rgba(255, 153, 153, 0.4)', 'rgba(255, 176, 63, 0.4)', 'rgba(61, 186, 45, 0.4)', 'rgba(43, 166, 254, 0.4)',"#CC99CC"];
+  var color = ['rgb(255, 153, 153)', 'rgb(255, 176, 63)', 'rgb(61, 186, 45)', 'rgb(43, 166, 254)', "#996699"];
+  var colorBorder = ['rgba(255, 153, 153, 0.4)', 'rgba(255, 176, 63, 0.4)', 'rgba(61, 186, 45, 0.4)', 'rgba(43, 166, 254, 0.4)', "#CC99CC"];
   for (var i = 0; i < scaleData.length; i++) {
     data.push({
       data: scaleData[i].value,
@@ -2535,7 +2568,7 @@
             show: true,
             position: 'outside',
             fontSize: 15,
-            formatter: function(params) {
+            formatter: function (params) {
               var percent = 0;
               var total = 0;
               for (var i = 0; i < scaleData.length; i++) {
@@ -2543,7 +2576,7 @@
               }
               percent = ((params.data.data / total) * 100).toFixed(0);
               if (params.name !== '') {
-                return params.data.data+'起，占'+percent+'%';
+                return params.data.data + '起，占' + percent + '%';
               } else {
                 return '';
               }
@@ -2555,9 +2588,9 @@
     }];
   option = {
     title: {
-      text:"家庭聚集",
-      left:"center",
-      top:"6%",
+      text: "家庭聚集",
+      left: "center",
+      top: "6%",
       textStyle: {
         color: '#2D3E53',
         fontSize: 23
@@ -2570,9 +2603,9 @@
     legend: {
       show: false
     },
-    toolbox:{
-      feature:{
-        saveAsImage:{}
+    toolbox: {
+      feature: {
+        saveAsImage: {}
       }
     },
     series: seriesObj,
@@ -2588,7 +2621,7 @@
         style: {
           fill: '#333',
           text: [
-            '家庭聚集'+jtjj+'起'
+            '家庭聚集' + jtjj + '起'
           ],
           font: '20px Microsoft YaHei'
         }
@@ -2601,7 +2634,7 @@
           style: {
             fill: '#333',
             text: [
-              '全家感染'+qjgr1+'起'
+              '全家感染' + qjgr1 + '起'
             ],
             font: '20px Microsoft YaHei'
           }
@@ -2638,38 +2671,37 @@
   myChart9.setOption(option);
 
 
-
   //分型
-  var myChart10=echarts.init(document.getElementById("container10"))
-  var wzsum=0
-  var quezsum=0
-  for (let i = 0; i < wz.length; i++){
-    wzsum+=wz[i];
-    quezsum+=quez[i]
+  var myChart10 = echarts.init(document.getElementById("container10"))
+  var wzsum = 0
+  var quezsum = 0
+  for (let i = 0; i < wz.length; i++) {
+    wzsum += wz[i];
+    quezsum += quez[i]
   }
-  var fx=[]
+  var fx = []
   fx.push(
-    {name:'无症状',value:wzsum}
+    {name: '无症状', value: wzsum}
   )
   fx.push(
-    {name:'确诊',value:quezsum}
+    {name: '确诊', value: quezsum}
   )
-  var zb=[]
-  for(i=0;i<quez.length;i++){
-    zb.push((quez[i]/wbdata[i]).toFixed(2))
+  var zb = []
+  for (i = 0; i < quez.length; i++) {
+    zb.push((quez[i] / wbdata[i]).toFixed(2))
   }
 
   option = {
-    title:{
-    text:"病例临床分型",
-      textStyle:{
-      fontSize:25
+    title: {
+      text: "病例临床分型",
+      textStyle: {
+        fontSize: 25
+      },
+      left: "5%", top: "2%"
     },
-    left:"5%",top:"2%"
-  },
-    toolbox:{
-      feature:{
-        saveAsImage:{}
+    toolbox: {
+      feature: {
+        saveAsImage: {}
       }
     },
     tooltip: {
@@ -2679,7 +2711,7 @@
       }
     },
     legend: {
-      textStyle:{fontSize:16}
+      textStyle: {fontSize: 16}
     },
     grid: {
       left: '3%',
@@ -2699,7 +2731,7 @@
       },
       {
         type: 'value',
-        show:false
+        show: false
       }
     ],
     series: [
@@ -2716,7 +2748,7 @@
         emphasis: {
           focus: 'series'
         },
-        data:wz
+        data: wz
       },
       {
         name: '确诊',
@@ -2730,7 +2762,7 @@
         emphasis: {
           focus: 'series'
         },
-        data:quez
+        data: quez
       },
       {
         name: '总计',
@@ -2742,41 +2774,41 @@
             show: true,
             position: 'top',
             color: 'orange',
-            fontSize:'15'
+            fontSize: '15'
           },
         },
-        data:wbdata,
+        data: wbdata,
         z: -1,  //隐藏总柱
         //不同系列的柱间距离，为百分比,如果想要两个系列的柱子重叠，可以设置 barGap 为 '-100%'。
         barGap: '-100%',
       },
       {
-        name:"每日无症状感染占比",
-        yAxisIndex:1,
-        type:"line",
-        smooth:true,
-        color:"green",
-        data:zb,
-        label:{
-          show:true,
-          fontSize:16,
-          formatter: function(params) {
-            return (params.value*100).toFixed(0)+'%';
+        name: "每日无症状感染占比",
+        yAxisIndex: 1,
+        type: "line",
+        smooth: true,
+        color: "green",
+        data: zb,
+        label: {
+          show: true,
+          fontSize: 16,
+          formatter: function (params) {
+            return (params.value * 100).toFixed(0) + '%';
           },
         },
       },
       {
-        type:"pie",
-        data:fx,
+        type: "pie",
+        data: fx,
         center: ["15%", "65%"],
-        radius:"38%",
+        radius: "38%",
         selectedMode: "multiple",
         selectedOffset: 30,
         itemStyle: {
-          normal:{
-            label:{
-              position:"inside",
-              color:"white",
+          normal: {
+            label: {
+              position: "inside",
+              color: "white",
               show: true,
               formatter: '{b} : \n{c}人 \n{d}%',
               //formatter: '{b} : {c} ({d}%)' //带当前图例名 + 百分比
@@ -2788,9 +2820,6 @@
     ]
   };
   myChart10.setOption(option);
-
-
-
 
 
 </script>
